@@ -8,6 +8,21 @@
   --font-serif: "Noto Serif KR", Georgia, serif;
 }
 
+/* Global button press effect */
+button:not(:disabled) {
+  transition: transform 75ms ease, filter 75ms ease, box-shadow 75ms ease;
+  cursor: pointer;
+}
+
+button:not(:disabled):hover {
+  filter: brightness(1.04);
+}
+
+button:not(:disabled):active {
+  transform: translateY(2px);
+  filter: brightness(0.88);
+}
+
 /* Custom Pottery Scrollbar & Subtle animations */
 ::-webkit-scrollbar {
   width: 6px;
