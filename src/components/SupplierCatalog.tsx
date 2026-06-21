@@ -102,7 +102,7 @@ export default function SupplierCatalog({ suppliers, selectedSupplierId, setSele
                   onClick={() => selectSupplier(sup)}
                   className={`w-full text-left p-4 rounded-xl border transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 ${
                     isSelected
-                      ? 'bg-[#b76e66]/10 border-[#b76e66] shadow-[0_4px_20px_rgba(183,110,102,0.25)] ring-1 ring-[#b76e66]/30'
+                      ? 'bg-[#cff9fb] border-[#cff9fb] shadow-[0_4px_20px_rgba(207,249,251,0.60)] ring-1 ring-[#cff9fb]/60'
                       : 'bg-white border-stone-200/80 shadow-[0_2px_12px_rgba(183,110,102,0.10)] hover:shadow-[0_8px_24px_rgba(183,110,102,0.25)]'
                   }`}
                   id={`supplier-btn-${sup.id}`}
