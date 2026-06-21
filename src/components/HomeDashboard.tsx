@@ -120,7 +120,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
       <div className="space-y-5">
 
         {/* AI 추천 — Featured 전면 카드 */}
-        <div className="bg-white/55 backdrop-blur-md border border-[#b76e66]/30 rounded-2xl p-7 flex flex-col md:flex-row items-start md:items-center gap-6 shadow-lg">
+        <div className="bg-white/55 backdrop-blur-md border border-[#b76e66]/30 rounded-2xl p-7 flex flex-col md:flex-row items-start md:items-center gap-6 shadow-[0_4px_24px_rgba(183,110,102,0.25)] hover:-translate-y-2 hover:shadow-[0_12px_32px_rgba(183,110,102,0.40)] transition-all duration-200">
           <div className="flex-1 flex flex-col gap-4">
             <div className="flex items-center gap-3">
               <div className="w-11 h-11 rounded-xl bg-[#b76e66]/15 border border-[#b76e66]/30 flex items-center justify-center shrink-0">
@@ -151,7 +151,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
           {/* 도재상 찾기 */}
-          <div className="bg-white/55 backdrop-blur-md border border-[#e3a692]/40 border-t-2 border-t-[#b76e66] rounded-2xl p-7 flex flex-col shadow-md hover:shadow-lg transition-all">
+          <div className="bg-white/55 backdrop-blur-md border border-[#e3a692]/40 border-t-2 border-t-[#b76e66] rounded-2xl p-7 flex flex-col shadow-[0_4px_20px_rgba(183,110,102,0.20)] hover:-translate-y-2 hover:shadow-[0_12px_28px_rgba(183,110,102,0.38)] transition-all duration-200">
             <div className="w-11 h-11 rounded-xl bg-stone-500/10 border border-stone-400/20 flex items-center justify-center mb-5">
               <MapPin className="w-5 h-5 text-stone-600" />
             </div>
@@ -168,7 +168,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
           </div>
 
           {/* 시편 커뮤니티 */}
-          <div className="bg-white/55 backdrop-blur-md border border-[#cff9fb]/60 border-t-2 border-t-[#cff9fb] rounded-2xl p-7 flex flex-col shadow-md hover:shadow-lg transition-all">
+          <div className="bg-white/55 backdrop-blur-md border border-[#cff9fb]/60 border-t-2 border-t-[#cff9fb] rounded-2xl p-7 flex flex-col shadow-[0_4px_20px_rgba(207,249,251,0.45)] hover:-translate-y-2 hover:shadow-[0_12px_28px_rgba(207,249,251,0.70)] transition-all duration-200">
             <div className="w-11 h-11 rounded-xl bg-[#cff9fb]/40 border border-[#cff9fb]/60 flex items-center justify-center mb-5">
               <FileText className="w-5 h-5 text-stone-600" />
             </div>
