@@ -77,7 +77,7 @@ export default function AIRecommender() {
       <div className="bg-white rounded-xl border border-stone-200 p-6 shadow-xs space-y-4">
         <div>
           <h2 className="text-xl font-serif font-bold text-stone-900 flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-amber-500 fill-amber-500/20" /> 
+            <Sparkles className="w-5 h-5 text-[#b76e66] fill-amber-500/20" /> 
             AI 기반 도예 재료 맞춤 설계 및 추천
           </h2>
           <p className="text-stone-500 text-xs">
@@ -108,7 +108,7 @@ export default function AIRecommender() {
                       onClick={() => setFormData({ ...formData, firingTempRange: opt.value as any })}
                       className={`p-3 rounded-lg border text-left transition-all ${
                         formData.firingTempRange === opt.value
-                          ? 'border-amber-500 bg-amber-500/5 text-stone-900'
+                          ? 'border-[#b76e66] bg-[#b76e66]/5 text-stone-900'
                           : 'border-stone-200 hover:border-stone-300 text-stone-600'
                       }`}
                     >
@@ -125,7 +125,7 @@ export default function AIRecommender() {
                 <select
                   value={formData.technique}
                   onChange={(e) => setFormData({ ...formData, technique: e.target.value as any })}
-                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg text-stone-800 focus:outline-hidden focus:ring-1 focus:ring-amber-500"
+                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg text-stone-800 focus:outline-hidden focus:ring-1 focus:ring-[#b76e66]"
                 >
                   <option value="wheel">물레 성형 (Wheel Throwing)</option>
                   <option value="handbuilding">핀칭 / 코일링 (Handbuilding)</option>
@@ -150,7 +150,7 @@ export default function AIRecommender() {
                       onClick={() => setFormData({ ...formData, clayColorPref: cOpt.value as any })}
                       className={`px-3 py-1.5 rounded-md border text-xs font-medium transition-all ${
                         formData.clayColorPref === cOpt.value
-                          ? 'border-amber-500 bg-amber-500/10 text-amber-900 font-semibold'
+                          ? 'border-[#b76e66] bg-[#b76e66]/10 text-[#7a3f39] font-semibold'
                           : 'border-stone-200 bg-white hover:border-stone-300 text-stone-600'
                       }`}
                     >
@@ -166,7 +166,7 @@ export default function AIRecommender() {
                 <select
                   value={formData.glazeFinishPref}
                   onChange={(e) => setFormData({ ...formData, glazeFinishPref: e.target.value as any })}
-                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg text-stone-800 focus:outline-hidden focus:ring-1 focus:ring-amber-500"
+                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg text-stone-800 focus:outline-hidden focus:ring-1 focus:ring-[#b76e66]"
                 >
                   <option value="glossy">찰랑이는 유광 (Glossy Transparent)</option>
                   <option value="matte">보송한 매트 (Eggshell Matte)</option>
@@ -186,14 +186,14 @@ export default function AIRecommender() {
                 value={formData.specialRequirements}
                 onChange={(e) => setFormData({ ...formData, specialRequirements: e.target.value })}
                 rows={3}
-                className="w-full text-xs p-3 bg-stone-50 border border-stone-250 rounded-lg text-stone-800 focus:outline-hidden focus:ring-1 focus:ring-amber-500 bg-white"
+                className="w-full text-xs p-3 bg-stone-50 border border-stone-250 rounded-lg text-stone-800 focus:outline-hidden focus:ring-1 focus:ring-[#b76e66] bg-white"
                 id="special-requirements-textarea"
               />
             </div>
 
             <button
               onClick={handleRecommend}
-              className="w-full py-3 bg-amber-500 hover:bg-amber-600 text-stone-950 font-bold text-sm rounded-lg shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-3 bg-[#b76e66] hover:bg-[#a05a53] text-white font-bold text-sm rounded-lg shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
               id="submit-recommendation-btn"
             >
               <Sparkles className="w-4 h-4 fill-stone-950 text-stone-950" /> 맞춤 재료 및 소성 배합 산출하기
@@ -204,7 +204,7 @@ export default function AIRecommender() {
           <div className="space-y-4">
             <div className="bg-stone-50 rounded-xl border border-stone-200 p-5 space-y-4">
               <h4 className="font-serif text-sm font-bold text-stone-800 flex items-center gap-1">
-                <Info className="w-4 h-4 text-amber-500" /> 공학 매칭 시스템 안내
+                <Info className="w-4 h-4 text-[#b76e66]" /> 공학 매칭 시스템 안내
               </h4>
               <p className="text-stone-600 text-xs leading-normal">
                 점토의 태토 성분 수축율과 유약의 열팽창 곡선이 일치하지 않을 경우, 가마에서 나올 때 기물이 깨지는 유열(Cracking)이나 실금이 마구잡이로 생길 수 있습니다.
@@ -215,8 +215,8 @@ export default function AIRecommender() {
               </div>
             </div>
 
-            <div className="bg-amber-50/60 rounded-xl border border-amber-200/50 p-5 space-y-3">
-              <span className="text-[10px] font-bold text-amber-800 block uppercase tracking-wider">주요 연동 제조사 데이터</span>
+            <div className="bg-[#e6faf8]/60 rounded-xl border border-[#cbf7ee]/50 p-5 space-y-3">
+              <span className="text-[10px] font-bold text-[#7a3f39] block uppercase tracking-wider">주요 연동 제조사 데이터</span>
               <p className="text-[11px] text-stone-600 leading-normal">
                 미국 아마코(Amaco), 라구나(Laguna) 대용량 점토 및 국내 중앙도재 기성의 최신 수축율 데이터베이스가 실시간 매핑 규칙에 연계됩니다.
               </p>
@@ -227,7 +227,7 @@ export default function AIRecommender() {
         /* LOADING STATE */
         <div className="bg-white rounded-xl border border-stone-200 p-12 text-center flex flex-col items-center justify-center space-y-6 shadow-xs">
           <div className="relative">
-            <Flame className="w-12 h-12 text-amber-500 animate-bounce" />
+            <Flame className="w-12 h-12 text-[#b76e66] animate-bounce" />
             <span className="absolute inset-0 rounded-full border-4 border-amber-500/20 border-t-amber-500 animate-spin"></span>
           </div>
           
@@ -299,8 +299,8 @@ export default function AIRecommender() {
                     </div>
 
                     <div className="pt-3 border-t border-stone-100 space-y-2.5">
-                      <div className="text-[11px] text-stone-600 bg-amber-500/5 p-2 rounded border border-amber-500/10 space-y-0.5">
-                        <strong className="text-amber-800 font-bold block text-[10px]">💡 소성 활용 노하우</strong>
+                      <div className="text-[11px] text-stone-600 bg-[#b76e66]/5 p-2 rounded border border-[#b76e66]/10 space-y-0.5">
+                        <strong className="text-[#7a3f39] font-bold block text-[10px]">💡 소성 활용 노하우</strong>
                         <p>{m.usageTips}</p>
                       </div>
 
@@ -321,14 +321,14 @@ export default function AIRecommender() {
             {/* Firing Curve Rules (Right 1 col) */}
             <div className="bg-stone-50 rounded-xl border border-stone-200 p-5 space-y-4">
               <h3 className="font-serif text-sm font-bold text-stone-800 flex items-center gap-1">
-                <Flame className="w-4 h-4 text-amber-500" /> 공학 가마 열선 곡선 진단 (Firing Guidelines)
+                <Flame className="w-4 h-4 text-[#b76e66]" /> 공학 가마 열선 곡선 진단 (Firing Guidelines)
               </h3>
               
               <div className="text-xs text-stone-700 whitespace-pre-line leading-relaxed space-y-2 bg-white p-4 rounded-lg border border-stone-200">
                 {result.firingGuidelines}
               </div>
 
-              <div className="bg-amber-100/40 p-3.5 rounded-lg border border-amber-200/50 text-[10px] text-stone-500 space-y-1">
+              <div className="bg-[#f5ddd8]/40 p-3.5 rounded-lg border border-[#e8b5ad]/50 text-[10px] text-stone-500 space-y-1">
                 <strong className="text-amber-900">⚠️ 공방 가마 유의사항</strong>
                 <p className="leading-snug">
                   제시된 소성 가이드는 전력 용량 및 대기 장치의 성능에 따라 오차가 발생할 수 있습니다. 

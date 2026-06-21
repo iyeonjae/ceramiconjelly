@@ -108,8 +108,8 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
         </div>
 
         {/* Alerts Corner */}
-        <div className="bg-amber-50 rounded-xl border border-amber-200 p-6 flex flex-col justify-between space-y-3">
-          <div className="flex items-center gap-2 text-amber-800">
+        <div className="bg-[#fdf0ed] rounded-xl border border-[#e8b5ad] p-6 flex flex-col justify-between space-y-3">
+          <div className="flex items-center gap-2 text-[#7a3f39]">
             <AlertTriangle className="w-5 h-5 shrink-0" />
             <span className="font-semibold text-xs uppercase tracking-wider">주요 품절 주의 알람</span>
           </div>
@@ -129,7 +129,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
             )}
           </div>
           
-          <p className="text-[10px] text-amber-800/80 leading-snug">
+          <p className="text-[10px] text-[#7a3f39]/80 leading-snug">
             *흙이 품절되기 약 3박스 전 미리 인근 중앙도재 혹은 대원도재 견적 공동구매 요청을 진행하십시오.
           </p>
         </div>
@@ -153,7 +153,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
                   placeholder="예: 분청토 고운입자, 비믹스 5 소량"
                   value={newItem.name}
                   onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
-                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-amber-500 bg-white"
+                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-[#b76e66] bg-white"
                 />
               </div>
 
@@ -162,7 +162,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
                 <select
                   value={newItem.category}
                   onChange={(e) => setNewItem({ ...newItem, category: e.target.value as any })}
-                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg text-stone-800 focus:outline-hidden focus:ring-1 focus:ring-amber-500 bg-white"
+                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg text-stone-800 focus:outline-hidden focus:ring-1 focus:ring-[#b76e66] bg-white"
                 >
                   <option value="Clay">점토 / 수화 태토 (Clay)</option>
                   <option value="Glaze">유약 완제품 / 안료액 (Glaze)</option>
@@ -179,7 +179,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
                   placeholder="예: 중앙도재, Laguna, 직접 양생 등"
                   value={newItem.supplier}
                   onChange={(e) => setNewItem({ ...newItem, supplier: e.target.value })}
-                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-amber-500 bg-white"
+                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-[#b76e66] bg-white"
                 />
               </div>
 
@@ -190,7 +190,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
                   placeholder="예: 1240°C (Cone 6)"
                   value={newItem.firingTemp}
                   onChange={(e) => setNewItem({ ...newItem, firingTemp: e.target.value })}
-                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-amber-500 bg-white"
+                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-[#b76e66] bg-white"
                 />
               </div>
 
@@ -203,7 +203,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
                     step="any"
                     value={newItem.stockQuantity}
                     onChange={(e) => setNewItem({ ...newItem, stockQuantity: Number(e.target.value) })}
-                    className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-amber-500 bg-white"
+                    className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-[#b76e66] bg-white"
                   />
                   <select
                     value={newItem.unit}
@@ -226,7 +226,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
                   min="0"
                   value={newItem.stockAlertThreshold}
                   onChange={(e) => setNewItem({ ...newItem, stockAlertThreshold: Number(e.target.value) })}
-                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-amber-500 bg-white"
+                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-[#b76e66] bg-white"
                 />
               </div>
             </div>
@@ -238,7 +238,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
                 value={newItem.notes}
                 onChange={(e) => setNewItem({ ...newItem, notes: e.target.value })}
                 rows={2}
-                className="w-full text-xs p-3 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-amber-500 bg-white"
+                className="w-full text-xs p-3 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-[#b76e66] bg-white"
               />
             </div>
 
@@ -252,7 +252,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 bg-amber-500 hover:bg-amber-600 text-stone-950 font-bold text-xs rounded-lg transition-colors flex items-center gap-1"
+                className="px-5 py-2 bg-[#b76e66] hover:bg-amber-600 text-stone-950 font-bold text-xs rounded-lg transition-colors flex items-center gap-1"
                 id="submit-add-material-btn"
               >
                 <Check className="w-3.5 h-3.5" /> 자재 목록에 추가
@@ -286,7 +286,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
                   onClick={() => setCategoryFilter(f)}
                   className={`px-3 py-1 rounded-md text-xs font-semibold whitespace-nowrap transition-colors ${
                     categoryFilter === f
-                      ? 'bg-amber-500 text-stone-950 shadow-xs'
+                      ? 'bg-[#b76e66] text-white shadow-xs'
                       : 'bg-stone-50 border border-stone-200/65 text-stone-600 hover:bg-stone-100'
                   }`}
                 >
@@ -329,7 +329,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
                             <div className="flex items-center gap-1.5 flex-wrap">
                               <span className="font-bold text-xs text-stone-900">{item.name}</span>
                               {isLow && (
-                                <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-amber-100 text-amber-800 border border-amber-200 flex items-center gap-0.5 animate-pulse">
+                                <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-[#f5ddd8] text-[#7a3f39] border border-[#e8b5ad] flex items-center gap-0.5 animate-pulse">
                                   재고 부족
                                 </span>
                               )}
@@ -349,7 +349,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
                           <td className="p-4">
                             <div className="space-y-1 flex flex-col justify-center max-w-[150px] mx-auto">
                               <div className="flex justify-between items-center text-[10px] font-bold">
-                                <span className={isLow ? 'text-amber-600' : 'text-stone-700'}>
+                                <span className={isLow ? 'text-[#b76e66]' : 'text-stone-700'}>
                                   {item.stockQuantity} {item.unit}
                                 </span>
                                 <span className="text-stone-400">{percentage}%</span>
@@ -357,7 +357,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
                               <div className="w-full bg-stone-100 h-1.5 rounded-full overflow-hidden border border-stone-200/50">
                                 <div
                                   className={`h-full rounded-full transition-all duration-300 ${
-                                    isLow ? 'bg-amber-500' : 'bg-stone-800'
+                                    isLow ? 'bg-[#b76e66]' : 'bg-stone-800'
                                   }`}
                                   style={{ width: `${percentage}%` }}
                                 ></div>

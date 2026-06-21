@@ -121,7 +121,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
       <div className="bg-white rounded-xl border border-stone-200 p-6 flex flex-col md:flex-row items-stretch justify-between gap-4">
         <div className="space-y-1">
           <h2 className="text-xl font-serif font-bold text-stone-900 flex items-center gap-1.5">
-            <Coffee className="w-5 h-5 text-amber-600" /> 도예 시편 & 레시피 나눔방
+            <Coffee className="w-5 h-5 text-[#b76e66]" /> 도예 시편 & 레시피 나눔방
           </h2>
           <p className="text-stone-500 text-xs">
             다양한 태토 위에 시유된 유약 발색, 가마 상태별 오버레이, 안료 혼합의 소성 결과를 투명하게 기록하고 대조해 완성율을 보정해주는 창작 공유망입니다.
@@ -155,7 +155,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
                   placeholder="예: 분청토 위에 올린 가마 황토 시편"
                   value={newTile.title}
                   onChange={(e) => setNewTile({ ...newTile, title: e.target.value })}
-                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-amber-500 bg-white"
+                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-[#b76e66] bg-white"
                 />
               </div>
 
@@ -167,7 +167,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
                   placeholder="예: 백자사랑, 홍대도공"
                   value={newTile.author}
                   onChange={(e) => setNewTile({ ...newTile, author: e.target.value })}
-                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-amber-500 bg-white"
+                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-[#b76e66] bg-white"
                 />
               </div>
 
@@ -178,7 +178,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
                   placeholder="예: 소백토, B-Mix 5, 옹기토 등"
                   value={newTile.clayBody}
                   onChange={(e) => setNewTile({ ...newTile, clayBody: e.target.value })}
-                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-amber-500 bg-white"
+                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-[#b76e66] bg-white"
                 />
               </div>
 
@@ -189,7 +189,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
                   placeholder="예: Amaco Honey flux 2겹 + 스모키그레이 1겹 붓시유"
                   value={newTile.glazeName}
                   onChange={(e) => setNewTile({ ...newTile, glazeName: e.target.value })}
-                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-amber-500 bg-white"
+                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-[#b76e66] bg-white"
                 />
               </div>
 
@@ -198,7 +198,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
                 <select
                   value={newTile.firingType}
                   onChange={(e) => setNewTile({ ...newTile, firingType: e.target.value as any })}
-                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-amber-500 bg-white"
+                  className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-[#b76e66] bg-white"
                 >
                   <option value="산화채성 (Oxidation)">전가마 전동 산화 (Oxidation)</option>
                   <option value="환원채성 (Reduction)">가스가마 불꽃 환원 (Reduction)</option>
@@ -215,7 +215,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
                     placeholder="예: 1240°C"
                     value={newTile.firingTemp}
                     onChange={(e) => setNewTile({ ...newTile, firingTemp: e.target.value })}
-                    className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-amber-500 bg-white"
+                    className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-[#b76e66] bg-white"
                   />
                 </div>
                 <div className="space-y-1">
@@ -225,7 +225,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
                     placeholder="예: Cone 6"
                     value={newTile.coneValue}
                     onChange={(e) => setNewTile({ ...newTile, coneValue: e.target.value })}
-                    className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-amber-500 bg-white"
+                    className="w-full text-xs p-2.5 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-[#b76e66] bg-white"
                   />
                 </div>
               </div>
@@ -239,7 +239,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
                 value={newTile.description}
                 onChange={(e) => setNewTile({ ...newTile, description: e.target.value })}
                 rows={3}
-                className="w-full text-xs p-3 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-amber-500 bg-white"
+                className="w-full text-xs p-3 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-[#b76e66] bg-white"
               />
             </div>
 
@@ -251,7 +251,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
                 value={newTile.knowHowTips}
                 onChange={(e) => setNewTile({ ...newTile, knowHowTips: e.target.value })}
                 rows={2}
-                className="w-full text-xs p-3 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-amber-500 bg-white"
+                className="w-full text-xs p-3 bg-stone-50 border border-stone-250 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-[#b76e66] bg-white"
               />
             </div>
 
@@ -265,7 +265,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 bg-amber-500 hover:bg-amber-600 text-stone-950 font-bold text-xs rounded-lg transition-colors flex items-center gap-1"
+                className="px-5 py-2 bg-[#b76e66] hover:bg-[#a05a53] text-white font-bold text-xs rounded-lg transition-colors flex items-center gap-1"
                 id="submit-specimen-btn"
               >
                 <Plus className="w-4 h-4" /> 게시판 공유 완료
@@ -303,7 +303,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
               const isDarkBody = tile.clayBody.toLowerCase().includes('분청') || tile.clayBody.toLowerCase().includes('dark') || tile.clayBody.toLowerCase().includes('옹기');
               const isReduction = tile.firingType.includes('환원');
               const containerBg = isDarkBody ? 'bg-stone-800' : 'bg-stone-50';
-              const ringBorderClr = isReduction ? 'border-sky-500/80 shadow-[0_0_10px_rgba(56,189,248,0.3)]' : 'border-amber-400/80';
+              const ringBorderClr = isReduction ? 'border-sky-500/80 shadow-[0_0_10px_rgba(56,189,248,0.3)]' : 'border-[#b76e66]/80';
               const centerFillBg = tile.glazeName.toLowerCase().includes('blue') 
                 ? 'bg-blue-600/70' 
                 : tile.glazeName.toLowerCase().includes('황') || tile.glazeName.toLowerCase().includes('honey') 
@@ -341,8 +341,8 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
                   {/* Text card content */}
                   <div className="p-5 space-y-3">
                     <div className="space-y-1">
-                      <span className="text-[10px] font-bold text-amber-800 uppercase block tracking-wider">{tile.firingType}</span>
-                      <h3 className="font-serif font-bold text-stone-900 text-base line-clamp-1 hover:text-amber-600">{tile.title}</h3>
+                      <span className="text-[10px] font-bold text-[#7a3f39] uppercase block tracking-wider">{tile.firingType}</span>
+                      <h3 className="font-serif font-bold text-stone-900 text-base line-clamp-1 hover:text-[#b76e66]">{tile.title}</h3>
                     </div>
 
                     <div className="text-xs text-stone-500 space-y-1 font-medium bg-stone-50 p-2.5 rounded-lg border border-stone-200/50">
@@ -388,7 +388,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
             {/* Modal Head */}
             <div className="p-5 border-b border-stone-150 flex justify-between items-center bg-stone-50">
               <div className="space-y-0.5">
-                <span className="text-[10px] font-bold text-amber-700 uppercase tracking-widest">{activeTile.firingType} 소성 데이터 로그</span>
+                <span className="text-[10px] font-bold text-[#8a4940] uppercase tracking-widest">{activeTile.firingType} 소성 데이터 로그</span>
                 <h3 className="font-serif text-lg font-bold text-stone-950">{activeTile.title}</h3>
               </div>
               <button
@@ -480,7 +480,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
                       placeholder="닉네임"
                       value={commentAuthor}
                       onChange={(e) => setCommentAuthor(e.target.value)}
-                      className="text-xs p-2.5 bg-white border border-stone-300 roundedlg focus:outline-hidden focus:ring-1 focus:ring-amber-500"
+                      className="text-xs p-2.5 bg-white border border-stone-300 roundedlg focus:outline-hidden focus:ring-1 focus:ring-[#b76e66]"
                     />
                     <div className="md:col-span-2 relative">
                       <input
@@ -489,12 +489,12 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
                         placeholder="실험 소감이나 질문을 작성해보세요..."
                         value={commentContent}
                         onChange={(e) => setCommentContent(e.target.value)}
-                        className="w-full text-xs p-2.5 pr-10 bg-white border border-stone-300 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-amber-500"
+                        className="w-full text-xs p-2.5 pr-10 bg-white border border-stone-300 rounded-lg focus:outline-hidden focus:ring-1 focus:ring-[#b76e66]"
                         id="comment-content-input"
                       />
                       <button
                         type="submit"
-                        className="absolute right-1 text-amber-600 hover:text-amber-700 py-1.5 px-2.5 top-1 cursor-pointer"
+                        className="absolute right-1 text-[#b76e66] hover:text-[#8a4940] py-1.5 px-2.5 top-1 cursor-pointer"
                         id="comment-submit-btn"
                       >
                         <Send className="w-4 h-4" />

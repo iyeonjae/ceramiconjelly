@@ -98,9 +98,9 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-900 font-sans flex flex-col justify-between">
+    <div className="min-h-screen text-stone-900 font-sans flex flex-col justify-between" style={{ background: 'linear-gradient(238deg, #e3a692 0%, #cff9fb 100%)' }}>
       {/* Top Main Navigation Bar */}
-      <header className="bg-white border-b border-stone-200/80 sticky top-0 z-40 shadow-xs">
+      <header className="bg-white/80 backdrop-blur-sm border-b border-[#b76e66]/20 sticky top-0 z-40 shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             {/* Ceramic Logo Branding */}
@@ -109,7 +109,7 @@ export default function App() {
               className="flex items-center gap-2 cursor-pointer group"
               id="platform-logo-btn"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-600 to-amber-500 flex items-center justify-center text-white shadow-xs group-hover:rotate-6 transition-transform">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#b76e66] to-[#c47b72] flex items-center justify-center text-white shadow-xs group-hover:rotate-6 transition-transform">
                 <Flame className="w-5 h-5 fill-amber-200/30 text-white" />
               </div>
               <div>
@@ -129,8 +129,8 @@ export default function App() {
                     onClick={() => handleTabChange(item.id)}
                     className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
                       isActive
-                        ? 'bg-stone-900 text-stone-100 shadow-xs'
-                        : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
+                        ? 'bg-[#b76e66] text-white shadow-xs'
+                        : 'text-stone-700 hover:text-stone-900 hover:bg-white/50'
                     }`}
                     id={`nav-tab-btn-${item.id}`}
                   >
@@ -156,7 +156,7 @@ export default function App() {
 
         {/* Mobile Navigation Dropdown Area */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-b border-stone-200 px-4 py-3 space-y-1">
+          <div className="md:hidden bg-white/90 border-b border-[#b76e66]/20 px-4 py-3 space-y-1">
             {navItems.map(item => {
               const IconComp = item.icon;
               const isActive = activeTab === item.id;
@@ -166,8 +166,8 @@ export default function App() {
                   onClick={() => handleTabChange(item.id)}
                   className={`w-full text-left px-4 py-2.5 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all ${
                     isActive
-                      ? 'bg-amber-500 text-stone-950 font-bold shadow-xs'
-                      : 'text-stone-600 hover:bg-stone-50'
+                      ? 'bg-[#b76e66] text-white font-bold shadow-xs'
+                      : 'text-stone-700 hover:bg-white/50'
                   }`}
                 >
                   <IconComp className="w-4 h-4" />
@@ -180,7 +180,7 @@ export default function App() {
       </header>
 
       {/* Main Content Area */}
-      <main className="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 min-w-0">
         {renderActiveTab()}
       </main>
 
@@ -190,7 +190,7 @@ export default function App() {
       </div>
 
       {/* Sticky Bottom Craft Footer */}
-      <footer className="bg-white border-t border-stone-200/80 py-8 text-stone-500 text-xs">
+      <footer className="bg-white/70 backdrop-blur-sm border-t border-[#b76e66]/20 py-8 text-stone-500 text-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-center md:text-left space-y-1">
             <span className="font-serif font-bold text-stone-800 text-sm">CeramicOn</span>
@@ -200,11 +200,11 @@ export default function App() {
           </div>
 
           <div className="flex gap-4 font-medium text-stone-400 text-[11px]">
-            <span className="hover:text-amber-600 transition-colors cursor-pointer">공정 유통 강령</span>
+            <span className="hover:text-[#b76e66] transition-colors cursor-pointer">공정 유통 강령</span>
             <span>•</span>
-            <span className="hover:text-amber-600 transition-colors cursor-pointer">가마 안전 준칙</span>
+            <span className="hover:text-[#b76e66] transition-colors cursor-pointer">가마 안전 준칙</span>
             <span>•</span>
-            <span className="hover:text-amber-600 transition-colors cursor-pointer">이용약관</span>
+            <span className="hover:text-[#b76e66] transition-colors cursor-pointer">이용약관</span>
           </div>
         </div>
       </footer>

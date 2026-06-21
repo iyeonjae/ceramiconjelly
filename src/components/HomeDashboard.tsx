@@ -22,12 +22,12 @@ export default function HomeDashboard({ suppliers, inventory, setActiveTab, setS
       <div className="relative rounded-2xl overflow-hidden bg-stone-900 text-stone-100 p-8 md:p-12 shadow-md">
         <div className="absolute inset-0 opacity-10 bg-cover bg-center pointer-events-none" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&q=80&w=1200')" }}></div>
         <div className="relative z-10 max-w-3xl space-y-4">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#cbf7ee]/20 text-[#cbf7ee] border border-[#cbf7ee]/30">
             <Award className="w-3.5 h-3.5" /> 도예가를 위한 디지털 혁신
           </span>
           <h1 className="text-3xl md:text-5xl font-serif tracking-tight leading-tight">
             흙에서 가마까지,<br />
-            <span className="text-amber-400">모든 도자기 재료</span>를 한눈에.
+            <span className="text-[#cbf7ee]">모든 도자기 재료</span>를 한눈에.
           </h1>
           <p className="text-stone-300 text-sm md:text-base leading-relaxed">
             중앙도재, 대원도재, 동영세라믹스 및 엄선된 해외 유명 도재상까지 통합 브라우징을 지원합니다. 
@@ -37,7 +37,7 @@ export default function HomeDashboard({ suppliers, inventory, setActiveTab, setS
           <div className="pt-4 flex flex-wrap gap-3">
             <button
               onClick={() => setActiveTab('recommender')}
-              className="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-stone-950 font-medium text-sm transition-colors shadow-sm flex items-center gap-2"
+              className="px-5 py-2.5 rounded-lg bg-[#b76e66] hover:bg-[#a05a53] text-white font-medium text-sm transition-colors shadow-sm flex items-center gap-2"
               id="hero-ai-recommend-btn"
             >
               AI 맞춤 재료 추천 받기 <ArrowRight className="w-4 h-4" />
@@ -55,7 +55,7 @@ export default function HomeDashboard({ suppliers, inventory, setActiveTab, setS
 
       {/* Quick Stats Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white p-5 rounded-xl border border-stone-200/80 shadow-xs space-y-2">
+        <div className="bg-white/80 p-5 rounded-xl border border-stone-200/80 shadow-xs space-y-2">
           <div className="flex justify-between items-center text-stone-400">
             <span className="text-sm font-medium">연동 도재상</span>
             <Globe className="w-5 h-5 text-stone-500" />
@@ -66,7 +66,7 @@ export default function HomeDashboard({ suppliers, inventory, setActiveTab, setS
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-xl border border-stone-200/80 shadow-xs space-y-2">
+        <div className="bg-white/80 p-5 rounded-xl border border-stone-200/80 shadow-xs space-y-2">
           <div className="flex justify-between items-center text-stone-400">
             <span className="text-sm font-medium">관리 중인 재료</span>
             <Layers className="w-5 h-5 text-stone-500" />
@@ -77,20 +77,20 @@ export default function HomeDashboard({ suppliers, inventory, setActiveTab, setS
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-xl border border-stone-200/80 shadow-xs space-y-2">
+        <div className="bg-white/80 p-5 rounded-xl border border-stone-200/80 shadow-xs space-y-2">
           <div className="flex justify-between items-center text-stone-400">
             <span className="text-sm font-medium">재고 보충 필요</span>
-            <Flame className="w-5 h-5 text-amber-500" />
+            <Flame className="w-5 h-5 text-[#b76e66]" />
           </div>
           <div className="flex items-baseline gap-2">
-            <span className={`text-2xl font-bold font-mono ${criticalItems.length > 0 ? 'text-amber-500' : 'text-emerald-600'}`}>
+            <span className={`text-2xl font-bold font-mono ${criticalItems.length > 0 ? 'text-[#b76e66]' : 'text-emerald-600'}`}>
               {criticalItems.length}건
             </span>
             <span className="text-xs text-stone-500">임계 값 미만 알람</span>
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-xl border border-stone-200/80 shadow-xs space-y-2">
+        <div className="bg-white/80 p-5 rounded-xl border border-stone-200/80 shadow-xs space-y-2">
           <div className="flex justify-between items-center text-stone-400">
             <span className="text-sm font-medium">공유된 테스트 시편</span>
             <FileText className="w-5 h-5 text-stone-500" />
@@ -112,7 +112,7 @@ export default function HomeDashboard({ suppliers, inventory, setActiveTab, setS
               <p className="text-stone-500 text-xs">주요 거점 도재상을 클릭하면 해당 상세 카탈로그 페이지로 즉시 연결됩니다.</p>
             </div>
             <span className="px-2.5 py-1 bg-stone-100 text-stone-600 rounded-md text-xs font-medium flex items-center gap-1">
-              <MapPin className="w-3.5 h-3.5 text-amber-500" /> 수도권/이천/해외 거점
+              <MapPin className="w-3.5 h-3.5 text-[#b76e66]" /> 수도권/이천/해외 거점
             </span>
           </div>
 
@@ -195,7 +195,7 @@ export default function HomeDashboard({ suppliers, inventory, setActiveTab, setS
                       <div className="text-xs font-semibold text-stone-900 truncate group-hover:text-amber-700">{sup.name.split(' (')[0]}</div>
                       <div className="text-[10px] text-stone-500 truncate">{sup.isInternational ? '해외 수입' : '국내 도재상'}</div>
                     </div>
-                    <ArrowRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-amber-500 shrink-0 self-center" />
+                    <ArrowRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-[#b76e66] shrink-0 self-center" />
                   </button>
                 ))}
               </div>
@@ -210,8 +210,8 @@ export default function HomeDashboard({ suppliers, inventory, setActiveTab, setS
 
         {/* Right 1 col: Platform Guides / Quick Access */}
         <div className="space-y-6">
-          <div className="bg-amber-50/80 rounded-xl border border-amber-200/60 p-6 space-y-4">
-            <h3 className="font-serif text-lg font-semibold text-amber-900">도예 맞춤 제안 시스템</h3>
+          <div className="bg-[#fdf0ed]/80 rounded-xl border border-[#e8b5ad]/60 p-6 space-y-4">
+            <h3 className="font-serif text-lg font-semibold text-[#7a3f39]">도예 맞춤 제안 시스템</h3>
             <p className="text-stone-700 text-xs leading-relaxed">
               가마 번호(Cone 값), 환원/산화 분기점, 물레 여부와 같은 공방별 세부 기술 환경을 입력하여 맞춤 재료를 추천받으세요.
             </p>
@@ -225,7 +225,7 @@ export default function HomeDashboard({ suppliers, inventory, setActiveTab, setS
             </div>
             <button
               onClick={() => setActiveTab('recommender')}
-              className="w-full py-2 bg-amber-600 hover:bg-amber-700 text-white font-medium text-xs rounded-md shadow-xs transition-colors flex items-center justify-center gap-1.5"
+              className="w-full py-2 bg-[#b76e66] hover:bg-[#a05a53] text-white font-medium text-xs rounded-md shadow-xs transition-colors flex items-center justify-center gap-1.5"
             >
               사용자 환경 입력하기 <ArrowRight className="w-3.5 h-3.5" />
             </button>
