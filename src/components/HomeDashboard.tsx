@@ -74,7 +74,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
       <div className="space-y-5">
 
         {/* AI 추천 — Featured 전면 카드 */}
-        <div className="backdrop-blur-md border border-[#b76e66]/30 rounded-2xl p-7 flex flex-col md:flex-row items-start md:items-center gap-6 shadow-lg" style={{ background: 'linear-gradient(135deg, rgba(255,228,222,0.85) 0%, rgba(255,240,250,0.85) 50%, rgba(212,250,243,0.85) 100%)' }}>
+        <div className="bg-white/55 backdrop-blur-md border border-[#b76e66]/30 rounded-2xl p-7 flex flex-col md:flex-row items-start md:items-center gap-6 shadow-lg">
           <div className="flex-1 flex flex-col gap-4">
             <div className="flex items-center gap-3">
               <div className="w-11 h-11 rounded-xl bg-[#b76e66]/15 border border-[#b76e66]/30 flex items-center justify-center shrink-0">
@@ -105,7 +105,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
           {/* 도재상 찾기 */}
-          <div className="backdrop-blur-md border border-[#b76e66]/20 border-t-2 border-t-[#b76e66] rounded-2xl p-7 flex flex-col shadow-md hover:shadow-lg transition-all" style={{ background: 'rgba(255,240,237,0.80)' }}>
+          <div className="bg-white/55 backdrop-blur-md border border-[#e3a692]/40 border-t-2 border-t-[#b76e66] rounded-2xl p-7 flex flex-col shadow-md hover:shadow-lg transition-all">
             <div className="w-11 h-11 rounded-xl bg-stone-500/10 border border-stone-400/20 flex items-center justify-center mb-5">
               <MapPin className="w-5 h-5 text-stone-600" />
             </div>
@@ -122,7 +122,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
           </div>
 
           {/* 시편 커뮤니티 */}
-          <div className="backdrop-blur-md border border-[#cbf7ee]/60 border-t-2 border-t-teal-400 rounded-2xl p-7 flex flex-col shadow-md hover:shadow-lg transition-all" style={{ background: 'rgba(212,250,243,0.75)' }}>
+          <div className="bg-white/55 backdrop-blur-md border border-[#cff9fb]/60 border-t-2 border-t-[#cff9fb] rounded-2xl p-7 flex flex-col shadow-md hover:shadow-lg transition-all">
             <div className="w-11 h-11 rounded-xl bg-[#cbf7ee]/40 border border-[#cbf7ee]/60 flex items-center justify-center mb-5">
               <FileText className="w-5 h-5 text-teal-600" />
             </div>
