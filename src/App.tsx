@@ -129,9 +129,7 @@ export default function App() {
                     key={item.id}
                     onClick={() => handleTabChange(item.id)}
                     className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
-                      isActive
-                        ? 'bg-[#b76e66] text-white shadow-xs'
-                        : 'text-stone-700 hover:text-stone-900 hover:bg-white/50'
+                      isActive ? 'nav-ceramic-active' : 'nav-ceramic-inactive'
                     }`}
                     id={`nav-tab-btn-${item.id}`}
                   >
@@ -166,9 +164,7 @@ export default function App() {
                   key={item.id}
                   onClick={() => handleTabChange(item.id)}
                   className={`w-full text-left px-4 py-2.5 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all ${
-                    isActive
-                      ? 'bg-[#b76e66] text-white font-bold shadow-xs'
-                      : 'text-stone-700 hover:bg-white/50'
+                    isActive ? 'nav-ceramic-active' : 'nav-ceramic-inactive'
                   }`}
                 >
                   <IconComp className="w-4 h-4" />

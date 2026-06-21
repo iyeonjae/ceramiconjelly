@@ -8,6 +8,31 @@
   --font-serif: "Noto Serif KR", Georgia, serif;
 }
 
+/* Ceramic glazed nav buttons */
+.nav-ceramic-active {
+  background: linear-gradient(175deg, #d4907c 0%, #b76e66 35%, #9a5248 75%, #7a3830 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 240, 228, 0.45),
+    inset 0 -2px 5px rgba(0, 0, 0, 0.18),
+    0 2px 10px rgba(100, 38, 28, 0.28);
+  color: #fff8f5;
+  border: 1px solid rgba(90, 30, 20, 0.18);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+}
+
+.nav-ceramic-inactive {
+  background: linear-gradient(175deg, rgba(222, 178, 158, 0.14) 0%, rgba(190, 128, 108, 0.07) 100%);
+  border: 1px solid rgba(182, 122, 102, 0.22);
+  color: #6b4035;
+}
+
+.nav-ceramic-inactive:hover {
+  background: linear-gradient(175deg, rgba(222, 178, 158, 0.3) 0%, rgba(190, 128, 108, 0.16) 100%);
+  border-color: rgba(182, 122, 102, 0.42);
+  color: #4a2820;
+  box-shadow: inset 0 1px 0 rgba(255, 240, 228, 0.2);
+}
+
 /* Global button press effect */
 button:not(:disabled) {
   transition: transform 75ms ease, filter 75ms ease, box-shadow 75ms ease;
