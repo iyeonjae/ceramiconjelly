@@ -117,7 +117,7 @@ export default function App() {
       </header>
 
       {/* Main Content — pb-24 to clear bottom tab bar */}
-      <main className="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-28 min-w-0">
+      <main className={`flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-28 min-w-0 ${activeTab === 'home' ? 'pt-0' : 'py-8'}`}>
         {renderActiveTab()}
       </main>
 
