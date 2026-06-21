@@ -6,7 +6,7 @@ import SupplierCatalog from './components/SupplierCatalog';
 import AIRecommender from './components/AIRecommender';
 import InventoryManager from './components/InventoryManager';
 import CommunityForum from './components/CommunityForum';
-import { Flame, Compass, Layers, Coffee, Info, Sparkles, Building, Menu, X } from 'lucide-react';
+import { Compass, Layers, Coffee, Info, Sparkles, Building, Menu, X } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('home');
@@ -109,12 +109,14 @@ export default function App() {
               className="flex items-center gap-2 cursor-pointer group"
               id="platform-logo-btn"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#b76e66] to-[#c47b72] flex items-center justify-center text-white shadow-xs group-hover:rotate-6 transition-transform">
-                <Flame className="w-5 h-5 fill-amber-200/30 text-white" />
-              </div>
-              <div>
-                <span className="font-serif font-bold text-lg text-stone-900 leading-none block">CeramicOn</span>
-                <span className="text-[10px] text-stone-500 font-medium block uppercase tracking-widest mt-0.5">도재상 찾기 · AI 추천 · 재고관리 · 시편 공유</span>
+              <div className="flex flex-col leading-none">
+                <img
+                  src="/logo.png"
+                  alt="CeramicOn"
+                  className="h-9 w-auto object-contain object-left"
+                  style={{ mixBlendMode: 'multiply' }}
+                />
+                <span className="text-[10px] text-stone-500 font-medium uppercase tracking-widest mt-0.5">도재상 찾기 · AI 추천 · 재고관리 · 시편 공유</span>
               </div>
             </div>
 
