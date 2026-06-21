@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { INITIAL_SUPPLIERS, INITIAL_INVENTORY, INITIAL_SPECIMENS } from './data';
 import { Supplier, InventoryItem, SpecimenTestTile } from './types';
 import HomeDashboard from './components/HomeDashboard';
 import SupplierCatalog from './components/SupplierCatalog';
@@ -13,33 +12,15 @@ export default function App() {
   const [selectedSupplierId, setSelectedSupplierId] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Persistence inside Local Storage for realistic platform workflows
-  const [suppliers, setSuppliers] = useState<Supplier[]>(() => {
-    const saved = localStorage.getItem('ceramic_suppliers');
-    return saved ? JSON.parse(saved) : INITIAL_SUPPLIERS;
-  });
-
-  const [inventory, setInventory] = useState<InventoryItem[]>(() => {
-    const saved = localStorage.getItem('ceramic_inventory');
-    return saved ? JSON.parse(saved) : INITIAL_INVENTORY;
-  });
-
-  const [specimens, setSpecimens] = useState<SpecimenTestTile[]>(() => {
-    const saved = localStorage.getItem('ceramic_specimens');
-    return saved ? JSON.parse(saved) : INITIAL_SPECIMENS;
-  });
+  const [suppliers, setSuppliers] = useState<Supplier[]>([]);
+  const [inventory, setInventory] = useState<InventoryItem[]>([]);
+  const [specimens, setSpecimens] = useState<SpecimenTestTile[]>([]);
 
   useEffect(() => {
-    localStorage.setItem('ceramic_suppliers', JSON.stringify(suppliers));
-  }, [suppliers]);
-
-  useEffect(() => {
-    localStorage.setItem('ceramic_inventory', JSON.stringify(inventory));
-  }, [inventory]);
-
-  useEffect(() => {
-    localStorage.setItem('ceramic_specimens', JSON.stringify(specimens));
-  }, [specimens]);
+    fetch('/api/suppliers').then(r => r.json()).then(d => { if (d.success) setSuppliers(d.data); });
+    fetch('/api/inventory').then(r => r.json()).then(d => { if (d.success) setInventory(d.data); });
+    fetch('/api/specimens').then(r => r.json()).then(d => { if (d.success) setSpecimens(d.data); });
+  }, []);
 
   const renderActiveTab = () => {
     switch (activeTab) {
