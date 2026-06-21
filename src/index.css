@@ -31,6 +31,19 @@
   .logo-particle { animation: none !important; opacity: 0 !important; }
 }
 
+/* Hero logo bubble-wobble on hover */
+@keyframes bubble-wobble {
+  0%   { transform: scale(1) rotate(0deg); }
+  18%  { transform: scale(1.06) rotate(-1.5deg); }
+  38%  { transform: scale(0.95) rotate(1.2deg); }
+  58%  { transform: scale(1.03) rotate(-0.6deg); }
+  78%  { transform: scale(0.98) rotate(0.2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.logo-hero-wobble {
+  animation: bubble-wobble 0.65s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
 /* Ceramic glazed nav buttons */
 .nav-ceramic-active {
   background: linear-gradient(175deg, #d4907c 0%, #b76e66 35%, #9a5248 75%, #7a3830 100%);

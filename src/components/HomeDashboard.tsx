@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Supplier, InventoryItem } from '../types';
 import { MapPin, ArrowRight, FileText, Sparkles, Instagram } from 'lucide-react';
 
@@ -10,6 +10,8 @@ interface HomeDashboardProps {
 }
 
 export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
+  const [isWobbling, setIsWobbling] = useState(false);
+
   return (
     <div className="space-y-8" id="home-dashboard">
 
@@ -46,65 +48,92 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
         <img
           src="/logo-hero.png"
           alt="CeramicOn"
-          className="relative z-10 w-full max-w-2xl h-auto object-contain"
+          className={`relative z-10 w-full max-w-2xl h-auto object-contain cursor-pointer ${isWobbling ? 'logo-hero-wobble' : ''}`}
           style={{ mixBlendMode: 'multiply' }}
+          onMouseEnter={() => setIsWobbling(true)}
+          onAnimationEnd={() => setIsWobbling(false)}
         />
       </div>
 
-      {/* 3-Column Service CTA Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      {/* Service Tagline */}
+      <div className="text-center space-y-1.5">
+        <h2 className="font-serif font-bold text-stone-800 text-xl md:text-2xl">
+          도예가를 위한 올인원 재료 플랫폼
+        </h2>
+        <p className="text-stone-500 text-sm tracking-wide">
+          AI 재료 추천 · 도재상 통합 카탈로그 · 공방 재고 관리 · 시편 커뮤니티
+        </p>
+      </div>
 
-        {/* AI 추천 */}
-        <div className="bg-white/50 backdrop-blur-md border border-white/70 rounded-2xl p-7 flex flex-col shadow-sm hover:bg-white/60 hover:shadow-md transition-all">
-          <div className="w-11 h-11 rounded-xl bg-[#b76e66]/12 border border-[#b76e66]/20 flex items-center justify-center mb-5">
-            <Sparkles className="w-5 h-5 text-[#b76e66]" />
+      {/* Featured AI Card + 2-column secondary cards */}
+      <div className="space-y-5">
+
+        {/* AI 추천 — Featured 전면 카드 */}
+        <div className="bg-gradient-to-r from-[#b76e66]/18 to-[#f0c8bc]/25 backdrop-blur-md border border-[#b76e66]/40 rounded-2xl p-7 flex flex-col md:flex-row items-start md:items-center gap-6 shadow-md">
+          <div className="flex-1 flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-11 h-11 rounded-xl bg-[#b76e66]/15 border border-[#b76e66]/30 flex items-center justify-center shrink-0">
+                <Sparkles className="w-5 h-5 text-[#b76e66]" />
+              </div>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#b76e66] bg-[#b76e66]/12 px-2.5 py-1 rounded-full border border-[#b76e66]/25">
+                ✦ AI 대표 서비스
+              </span>
+            </div>
+            <div>
+              <h3 className="font-serif font-bold text-stone-800 text-xl mb-2">AI 맞춤 재료 추천</h3>
+              <p className="text-stone-600 text-sm leading-relaxed">
+                가마 조건, 성형 방식, 원하는 유약 느낌을 알려주세요. Cone 값과 환원·산화 소성 여부까지 세밀하게 반영해서 딱 맞는 흙과 유약 조합을 즉시 추천해드려요.
+              </p>
+            </div>
           </div>
-          <h3 className="font-serif font-bold text-stone-800 text-lg mb-2">AI 맞춤 재료 추천</h3>
-          <p className="text-stone-500 text-sm leading-relaxed flex-1">
-            가마 조건, 성형 방식, 원하는 유약 느낌을 알려주세요. Cone 값과 환원·산화 소성 여부까지 세밀하게 반영해서 딱 맞는 흙과 유약 조합을 즉시 추천해드려요.
-          </p>
-          <button
-            onClick={() => setActiveTab('recommender')}
-            className="mt-6 w-full py-2.5 bg-[#b76e66] text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-2 transition-all duration-75 shadow-[0_4px_0_0_#7a3f39] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#7a3f39] active:translate-y-[3px] active:shadow-[0_1px_0_0_#7a3f39]"
-          >
-            추천 받기 <ArrowRight className="w-4 h-4" />
-          </button>
+          <div className="shrink-0 w-full md:w-auto">
+            <button
+              onClick={() => setActiveTab('recommender')}
+              className="w-full md:w-auto px-8 py-3 bg-[#b76e66] text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-2 transition-all duration-75 shadow-[0_4px_0_0_#7a3f39] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#7a3f39] active:translate-y-[3px] active:shadow-[0_1px_0_0_#7a3f39]"
+            >
+              추천 받기 <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
-        {/* 도재상 찾기 */}
-        <div className="bg-white/50 backdrop-blur-md border border-white/70 rounded-2xl p-7 flex flex-col shadow-sm hover:bg-white/60 hover:shadow-md transition-all">
-          <div className="w-11 h-11 rounded-xl bg-stone-500/10 border border-stone-400/20 flex items-center justify-center mb-5">
-            <MapPin className="w-5 h-5 text-stone-600" />
-          </div>
-          <h3 className="font-serif font-bold text-stone-800 text-lg mb-2">도재상 통합 카탈로그</h3>
-          <p className="text-stone-500 text-sm leading-relaxed flex-1">
-            중앙도재·대원도재·동영세라믹스부터 Laguna·Amaco 같은 해외 브랜드까지 한 곳에서 비교해보세요. 취급 품목, 연락처, 추천 상품을 상세히 확인할 수 있어요.
-          </p>
-          <button
-            onClick={() => setActiveTab('suppliers')}
-            className="mt-6 w-full py-2.5 bg-stone-700 text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-2 transition-all duration-75 shadow-[0_4px_0_0_#1c1917] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#1c1917] active:translate-y-[3px] active:shadow-[0_1px_0_0_#1c1917]"
-          >
-            카탈로그 보기 <ArrowRight className="w-4 h-4" />
-          </button>
-        </div>
+        {/* 하단 2-column 카드 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-        {/* 시편 커뮤니티 */}
-        <div className="bg-white/50 backdrop-blur-md border border-white/70 rounded-2xl p-7 flex flex-col shadow-sm hover:bg-white/60 hover:shadow-md transition-all">
-          <div className="w-11 h-11 rounded-xl bg-[#cbf7ee]/40 border border-[#cbf7ee]/60 flex items-center justify-center mb-5">
-            <FileText className="w-5 h-5 text-teal-600" />
+          {/* 도재상 찾기 */}
+          <div className="bg-white/75 backdrop-blur-md border border-white/70 border-t-2 border-t-stone-400 rounded-2xl p-7 flex flex-col shadow-md hover:bg-white/85 hover:shadow-lg transition-all">
+            <div className="w-11 h-11 rounded-xl bg-stone-500/10 border border-stone-400/20 flex items-center justify-center mb-5">
+              <MapPin className="w-5 h-5 text-stone-600" />
+            </div>
+            <h3 className="font-serif font-bold text-stone-800 text-lg mb-2">도재상 통합 카탈로그</h3>
+            <p className="text-stone-500 text-sm leading-relaxed flex-1">
+              중앙도재·대원도재·동영세라믹스부터 Laguna·Amaco 같은 해외 브랜드까지 한 곳에서 비교해보세요. 취급 품목, 연락처, 추천 상품을 상세히 확인할 수 있어요.
+            </p>
+            <button
+              onClick={() => setActiveTab('suppliers')}
+              className="mt-6 w-full py-2.5 bg-stone-700 text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-2 transition-all duration-75 shadow-[0_4px_0_0_#1c1917] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#1c1917] active:translate-y-[3px] active:shadow-[0_1px_0_0_#1c1917]"
+            >
+              카탈로그 보기 <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
-          <h3 className="font-serif font-bold text-stone-800 text-lg mb-2">시편 공유 커뮤니티</h3>
-          <p className="text-stone-500 text-sm leading-relaxed flex-1">
-            소성에 성공한 흙·유약 조합을 사진과 함께 공유하고, 다른 도예가들의 실제 레시피를 참고해보세요. 소성 실패를 줄이는 가장 빠른 지름길이에요.
-          </p>
-          <button
-            onClick={() => setActiveTab('community')}
-            className="mt-6 w-full py-2.5 bg-teal-700 text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-2 transition-all duration-75 shadow-[0_4px_0_0_#134e4a] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#134e4a] active:translate-y-[3px] active:shadow-[0_1px_0_0_#134e4a]"
-          >
-            커뮤니티 구경하기 <ArrowRight className="w-4 h-4" />
-          </button>
-        </div>
 
+          {/* 시편 커뮤니티 */}
+          <div className="bg-white/75 backdrop-blur-md border border-white/70 border-t-2 border-t-teal-500 rounded-2xl p-7 flex flex-col shadow-md hover:bg-white/85 hover:shadow-lg transition-all">
+            <div className="w-11 h-11 rounded-xl bg-[#cbf7ee]/40 border border-[#cbf7ee]/60 flex items-center justify-center mb-5">
+              <FileText className="w-5 h-5 text-teal-600" />
+            </div>
+            <h3 className="font-serif font-bold text-stone-800 text-lg mb-2">시편 공유 커뮤니티</h3>
+            <p className="text-stone-500 text-sm leading-relaxed flex-1">
+              소성에 성공한 흙·유약 조합을 사진과 함께 공유하고, 다른 도예가들의 실제 레시피를 참고해보세요. 소성 실패를 줄이는 가장 빠른 지름길이에요.
+            </p>
+            <button
+              onClick={() => setActiveTab('community')}
+              className="mt-6 w-full py-2.5 bg-teal-700 text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-2 transition-all duration-75 shadow-[0_4px_0_0_#134e4a] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#134e4a] active:translate-y-[3px] active:shadow-[0_1px_0_0_#134e4a]"
+            >
+              커뮤니티 구경하기 <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+
+        </div>
       </div>
 
       {/* Instagram Promo Banner */}
