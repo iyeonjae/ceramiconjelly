@@ -58,6 +58,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
           className={`relative z-10 w-full max-w-2xl h-auto object-contain cursor-pointer ${isWobbling ? 'logo-hero-wobble' : ''}`}
           style={{ mixBlendMode: 'multiply' }}
           onMouseEnter={() => setIsWobbling(true)}
+          onClick={() => setIsWobbling(true)}
           onAnimationEnd={() => setIsWobbling(false)}
         />
       </div>
