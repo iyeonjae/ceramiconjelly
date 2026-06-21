@@ -157,11 +157,11 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
             </div>
             <h3 className="font-serif font-extrabold text-stone-800 text-lg mb-2">도재상 통합 카탈로그</h3>
             <p className="text-stone-500 text-sm leading-relaxed flex-1">
-              중앙도재·대원도재·동영세라믹스부터 Laguna·Amaco 같은 해외 브랜드까지 한 곳에서 비교해보세요. 취급 품목, 연락처, 추천 상품을 상세히 확인할 수 있어요.
+              내가 필요한 흙·유약·도구를 파는 도재상을 찾아보세요. 중앙도재·대원도재·동영세라믹스부터 Laguna·Amaco 해외 브랜드까지 취급 품목과 연락처를 한눈에 확인할 수 있어요.
             </p>
             <button
               onClick={() => setActiveTab('suppliers')}
-              className="mt-6 w-full py-2.5 bg-stone-700 text-white text-sm font-semibold rounded-full flex items-center justify-center gap-2 transition-all duration-75 shadow-[0_4px_0_0_#1c1917] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#1c1917] active:translate-y-[3px] active:shadow-[0_1px_0_0_#1c1917]"
+              className="mt-6 w-full py-2.5 bg-[#cff9fb] text-stone-800 text-sm font-semibold rounded-full flex items-center justify-center gap-2 transition-all duration-75 shadow-[0_4px_0_0_#8ed8db] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#8ed8db] active:translate-y-[3px] active:shadow-[0_1px_0_0_#8ed8db]"
             >
               카탈로그 보기 <ArrowRight className="w-4 h-4" />
             </button>
