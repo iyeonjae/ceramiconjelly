@@ -68,6 +68,9 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
           onClick={() => { setIsJelly(j => !j); setIsWobbling(true); }}
           onAnimationEnd={() => setIsWobbling(false)}
         />
+        <p className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[11px] text-stone-400/70 tracking-wide whitespace-nowrap pointer-events-none">
+          {isJelly ? '한 번 더 클릭하면 원래대로!' : '로고를 클릭해서 소성해보세요 🔥'}
+        </p>
       </div>
 
       {/* Featured AI Card + 2-column secondary cards */}
