@@ -184,6 +184,11 @@ export default function App() {
         {renderActiveTab()}
       </main>
 
+      {/* Glitch Banner */}
+      <div className="glitch-wrapper">
+        <div className="glitch" data-glitch="ceramiconjelly">ceramiconjelly</div>
+      </div>
+
       {/* Sticky Bottom Craft Footer */}
       <footer className="bg-white border-t border-stone-200/80 py-8 text-stone-500 text-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
