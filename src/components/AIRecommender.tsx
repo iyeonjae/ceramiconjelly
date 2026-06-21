@@ -81,7 +81,7 @@ export default function AIRecommender() {
             AI 기반 도예 재료 맞춤 설계 및 추천
           </h2>
           <p className="text-stone-500 text-xs">
-            가마 소성 조건과 점토, 유약 스타일을 조합하여 최상의 성공률을 도출하는 젬이나이 공학 추천 엔진입니다.
+            내 가마 조건과 성형 방식을 입력하면, 잘 맞는 흙과 유약을 바로 추천해드립니다.
           </p>
         </div>
       </div>
