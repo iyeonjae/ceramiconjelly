@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Supplier, InventoryItem } from '../types';
-import { MapPin, ArrowRight, FileText, Sparkles, Instagram } from 'lucide-react';
+import { MapPin, ArrowRight, FileText, Sparkles, Instagram, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface HomeDashboardProps {
   suppliers: Supplier[];
@@ -12,6 +12,49 @@ interface HomeDashboardProps {
 export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
   const [isWobbling, setIsWobbling] = useState(false);
   const [isJelly, setIsJelly] = useState(false);
+  const [bannerIdx, setBannerIdx] = useState(0);
+
+  const banners = [
+    {
+      bg: 'linear-gradient(135deg, #833ab4 0%, #c13584 40%, #e1306c 70%, #fcb045 100%)',
+      tag: '팔로우 이벤트',
+      title: '@jelly_in_ceramic 팔로우하고 도예 재료를 받아가세요',
+      desc: '팔로우 + 최근 게시글 좋아요로 응모. 추첨 10명에게 중앙도재 백자토 5kg 세트 증정!',
+      cta: '인스타그램 바로가기',
+      onClick: () => window.open('https://www.instagram.com/jelly_in_ceramic', '_blank', 'noopener,noreferrer'),
+    },
+    {
+      bg: 'linear-gradient(135deg, #b76e66 0%, #c97a6a 100%)',
+      tag: 'AI 서비스',
+      title: '흙과 유약, 조합이 고민이라면 AI에게 맡겨보세요',
+      desc: 'Cone 값, 소성 방식, 원하는 질감까지 — 맞춤 재료 조합을 즉시 추천해드려요.',
+      cta: 'AI 진단 받기',
+      onClick: () => setActiveTab('recommender'),
+    },
+    {
+      bg: 'linear-gradient(135deg, #7a5c58 0%, #b76e66 100%)',
+      tag: '도재상 카탈로그',
+      title: '중앙도재부터 Laguna까지, 한 곳에서 비교하세요',
+      desc: '국내외 도재상 취급 품목·연락처·추천 상품을 통합 정리했어요.',
+      cta: '카탈로그 보기',
+      onClick: () => setActiveTab('suppliers'),
+    },
+    {
+      bg: 'linear-gradient(135deg, #5a9e97 0%, #89ccc6 100%)',
+      tag: '시편 커뮤니티',
+      title: '성공한 소성 레시피를 나눠보세요',
+      desc: '실제 도예가들의 흙·유약 조합과 소성 팁. 실패를 줄이는 가장 빠른 지름길이에요.',
+      cta: '커뮤니티 구경하기',
+      onClick: () => setActiveTab('community'),
+    },
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setBannerIdx(i => (i + 1) % banners.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <div className="space-y-8" id="home-dashboard">
@@ -144,32 +187,48 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
         </div>
       </div>
 
-      {/* Instagram Promo Banner */}
-      <div
-        className="rounded-2xl overflow-hidden shadow-md"
-        style={{ background: 'linear-gradient(135deg, #833ab4 0%, #c13584 40%, #e1306c 70%, #fcb045 100%)' }}
-      >
-        <div className="px-8 md:px-14 py-8 md:py-10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-5">
-            <div className="w-14 h-14 rounded-full bg-white/15 border border-white/20 flex items-center justify-center shrink-0">
-              <Instagram className="w-7 h-7 text-white" />
-            </div>
-            <div className="space-y-1 text-left">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-white/60 block">팔로우 이벤트</span>
-              <h3 className="text-xl md:text-2xl font-serif font-bold text-white leading-snug">
-                @jelly_in_ceramic 팔로우하고<br className="hidden md:block" /> 도예 재료를 받아가세요
-              </h3>
-              <p className="text-sm text-white/70 leading-relaxed">
-                팔로우 + 최근 게시글 좋아요로 응모. 추첨 10명에게 중앙도재 백자토 5kg 세트 증정!
-              </p>
-            </div>
+      {/* Promo Banner Carousel */}
+      <div className="relative rounded-2xl overflow-hidden shadow-md">
+        <div
+          className="px-6 md:px-10 py-5 flex items-center justify-between gap-4 transition-all duration-500"
+          style={{ background: banners[bannerIdx].bg }}
+        >
+          <div className="flex-1 min-w-0 space-y-0.5">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-white/60 block">{banners[bannerIdx].tag}</span>
+            <h3 className="text-sm md:text-base font-serif font-bold text-white leading-snug truncate">{banners[bannerIdx].title}</h3>
+            <p className="text-xs text-white/70 leading-relaxed line-clamp-1">{banners[bannerIdx].desc}</p>
           </div>
           <button
-            onClick={() => window.open('https://www.instagram.com/jelly_in_ceramic', '_blank', 'noopener,noreferrer')}
-            className="shrink-0 px-6 py-3 rounded-full bg-white/18 hover:bg-white/28 border border-white/30 text-white font-semibold text-sm transition-all backdrop-blur-sm flex items-center gap-2 whitespace-nowrap"
+            onClick={banners[bannerIdx].onClick}
+            className="shrink-0 px-4 py-2 rounded-full bg-white/18 hover:bg-white/28 border border-white/30 text-white font-semibold text-xs transition-all flex items-center gap-1.5 whitespace-nowrap"
           >
-            인스타그램 바로가기 <ArrowRight className="w-4 h-4" />
+            {banners[bannerIdx].cta} <ArrowRight className="w-3.5 h-3.5" />
           </button>
+        </div>
+
+        {/* 좌우 화살표 */}
+        <button
+          onClick={() => setBannerIdx(i => (i - 1 + banners.length) % banners.length)}
+          className="absolute left-2 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-white/20 hover:bg-white/35 flex items-center justify-center transition-all"
+        >
+          <ChevronLeft className="w-4 h-4 text-white" />
+        </button>
+        <button
+          onClick={() => setBannerIdx(i => (i + 1) % banners.length)}
+          className="absolute right-2 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-white/20 hover:bg-white/35 flex items-center justify-center transition-all"
+        >
+          <ChevronRight className="w-4 h-4 text-white" />
+        </button>
+
+        {/* 도트 인디케이터 */}
+        <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 flex gap-1">
+          {banners.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setBannerIdx(i)}
+              className={`rounded-full transition-all ${i === bannerIdx ? 'w-4 h-1.5 bg-white' : 'w-1.5 h-1.5 bg-white/40'}`}
+            />
+          ))}
         </div>
       </div>
 
