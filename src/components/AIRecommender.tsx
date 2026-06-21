@@ -81,7 +81,7 @@ export default function AIRecommender() {
             AI 기반 도예 재료 맞춤 설계 및 추천
           </h2>
           <p className="text-stone-500 text-xs">
-            내 가마 조건과 성형 방식을 입력하면, 잘 맞는 흙과 유약을 바로 추천해드립니다.
+            가마 조건, 성형 방식, 원하는 유약 느낌을 입력하면 딱 맞는 흙과 유약을 추천해드립니다.
           </p>
         </div>
       </div>
