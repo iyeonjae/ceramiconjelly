@@ -86,7 +86,7 @@ export default function App() {
 
   const navItems = [
     { id: 'home', label: '공방 대시보드', icon: Compass },
-    { id: 'suppliers', label: '통합 도재상 리스트', icon: Building },
+    { id: 'suppliers', label: '도재상 모아보기', icon: Building },
     { id: 'recommender', label: 'AI 맞춤 재료 진단', icon: Sparkles },
     { id: 'inventory', label: '공방 재고 실시간 관리', icon: Layers },
     { id: 'community', label: '시편 & 레시피 나눔방', icon: Coffee }
