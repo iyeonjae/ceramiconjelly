@@ -8,7 +8,7 @@ export const INITIAL_SUPPLIERS: Supplier[] = [
     specialty: ['백자토', '산백토', '수입 글레이즈', '도예 도구', '전기로'],
     contact: '02-744-1233',
     address: '서울특별시 종로구 인사동길 15',
-    website: 'http://www.jungangceramic.com',
+    website: 'https://joongangceramic.com/',
     description: '인사동에 위치한 오랜 역사와 신뢰의 한국 대표 도재상입니다. 자체 제작한 고품질 백자토와 다채로운 유약 라이너, 글로벌 명품 가마 브랜드 수입 유통을 전문으로 합니다.',
     featuredProducts: ['태토 - 백자청토 (20kg)', '미국 Amaco Celadon Glazes Series', '중앙 전용 백자유약']
   },
@@ -19,7 +19,7 @@ export const INITIAL_SUPPLIERS: Supplier[] = [
     specialty: ['옹기토', '조형토', '청자토', '석고틀', '각종 소성 소모품'],
     contact: '02-764-5551',
     address: '서울특별시 종로구 삼일대로30길 21',
-    website: 'http://www.daewonpottery.com',
+    website: 'https://www.ceramate.co.kr/',
     description: '대형 성형틀, 석고 및 전통 조소 재료 라인업이 뛰어난 도재상입니다. 대용량 클레이 바디와 한국적 표현을 살릴 수 있는 옹기토 세트를 합리적인 가격에 유통하고 있습니다.',
     featuredProducts: ['고강도 석고 분말 H-3', '전통 대원 옹기토 (20kg)', '안료 및 산화철 시리즈']
   },
@@ -30,7 +30,7 @@ export const INITIAL_SUPPLIERS: Supplier[] = [
     specialty: ['외산 소성 재료', '독일 스펙트럼 유약', '수입 안료', '전동물레'],
     contact: '031-638-3455',
     address: '경기도 이천시 신둔면 도자예술로 6번길',
-    website: 'http://www.dycustom.co.kr',
+    website: 'https://doyoceramics.co.kr/',
     description: '한국의 대표 도예 도시 이천 신둔에 대규모 창고형 쇼룸을 보유한 도재상입니다. 독일 Spectrum 유약, 시마포(Shimpo) 전동 물레 등의 장비 및 고화도 유약 원료에 강점이 있습니다.',
     featuredProducts: ['Spectrum 흐름유약 시리즈', 'Nidec-Shimpo VL-Whisper 전동물레', '독일 아르질라 점토']
   },
