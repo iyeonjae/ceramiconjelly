@@ -88,7 +88,7 @@ export default function App() {
     { id: 'suppliers',   label: '도재상',   icon: Building },
     { id: 'recommender', label: 'AI 진단',  icon: Sparkles },
     { id: 'inventory',   label: '재고',     icon: Layers   },
-    { id: 'community',   label: '시편',     icon: Coffee   },
+    { id: 'community',   label: '시편 커뮤니티', icon: Coffee   },
   ];
 
   return (
