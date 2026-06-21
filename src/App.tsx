@@ -7,6 +7,7 @@ import AIRecommender from './components/AIRecommender';
 import InventoryManager from './components/InventoryManager';
 import CommunityForum from './components/CommunityForum';
 import { Compass, Layers, Coffee, Sparkles, Building } from 'lucide-react';
+import { loadGA, trackPageView } from './lib/gtag';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('home');
@@ -23,6 +24,22 @@ export default function App() {
     const saved = localStorage.getItem('ceramic_specimens');
     return saved ? JSON.parse(saved) : INITIAL_SPECIMENS;
   });
+
+  const TAB_TITLES: Record<string, string> = {
+    home: '홈',
+    suppliers: '도재상 카탈로그',
+    recommender: 'AI 재료 추천',
+    inventory: '재고 관리',
+    community: '시편 커뮤니티',
+  };
+
+  // GA 초기화 (프로덕션 전용)
+  useEffect(() => { loadGA(); }, []);
+
+  // 탭 변경마다 page_view 발생
+  useEffect(() => {
+    trackPageView(activeTab, TAB_TITLES[activeTab] ?? activeTab);
+  }, [activeTab]);
 
   useEffect(() => {
     localStorage.removeItem('ceramic_suppliers');

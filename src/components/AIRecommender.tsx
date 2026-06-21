@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AIRecommendationInput, AIRecommendationResult } from '../types';
+import { trackEvent } from '../lib/gtag';
 import { Flame, Sparkles, AlertCircle, ShoppingCart, HelpCircle, FileText, ChevronRight, RefreshCw, Copy, Check, Info } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -50,6 +51,7 @@ export default function AIRecommender() {
       
       if (resData.success) {
         setResult(resData.data);
+        trackEvent('submit_recommendation', { technique: formData.technique, firing: formData.firingTempRange, is_fallback: resData.isFallback });
       } else {
         throw new Error(resData.errorMsg || '추천 생성 실패');
       }

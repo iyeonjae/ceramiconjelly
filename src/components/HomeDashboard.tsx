@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Supplier, InventoryItem } from '../types';
 import { MapPin, ArrowRight, FileText, Sparkles, Instagram, ChevronLeft, ChevronRight } from 'lucide-react';
+import { trackEvent } from '../lib/gtag';
 
 interface HomeDashboardProps {
   suppliers: Supplier[];
@@ -139,7 +140,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
           </div>
           <div className="shrink-0 w-full md:w-auto">
             <button
-              onClick={() => setActiveTab('recommender')}
+              onClick={() => { setActiveTab('recommender'); trackEvent('main_cta_clicked', { cta: 'ai_추천' }); }}
               className="w-full md:w-auto px-8 py-3 bg-[#b76e66] text-white text-sm font-semibold rounded-full flex items-center justify-center gap-2 transition-all duration-75 shadow-[0_4px_0_0_#7a3f39] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#7a3f39] active:translate-y-[3px] active:shadow-[0_1px_0_0_#7a3f39]"
             >
               추천 받기 <ArrowRight className="w-4 h-4" />

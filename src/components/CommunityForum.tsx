@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { SpecimenTestTile, Comment } from '../types';
+import { trackEvent } from '../lib/gtag';
 import { Eye, Heart, MessageSquare, Plus, Send, X, Flame, Coffee, FileText, User, Calendar, PlusCircle, Bookmark } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -92,6 +93,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
     };
 
     setSpecimens(prev => [created, ...prev]);
+    trackEvent('submit_specimen', { firing_type: created.firingType, cone: created.coneValue });
     // Reset Form
     setNewTile({
       title: '',
