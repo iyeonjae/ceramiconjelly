@@ -85,7 +85,7 @@ export default function App() {
   };
 
   const navItems = [
-    { id: 'home', label: '공방 대시보드', icon: Compass },
+    { id: 'home', label: '홈', icon: Compass },
     { id: 'suppliers', label: '도재상 모아보기', icon: Building },
     { id: 'recommender', label: 'AI 맞춤 재료 진단', icon: Sparkles },
     { id: 'inventory', label: '공방 재고 실시간 관리', icon: Layers },
