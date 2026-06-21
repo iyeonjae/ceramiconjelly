@@ -8,6 +8,29 @@
   --font-serif: "Noto Serif KR", Georgia, serif;
 }
 
+/* Logo hero floating particles */
+@keyframes particle-a {
+  0%   { transform: translateY(0px) translateX(0px) scale(1);    opacity: 0; }
+  18%  { opacity: 0.45; }
+  82%  { opacity: 0.28; }
+  100% { transform: translateY(-72px) translateX(14px) scale(0.5); opacity: 0; }
+}
+@keyframes particle-b {
+  0%   { transform: translateY(0px) translateX(0px) scale(1);    opacity: 0; }
+  22%  { opacity: 0.38; }
+  78%  { opacity: 0.22; }
+  100% { transform: translateY(-55px) translateX(-12px) scale(0.4); opacity: 0; }
+}
+@keyframes particle-c {
+  0%   { transform: translateY(0px) translateX(0px) scale(1);    opacity: 0; }
+  20%  { opacity: 0.42; }
+  80%  { opacity: 0.18; }
+  100% { transform: translateY(-85px) translateX(6px) scale(0.35); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-particle { animation: none !important; opacity: 0 !important; }
+}
+
 /* Ceramic glazed nav buttons */
 .nav-ceramic-active {
   background: linear-gradient(175deg, #d4907c 0%, #b76e66 35%, #9a5248 75%, #7a3830 100%);
