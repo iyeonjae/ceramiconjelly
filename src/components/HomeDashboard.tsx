@@ -11,6 +11,7 @@ interface HomeDashboardProps {
 
 export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
   const [isWobbling, setIsWobbling] = useState(false);
+  const [isJelly, setIsJelly] = useState(false);
 
   return (
     <div className="space-y-8" id="home-dashboard">
@@ -59,12 +60,12 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
           />
         ))}
         <img
-          src="/logo-hero.png"
+          src={isJelly ? '/logo-hero-jelly.png' : '/logo-hero.png'}
           alt="CeramicOn"
           className={`relative z-10 w-full max-w-2xl h-auto object-contain cursor-pointer ${isWobbling ? 'logo-hero-wobble' : ''}`}
           style={{ mixBlendMode: 'multiply' }}
           onMouseEnter={() => setIsWobbling(true)}
-          onClick={() => setIsWobbling(true)}
+          onClick={() => { setIsJelly(j => !j); setIsWobbling(true); }}
           onAnimationEnd={() => setIsWobbling(false)}
         />
       </div>
