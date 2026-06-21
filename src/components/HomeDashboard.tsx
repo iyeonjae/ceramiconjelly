@@ -36,7 +36,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
           </p>
           <button
             onClick={() => setActiveTab('recommender')}
-            className="mt-6 w-full py-2.5 bg-[#b76e66] hover:bg-[#a05a53] text-white text-sm font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+            className="mt-6 w-full py-2.5 bg-[#b76e66] text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-2 transition-all duration-75 shadow-[0_4px_0_0_#7a3f39] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#7a3f39] active:translate-y-[3px] active:shadow-[0_1px_0_0_#7a3f39]"
           >
             추천 받기 <ArrowRight className="w-4 h-4" />
           </button>
@@ -53,7 +53,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
           </p>
           <button
             onClick={() => setActiveTab('suppliers')}
-            className="mt-6 w-full py-2.5 bg-stone-700/80 hover:bg-stone-800 text-white text-sm font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+            className="mt-6 w-full py-2.5 bg-stone-700 text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-2 transition-all duration-75 shadow-[0_4px_0_0_#1c1917] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#1c1917] active:translate-y-[3px] active:shadow-[0_1px_0_0_#1c1917]"
           >
             카탈로그 보기 <ArrowRight className="w-4 h-4" />
           </button>
@@ -70,7 +70,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
           </p>
           <button
             onClick={() => setActiveTab('community')}
-            className="mt-6 w-full py-2.5 bg-teal-700/80 hover:bg-teal-800 text-white text-sm font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+            className="mt-6 w-full py-2.5 bg-teal-700 text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-2 transition-all duration-75 shadow-[0_4px_0_0_#134e4a] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#134e4a] active:translate-y-[3px] active:shadow-[0_1px_0_0_#134e4a]"
           >
             커뮤니티 구경하기 <ArrowRight className="w-4 h-4" />
           </button>
