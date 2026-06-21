@@ -18,8 +18,8 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
     {
       bg: 'linear-gradient(135deg, #833ab4 0%, #c13584 40%, #e1306c 70%, #fcb045 100%)',
       tag: '팔로우 이벤트',
-      title: '@jelly_in_ceramic 팔로우하고 원데이클래스 90% 할인받아요',
-      desc: '계정 팔로우 + 고정게시물 좋아요 + 댓글 작성으로 응모. 당첨자에게 원데이클래스 90% 할인 링크 발송!',
+      title: '@jelly_in_ceramic 팔로우하고 도예 원데이클래스 90% 할인받아요',
+      desc: '계정 팔로우 + 고정게시물 좋아요 + 댓글 작성으로 응모. 당첨자에게 도예 원데이클래스 90% 할인 링크 발송!',
       cta: '인스타그램 바로가기',
       onClick: () => window.open('https://www.instagram.com/jelly_in_ceramic', '_blank', 'noopener,noreferrer'),
     },
