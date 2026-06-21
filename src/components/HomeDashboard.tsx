@@ -14,11 +14,12 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
     <div className="space-y-8" id="home-dashboard">
 
       {/* Logo Hero */}
-      <div className="flex items-center justify-center py-14 md:py-20">
+      <div className="flex items-center justify-center py-4 md:py-6">
         <img
-          src="/logo.png"
+          src="/logo-hero.png"
           alt="CeramicOn"
-          className="h-28 md:h-44 w-auto object-contain drop-shadow-lg"
+          className="w-full max-w-2xl h-auto object-contain"
+          style={{ mixBlendMode: 'multiply' }}
         />
       </div>
 
