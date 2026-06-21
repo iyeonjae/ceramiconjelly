@@ -16,20 +16,20 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
       {/* Logo Hero */}
       <div className="relative flex items-center justify-center py-4 md:py-6 overflow-hidden">
         {[
-          { top: '78%', left: '6%',  s: 5, c: '#e3a692', a: 'particle-a', d: '3.4s', dl: '0.0s' },
-          { top: '82%', left: '22%', s: 3, c: '#cbf7ee', a: 'particle-b', d: '4.2s', dl: '0.7s' },
-          { top: '70%', left: '36%', s: 4, c: '#d4907c', a: 'particle-c', d: '3.8s', dl: '1.3s' },
-          { top: '85%', left: '50%', s: 3, c: '#b8e8e0', a: 'particle-a', d: '4.6s', dl: '0.4s' },
-          { top: '72%', left: '65%', s: 6, c: '#cbf7ee', a: 'particle-b', d: '3.1s', dl: '1.6s' },
-          { top: '80%', left: '78%', s: 4, c: '#f0c8bc', a: 'particle-c', d: '4.9s', dl: '0.9s' },
-          { top: '65%', left: '91%', s: 3, c: '#d4907c', a: 'particle-a', d: '3.6s', dl: '0.5s' },
-          { top: '28%', left: '4%',  s: 4, c: '#cbf7ee', a: 'particle-b', d: '4.0s', dl: '1.9s' },
-          { top: '18%', left: '16%', s: 3, c: '#e3a692', a: 'particle-c', d: '3.3s', dl: '2.2s' },
-          { top: '32%', left: '85%', s: 5, c: '#b8e8e0', a: 'particle-a', d: '4.7s', dl: '0.8s' },
-          { top: '14%', left: '72%', s: 3, c: '#d4907c', a: 'particle-b', d: '3.9s', dl: '1.5s' },
-          { top: '52%', left: '2%',  s: 4, c: '#e3a692', a: 'particle-c', d: '4.4s', dl: '2.5s' },
-          { top: '58%', left: '95%', s: 3, c: '#cbf7ee', a: 'particle-a', d: '3.7s', dl: '1.2s' },
-          { top: '88%', left: '43%', s: 5, c: '#f0c8bc', a: 'particle-b', d: '4.1s', dl: '0.6s' },
+          { top: '78%', left: '6%',  s: 10, c: '#d4907c', a: 'particle-a', d: '3.4s', dl: '0.0s' },
+          { top: '82%', left: '22%', s: 7,  c: '#cbf7ee', a: 'particle-b', d: '4.2s', dl: '0.7s' },
+          { top: '70%', left: '36%', s: 9,  c: '#b76e66', a: 'particle-c', d: '3.8s', dl: '1.3s' },
+          { top: '85%', left: '50%', s: 6,  c: '#b8e8e0', a: 'particle-a', d: '4.6s', dl: '0.4s' },
+          { top: '72%', left: '65%', s: 12, c: '#cbf7ee', a: 'particle-b', d: '3.1s', dl: '1.6s' },
+          { top: '80%', left: '78%', s: 8,  c: '#e3a692', a: 'particle-c', d: '4.9s', dl: '0.9s' },
+          { top: '65%', left: '91%', s: 7,  c: '#d4907c', a: 'particle-a', d: '3.6s', dl: '0.5s' },
+          { top: '28%', left: '4%',  s: 8,  c: '#cbf7ee', a: 'particle-b', d: '4.0s', dl: '1.9s' },
+          { top: '18%', left: '16%', s: 6,  c: '#e3a692', a: 'particle-c', d: '3.3s', dl: '2.2s' },
+          { top: '32%', left: '85%', s: 10, c: '#b8e8e0', a: 'particle-a', d: '4.7s', dl: '0.8s' },
+          { top: '14%', left: '72%', s: 7,  c: '#b76e66', a: 'particle-b', d: '3.9s', dl: '1.5s' },
+          { top: '52%', left: '2%',  s: 9,  c: '#e3a692', a: 'particle-c', d: '4.4s', dl: '2.5s' },
+          { top: '58%', left: '95%', s: 6,  c: '#cbf7ee', a: 'particle-a', d: '3.7s', dl: '1.2s' },
+          { top: '88%', left: '43%', s: 11, c: '#d4907c', a: 'particle-b', d: '4.1s', dl: '0.6s' },
         ].map((p, i) => (
           <span
             key={i}

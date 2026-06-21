@@ -11,20 +11,20 @@
 /* Logo hero floating particles */
 @keyframes particle-a {
   0%   { transform: translateY(0px) translateX(0px) scale(1);    opacity: 0; }
-  18%  { opacity: 0.45; }
-  82%  { opacity: 0.28; }
+  18%  { opacity: 0.85; }
+  82%  { opacity: 0.65; }
   100% { transform: translateY(-72px) translateX(14px) scale(0.5); opacity: 0; }
 }
 @keyframes particle-b {
   0%   { transform: translateY(0px) translateX(0px) scale(1);    opacity: 0; }
-  22%  { opacity: 0.38; }
-  78%  { opacity: 0.22; }
+  22%  { opacity: 0.78; }
+  78%  { opacity: 0.55; }
   100% { transform: translateY(-55px) translateX(-12px) scale(0.4); opacity: 0; }
 }
 @keyframes particle-c {
   0%   { transform: translateY(0px) translateX(0px) scale(1);    opacity: 0; }
-  20%  { opacity: 0.42; }
-  80%  { opacity: 0.18; }
+  20%  { opacity: 0.82; }
+  80%  { opacity: 0.50; }
   100% { transform: translateY(-85px) translateX(6px) scale(0.35); opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
