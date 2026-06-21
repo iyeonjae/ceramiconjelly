@@ -15,6 +15,13 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
   return (
     <div className="space-y-8" id="home-dashboard">
 
+      {/* Pre-hero tagline */}
+      <div className="text-center pt-2">
+        <p className="font-serif text-stone-600 text-base md:text-lg tracking-wide">
+          도예의 변수를 줄이는 가장 쉬운 방법
+        </p>
+      </div>
+
       {/* Logo Hero */}
       <div className="relative flex items-center justify-center py-4 md:py-6 overflow-hidden">
         {[
