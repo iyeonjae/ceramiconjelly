@@ -14,15 +14,12 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
     <div className="space-y-8" id="home-dashboard">
 
       {/* Logo Hero */}
-      <div className="bg-white rounded-2xl border border-stone-100 shadow-xs flex flex-col items-center justify-center py-12 md:py-16 px-8 text-center">
+      <div className="flex items-center justify-center py-14 md:py-20">
         <img
           src="/logo.png"
           alt="CeramicOn"
-          className="h-24 md:h-36 w-auto object-contain mb-4"
+          className="h-28 md:h-44 w-auto object-contain drop-shadow-lg"
         />
-        <p className="text-stone-400 text-xs font-medium tracking-[0.2em] uppercase">
-          도재상 찾기 · AI 추천 · 재고관리 · 시편 공유
-        </p>
       </div>
 
       {/* 3-Column Service CTA Cards */}
