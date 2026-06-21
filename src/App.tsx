@@ -13,10 +13,7 @@ export default function App() {
   const [selectedSupplierId, setSelectedSupplierId] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const [suppliers, setSuppliers] = useState<Supplier[]>(() => {
-    const saved = localStorage.getItem('ceramic_suppliers');
-    return saved ? JSON.parse(saved) : INITIAL_SUPPLIERS;
-  });
+  const [suppliers, setSuppliers] = useState<Supplier[]>(INITIAL_SUPPLIERS);
 
   const [inventory, setInventory] = useState<InventoryItem[]>(() => {
     const saved = localStorage.getItem('ceramic_inventory');
@@ -29,8 +26,8 @@ export default function App() {
   });
 
   useEffect(() => {
-    localStorage.setItem('ceramic_suppliers', JSON.stringify(suppliers));
-  }, [suppliers]);
+    localStorage.removeItem('ceramic_suppliers');
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('ceramic_inventory', JSON.stringify(inventory));
