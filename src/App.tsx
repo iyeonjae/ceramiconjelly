@@ -114,7 +114,7 @@ export default function App() {
               </div>
               <div>
                 <span className="font-serif font-bold text-lg text-stone-900 leading-none block">도예 온 (CeramicOn)</span>
-                <span className="text-[10px] text-stone-500 font-medium block uppercase tracking-widest mt-0.5">도재 공급망 통합 플랫폼</span>
+                <span className="text-[10px] text-stone-500 font-medium block uppercase tracking-widest mt-0.5">도재상 찾기 · AI 추천 · 재고관리 · 시편 공유</span>
               </div>
             </div>
 
