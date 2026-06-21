@@ -125,7 +125,7 @@ export default function SupplierCatalog({ suppliers, selectedSupplierId, setSele
 
                   <div className="flex flex-wrap gap-1 mt-3">
                     {sup.specialty.slice(0, 3).map((spec, i) => (
-                      <span key={i} className="text-[10px] bg-stone-100 text-stone-600 font-medium px-2 py-0.5 rounded-full">
+                      <span key={i} className="text-[10px] bg-[#e3a692]/20 text-[#7a3f39] font-semibold px-2.5 py-0.5 rounded-full border border-[#e3a692]/40 shadow-[0_1px_4px_rgba(183,110,102,0.15)]">
                         #{spec}
                       </span>
                     ))}
@@ -186,7 +186,7 @@ export default function SupplierCatalog({ suppliers, selectedSupplierId, setSele
                 <span className="text-stone-400 font-bold text-[10px] uppercase tracking-wider block">강점 및 취급 품목 분야</span>
                 <div className="flex flex-wrap gap-1.5">
                   {activeSupplier.specialty.map((spec, i) => (
-                    <span key={i} className="text-xs bg-stone-100 text-stone-700 border border-stone-200 px-3 py-1 rounded-md font-medium flex items-center gap-1">
+                    <span key={i} className="text-xs bg-[#e3a692]/15 text-[#7a3f39] border border-[#e3a692]/40 px-3.5 py-1.5 rounded-full font-semibold flex items-center gap-1.5 shadow-[0_2px_8px_rgba(183,110,102,0.18)] hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(183,110,102,0.28)] transition-all duration-150">
                       <Sparkles className="w-3 h-3 text-[#b76e66]" /> {spec}
                     </span>
                   ))}
