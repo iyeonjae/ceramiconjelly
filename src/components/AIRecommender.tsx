@@ -202,7 +202,7 @@ export default function AIRecommender() {
 
           {/* Right Column Help Tips */}
           <div className="space-y-4">
-            <div className="bg-stone-50 rounded-xl border border-stone-200 p-5 space-y-4">
+            <div className="bg-[#e4f6f7] rounded-xl border border-stone-200 p-5 space-y-4">
               <h4 className="font-serif text-sm font-bold text-stone-800 flex items-center gap-1">
                 <Info className="w-4 h-4 text-[#b76e66]" /> 공학 매칭 시스템 안내
               </h4>
@@ -284,7 +284,7 @@ export default function AIRecommender() {
                   <div key={idx} className="bg-white border border-stone-200 rounded-xl p-5 shadow-[0_4px_20px_rgba(183,110,102,0.12)] hover:-translate-y-2 hover:shadow-[0_12px_28px_rgba(183,110,102,0.32)] hover:border-[#b76e66]/30 transition-all duration-200 space-y-3 flex flex-col justify-between">
                     <div className="space-y-2">
                       <div className="flex justify-between items-start gap-2">
-                        <span className="text-[10px] bg-stone-100 text-stone-700 px-2 py-0.5 rounded uppercase font-semibold">
+                        <span className="text-[10px] bg-[#e4f6f7] text-stone-700 px-2 py-0.5 rounded uppercase font-semibold">
                           {m.category}
                         </span>
                         <span className="text-[10px] text-stone-400 font-mono">
@@ -307,7 +307,7 @@ export default function AIRecommender() {
                       <div className="text-[10px] text-stone-400 flex flex-wrap gap-1 items-center">
                         <span className="font-semibold text-stone-500">배치 구입처:</span>
                         {m.suggestedSuppliers.map((s, sIdx) => (
-                          <span key={sIdx} className="bg-stone-50 border border-stone-250 text-stone-600 px-1.5 py-0.2 rounded font-medium">
+                          <span key={sIdx} className="bg-[#e4f6f7] border border-stone-250 text-stone-600 px-1.5 py-0.2 rounded font-medium">
                             {s}
                           </span>
                         ))}
@@ -319,7 +319,7 @@ export default function AIRecommender() {
             </div>
 
             {/* Firing Curve Rules (Right 1 col) */}
-            <div className="bg-stone-50 rounded-xl border border-stone-200 p-5 space-y-4">
+            <div className="bg-[#e4f6f7] rounded-xl border border-stone-200 p-5 space-y-4">
               <h3 className="font-serif text-sm font-bold text-stone-800 flex items-center gap-1">
                 <Flame className="w-4 h-4 text-[#b76e66]" /> 공학 가마 열선 곡선 진단 (Firing Guidelines)
               </h3>

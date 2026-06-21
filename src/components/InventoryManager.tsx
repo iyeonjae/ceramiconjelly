@@ -246,7 +246,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
               <button
                 type="button"
                 onClick={() => setShowAddForm(false)}
-                className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 font-semibold text-xs rounded-full transition-colors"
+                className="px-4 py-2 bg-[#e4f6f7] hover:bg-[#c8ecee] text-stone-700 font-semibold text-xs rounded-full transition-colors"
               >
                 취소
               </button>
@@ -287,7 +287,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
                   className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-colors ${
                     categoryFilter === f
                       ? 'bg-[#b76e66] text-white shadow-xs'
-                      : 'bg-stone-50 border border-stone-200/65 text-stone-600 hover:bg-stone-100'
+                      : 'bg-[#e4f6f7] border border-stone-200/65 text-stone-600 hover:bg-[#c8ecee]'
                   }`}
                 >
                   {f === 'All' ? '전체 자산' : f === 'Clay' ? '흙/태토' : f === 'Glaze' ? '유약/액상' : f === 'Raw Material' ? '천연 원료가루' : '특화도구'}
@@ -306,7 +306,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-stone-50 border-b border-stone-200 text-[11px] text-stone-500 font-bold uppercase tracking-wider">
+                    <tr className="bg-[#e4f6f7] border-b border-stone-200 text-[11px] text-stone-500 font-bold uppercase tracking-wider">
                       <th className="p-4">원자재 수식명 / 분류</th>
                       <th className="p-4">출처 도재상</th>
                       <th className="p-4">가마 대응 사양</th>
@@ -342,7 +342,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
                             <span className="text-xs text-stone-650 font-medium">{item.supplier}</span>
                           </td>
                           <td className="p-4">
-                            <span className="text-[11px] font-mono bg-stone-100/60 p-1 rounded border border-stone-200">
+                            <span className="text-[11px] font-mono bg-[#e4f6f7] p-1 rounded border border-stone-200">
                               {item.firingTemp}
                             </span>
                           </td>
@@ -354,7 +354,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
                                 </span>
                                 <span className="text-stone-400">{percentage}%</span>
                               </div>
-                              <div className="w-full bg-stone-100 h-1.5 rounded-full overflow-hidden border border-stone-200/50">
+                              <div className="w-full bg-[#e4f6f7] h-1.5 rounded-full overflow-hidden border border-stone-200/50">
                                 <div
                                   className={`h-full rounded-full transition-all duration-300 ${
                                     isLow ? 'bg-[#b76e66]' : 'bg-stone-800'
@@ -371,14 +371,14 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
                             <div className="flex items-center justify-center gap-1">
                               <button
                                 onClick={() => handleUpdateStock(item.id, -10)}
-                                className="w-7 h-7 bg-white hover:bg-stone-100 text-stone-700 border border-stone-250 rounded-sm flex items-center justify-center transition-colors shadow-xs hover:border-stone-300"
+                                className="w-7 h-7 bg-white hover:bg-[#e4f6f7] text-stone-700 border border-stone-250 rounded-sm flex items-center justify-center transition-colors shadow-xs hover:border-stone-300"
                                 title="10 단위 소모"
                               >
                                 <Minus className="w-3.5 h-3.5" />
                               </button>
                               <button
                                 onClick={() => handleUpdateStock(item.id, -1)}
-                                className="w-7 h-7 bg-white hover:bg-stone-100 text-stone-700 border border-stone-250 rounded-sm flex items-center justify-center transition-colors shadow-xs hover:border-stone-300"
+                                className="w-7 h-7 bg-white hover:bg-[#e4f6f7] text-stone-700 border border-stone-250 rounded-sm flex items-center justify-center transition-colors shadow-xs hover:border-stone-300"
                                 title="1 단위 소모"
                                 id={`inv-minus-btn-${item.id}`}
                               >

@@ -60,7 +60,7 @@ export default function SupplierCatalog({ suppliers, selectedSupplierId, setSele
             />
           </div>
           
-          <div className="flex gap-1 bg-stone-100 p-1 rounded-lg">
+          <div className="flex gap-1 bg-[#e4f6f7] p-1 rounded-lg">
             <button
               onClick={() => setFilterType('all')}
               className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${filterType === 'all' ? 'bg-white text-stone-900 shadow-xs' : 'text-stone-500 hover:text-stone-900'}`}
@@ -110,7 +110,7 @@ export default function SupplierCatalog({ suppliers, selectedSupplierId, setSele
                   <div className="space-y-2 w-full">
                     <div className="flex justify-between items-start gap-2">
                       <span className={`text-xs font-medium px-2 py-0.5 rounded-sm shrink-0 uppercase tracking-wide ${
-                        sup.isInternational ? 'bg-[#cff9fb]/50 text-stone-700' : 'bg-stone-100 text-stone-700'
+                        sup.isInternational ? 'bg-[#cff9fb]/50 text-stone-700' : 'bg-[#e4f6f7] text-stone-700'
                       }`}>
                         {sup.isInternational ? '해외 수입' : '국내 공방'}
                       </span>
@@ -176,7 +176,7 @@ export default function SupplierCatalog({ suppliers, selectedSupplierId, setSele
               {/* Description body */}
               <div className="space-y-2">
                 <span className="text-stone-400 font-bold text-[10px] uppercase tracking-wider block">도재상 종합 소개</span>
-                <p className="text-xs text-stone-700 leading-relaxed bg-stone-50 p-4 rounded-lg border border-stone-200/50">
+                <p className="text-xs text-stone-700 leading-relaxed bg-[#e4f6f7] p-4 rounded-lg border border-stone-200/50">
                   {activeSupplier.description}
                 </p>
               </div>
@@ -207,7 +207,7 @@ export default function SupplierCatalog({ suppliers, selectedSupplierId, setSele
                       </div>
                       <div className="flex justify-between items-center text-[10px] text-stone-500">
                         <span>공급 단가 문의</span>
-                        <span className="px-1.5 py-0.5 bg-stone-100 font-mono text-[9px] rounded font-semibold text-stone-600">실시간 연동</span>
+                        <span className="px-1.5 py-0.5 bg-[#e4f6f7] font-mono text-[9px] rounded font-semibold text-stone-600">실시간 연동</span>
                       </div>
                     </div>
                   ))}
