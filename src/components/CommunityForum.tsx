@@ -314,7 +314,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
                 <div
                   key={tile.id}
                   onClick={() => setActiveTile(tile)}
-                  className="bg-white border border-stone-200 rounded-xl overflow-hidden hover:border-[#b76e66]/40 hover:shadow-sm transition-all duration-200 cursor-pointer flex flex-col justify-between"
+                  className="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(183,110,102,0.12)] hover:-translate-y-2 hover:shadow-[0_12px_28px_rgba(183,110,102,0.32)] hover:border-[#b76e66]/40 transition-all duration-200 cursor-pointer flex flex-col justify-between"
                   id={`specimen-card-${tile.id}`}
                 >
                   {/* Test-Tile Virtual Graphic Header representing the real glaze outcome */}

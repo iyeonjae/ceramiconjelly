@@ -44,7 +44,7 @@ export default function SupplierCatalog({ suppliers, selectedSupplierId, setSele
   return (
     <div className="space-y-6" id="supplier-catalog">
       {/* Search and Filter Panel */}
-      <div className="bg-white rounded-xl border border-stone-200 p-5 shadow-xs space-y-4">
+      <div className="bg-white rounded-xl border border-stone-200 p-5 shadow-[0_4px_20px_rgba(183,110,102,0.15)] space-y-4">
         <div className="flex flex-col md:flex-row gap-3 justify-between items-stretch">
           <div className="relative flex-1">
             <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -100,10 +100,10 @@ export default function SupplierCatalog({ suppliers, selectedSupplierId, setSele
                 <button
                   key={sup.id}
                   onClick={() => selectSupplier(sup)}
-                  className={`w-full text-left p-4 rounded-xl border transition-all flex flex-col justify-between ${
+                  className={`w-full text-left p-4 rounded-xl border transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 ${
                     isSelected
-                      ? 'bg-[#b76e66]/10 border-[#b76e66] shadow-xs ring-1 ring-[#b76e66]/30'
-                      : 'bg-white border-stone-200/80 hover:border-stone-300'
+                      ? 'bg-[#b76e66]/10 border-[#b76e66] shadow-[0_4px_20px_rgba(183,110,102,0.25)] ring-1 ring-[#b76e66]/30'
+                      : 'bg-white border-stone-200/80 shadow-[0_2px_12px_rgba(183,110,102,0.10)] hover:shadow-[0_8px_24px_rgba(183,110,102,0.25)]'
                   }`}
                   id={`supplier-btn-${sup.id}`}
                 >
@@ -139,7 +139,7 @@ export default function SupplierCatalog({ suppliers, selectedSupplierId, setSele
         {/* Right Column: Detailed View */}
         <div className="lg:col-span-2">
           {activeSupplier ? (
-            <div className="bg-white border border-stone-200 rounded-xl p-6 lg:p-8 space-y-6 shadow-xs" id="supplier-detail-panel">
+            <div className="bg-white border border-stone-200 rounded-xl p-6 lg:p-8 space-y-6 shadow-[0_4px_20px_rgba(183,110,102,0.15)]" id="supplier-detail-panel">
               {/* Header Header */}
               <div className="border-b border-stone-100 pb-5 space-y-3">
                 <div className="flex flex-wrap gap-2 items-center justify-between">

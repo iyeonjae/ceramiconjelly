@@ -74,7 +74,7 @@ export default function AIRecommender() {
 
   return (
     <div className="space-y-6" id="ai-recommender-section">
-      <div className="bg-white rounded-xl border border-stone-200 p-6 shadow-xs space-y-4">
+      <div className="bg-white rounded-xl border border-stone-200 p-6 shadow-[0_4px_20px_rgba(183,110,102,0.15)] space-y-4">
         <div>
           <h2 className="text-xl font-serif font-bold text-stone-900 flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-[#b76e66] fill-[#e3a692]/30" /> 
@@ -225,7 +225,7 @@ export default function AIRecommender() {
         </div>
       ) : loading ? (
         /* LOADING STATE */
-        <div className="bg-white rounded-xl border border-stone-200 p-12 text-center flex flex-col items-center justify-center space-y-6 shadow-xs">
+        <div className="bg-white rounded-xl border border-stone-200 p-12 text-center flex flex-col items-center justify-center space-y-6 shadow-[0_4px_20px_rgba(183,110,102,0.15)]">
           <div className="relative">
             <Flame className="w-12 h-12 text-[#b76e66] animate-bounce" />
             <span className="absolute inset-0 rounded-full border-4 border-[#e3a692]/20 border-t-[#b76e66] animate-spin"></span>
@@ -281,7 +281,7 @@ export default function AIRecommender() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {result.materials.map((m, idx) => (
-                  <div key={idx} className="bg-white border border-stone-200 rounded-xl p-5 hover:shadow-xs hover:border-[#b76e66]/30 transition-all space-y-3 flex flex-col justify-between">
+                  <div key={idx} className="bg-white border border-stone-200 rounded-xl p-5 shadow-[0_4px_20px_rgba(183,110,102,0.12)] hover:-translate-y-2 hover:shadow-[0_12px_28px_rgba(183,110,102,0.32)] hover:border-[#b76e66]/30 transition-all duration-200 space-y-3 flex flex-col justify-between">
                     <div className="space-y-2">
                       <div className="flex justify-between items-start gap-2">
                         <span className="text-[10px] bg-stone-100 text-stone-700 px-2 py-0.5 rounded uppercase font-semibold">

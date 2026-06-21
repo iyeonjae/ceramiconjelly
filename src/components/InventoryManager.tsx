@@ -137,7 +137,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
 
       {showAddForm ? (
         /* ADD NEW MATERIAL FORM */
-        <div className="bg-white rounded-xl border border-stone-200 p-6 shadow-xs" id="add-material-form-panel">
+        <div className="bg-white rounded-xl border border-stone-200 p-6 shadow-[0_4px_20px_rgba(183,110,102,0.15)]" id="add-material-form-panel">
           <div className="border-b border-stone-100 pb-3 mb-5">
             <h3 className="font-serif text-lg font-bold text-stone-900">새로운 공방 자재 등록</h3>
             <p className="text-stone-500 text-xs">수치나 가마 대응 온도를 정의하여 소유 자재를 안전하게 원장 정보에 편입시킵니다.</p>
@@ -264,7 +264,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
         /* INVENTORY LIST DIRECTORY VIEW */
         <div className="space-y-4">
           {/* Filters Bar */}
-          <div className="bg-white rounded-xl border border-stone-200 p-4 shadow-xs flex flex-col md:flex-row gap-3 justify-between items-center">
+          <div className="bg-white rounded-xl border border-stone-200 p-4 shadow-[0_4px_20px_rgba(183,110,102,0.15)] flex flex-col md:flex-row gap-3 justify-between items-center">
             <div className="relative w-full md:w-80">
               <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                 <Search className="w-4 h-4 text-stone-400" />
@@ -296,7 +296,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
             </div>
           </div>
 
-          <div className="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-xs">
+          <div className="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(183,110,102,0.15)]">
             {filteredInventory.length === 0 ? (
               <div className="p-12 text-center text-stone-400 space-y-2">
                 <Layers className="w-10 h-10 mx-auto text-stone-300" />
