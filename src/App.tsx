@@ -113,7 +113,7 @@ export default function App() {
                 <Flame className="w-5 h-5 fill-amber-200/30 text-white" />
               </div>
               <div>
-                <span className="font-serif font-bold text-lg text-stone-900 leading-none block">도예 온 (CeramicOn)</span>
+                <span className="font-serif font-bold text-lg text-stone-900 leading-none block">CeramicOn</span>
                 <span className="text-[10px] text-stone-500 font-medium block uppercase tracking-widest mt-0.5">도재상 찾기 · AI 추천 · 재고관리 · 시편 공유</span>
               </div>
             </div>
@@ -188,7 +188,7 @@ export default function App() {
       <footer className="bg-white border-t border-stone-200/80 py-8 text-stone-500 text-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-center md:text-left space-y-1">
-            <span className="font-serif font-bold text-stone-800 text-sm">도예 온 (CeramicOn)</span>
+            <span className="font-serif font-bold text-stone-800 text-sm">CeramicOn</span>
             <p className="text-[11px] text-stone-400">
               © 2026 CeramicOn Co. All rights reserved. 중앙도재, 대원도재, 동영세라믹스 및 글로벌 재제조사와 직결된 통합 유통망 연구 프로젝트.
             </p>
