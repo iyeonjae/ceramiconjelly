@@ -16,8 +16,14 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
     <div className="space-y-8" id="home-dashboard">
 
       {/* Pre-hero tagline */}
-      <div className="text-center pt-2">
-        <p className="font-serif text-stone-600 text-base md:text-lg tracking-wide">
+      <div className="text-center space-y-2 pt-2">
+        <h2 className="font-serif font-bold text-stone-800 text-xl md:text-2xl">
+          도예가를 위한 올인원 재료 플랫폼
+        </h2>
+        <p className="font-serif text-stone-500 text-sm md:text-base">
+          가마 앞 불안감, 조금은 줄여드릴게요
+        </p>
+        <p className="font-serif text-stone-400 text-sm tracking-wide">
           도예의 변수를 줄이는 가장 쉬운 방법
         </p>
       </div>
@@ -63,15 +69,6 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
         />
       </div>
 
-      {/* Service Tagline */}
-      <div className="text-center space-y-2">
-        <h2 className="font-serif font-bold text-stone-800 text-xl md:text-2xl">
-          도예가를 위한 올인원 재료 플랫폼
-        </h2>
-        <p className="font-serif text-stone-500 text-sm md:text-base">
-          가마 앞 불안감, 조금은 줄여드릴게요
-        </p>
-      </div>
 
       {/* Featured AI Card + 2-column secondary cards */}
       <div className="space-y-5">
