@@ -1,0 +1,6 @@
+{
+  "name": "도재상 통합 플랫폼",
+  "description": "국내외 주요 도재상 통합 조회, AI 기반 맞춤형 도예 재료 추천, 공방 재고 관리 및 도예인 노하우/시편 공유 커뮤니티 플랫폼",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
