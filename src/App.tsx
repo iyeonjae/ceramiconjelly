@@ -116,7 +116,10 @@ export default function App() {
       </main>
 
       {/* Glitch Banner */}
-      <div className="glitch-wrapper mb-20">
+      <div
+        className="glitch-wrapper mb-20 cursor-pointer"
+        onClick={() => window.open('https://www.instagram.com/jelly_in_ceramic', '_blank', 'noopener,noreferrer')}
+      >
         <div className="glitch" data-glitch="ceramiconjelly">ceramiconjelly</div>
       </div>
 
