@@ -6,12 +6,11 @@ import SupplierCatalog from './components/SupplierCatalog';
 import AIRecommender from './components/AIRecommender';
 import InventoryManager from './components/InventoryManager';
 import CommunityForum from './components/CommunityForum';
-import { Compass, Layers, Coffee, Info, Sparkles, Building, Menu, X } from 'lucide-react';
+import { Compass, Layers, Coffee, Sparkles, Building } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('home');
   const [selectedSupplierId, setSelectedSupplierId] = useState<string | null>(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const [suppliers, setSuppliers] = useState<Supplier[]>(INITIAL_SUPPLIERS);
 
@@ -85,107 +84,50 @@ export default function App() {
   };
 
   const navItems = [
-    { id: 'home', label: '홈', icon: Compass },
-    { id: 'suppliers', label: '도재상 모아보기', icon: Building },
-    { id: 'recommender', label: 'AI 맞춤 재료 진단', icon: Sparkles },
-    { id: 'inventory', label: '공방 재고 실시간 관리', icon: Layers },
-    { id: 'community', label: '시편 & 레시피 나눔방', icon: Coffee }
+    { id: 'home',        label: '홈',      icon: Compass  },
+    { id: 'suppliers',   label: '도재상',   icon: Building },
+    { id: 'recommender', label: 'AI 진단',  icon: Sparkles },
+    { id: 'inventory',   label: '재고',     icon: Layers   },
+    { id: 'community',   label: '시편',     icon: Coffee   },
   ];
 
-  const handleTabChange = (tabId: string) => {
-    setActiveTab(tabId);
-    setMobileMenuOpen(false);
-  };
-
   return (
-    <div className="min-h-screen text-stone-900 font-sans flex flex-col justify-between" style={{ background: 'linear-gradient(238deg, #e3a692 0%, #cff9fb 100%)' }}>
-      {/* Top Main Navigation Bar */}
+    <div className="min-h-screen text-stone-900 font-sans flex flex-col" style={{ background: 'linear-gradient(238deg, #e3a692 0%, #cff9fb 100%)' }}>
+
+      {/* Header — logo only */}
       <header className="bg-white border-b border-[#b76e66]/20 sticky top-0 z-40 shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            {/* Ceramic Logo Branding */}
-            <div 
-              onClick={() => handleTabChange('home')}
-              className="flex items-center gap-2 cursor-pointer group"
+          <div className="flex h-16 items-center">
+            <div
+              onClick={() => setActiveTab('home')}
+              className="flex flex-col leading-none cursor-pointer"
               id="platform-logo-btn"
             >
-              <div className="flex flex-col leading-none">
-                <img
-                  src="/logo.png"
-                  alt="CeramicOn"
-                  className="h-12 w-auto object-contain object-left"
-                />
-                <span className="text-[10px] text-stone-500 font-medium uppercase tracking-widest mt-0.5">도재상 찾기 · AI 추천 · 재고관리 · 시편 공유</span>
-              </div>
-            </div>
-
-            {/* Desktop Navigation Link */}
-            <nav className="hidden md:flex gap-1">
-              {navItems.map(item => {
-                const IconComp = item.icon;
-                const isActive = activeTab === item.id;
-                return (
-                  <button
-                    key={item.id}
-                    onClick={() => handleTabChange(item.id)}
-                    className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
-                      isActive ? 'nav-ceramic-active' : 'nav-ceramic-inactive'
-                    }`}
-                    id={`nav-tab-btn-${item.id}`}
-                  >
-                    {item.label}
-                  </button>
-                );
-              })}
-            </nav>
-
-            {/* Mobile Hamburger toggle */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-lg text-stone-600 hover:bg-stone-100 transition-colors"
-                title="메뉴 열기"
-              >
-                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </button>
+              <img
+                src="/logo.png"
+                alt="CeramicOn"
+                className="h-12 w-auto object-contain object-left"
+              />
+              <span className="text-[10px] text-stone-500 font-medium uppercase tracking-widest mt-0.5">
+                도재상 찾기 · AI 추천 · 재고관리 · 시편 공유
+              </span>
             </div>
           </div>
         </div>
-
-        {/* Mobile Navigation Dropdown Area */}
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-b border-[#b76e66]/20 px-4 py-3 space-y-1">
-            {navItems.map(item => {
-              const IconComp = item.icon;
-              const isActive = activeTab === item.id;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => handleTabChange(item.id)}
-                  className={`w-full text-left px-4 py-2.5 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all ${
-                    isActive ? 'nav-ceramic-active' : 'nav-ceramic-inactive'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
-          </div>
-        )}
       </header>
 
-      {/* Main Content Area */}
-      <main className="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 min-w-0">
+      {/* Main Content — pb-24 to clear bottom tab bar */}
+      <main className="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-28 min-w-0">
         {renderActiveTab()}
       </main>
 
       {/* Glitch Banner */}
-      <div className="glitch-wrapper">
+      <div className="glitch-wrapper mb-20">
         <div className="glitch" data-glitch="ceramiconjelly">ceramiconjelly</div>
       </div>
 
-      {/* Sticky Bottom Craft Footer */}
-      <footer className="bg-white/70 backdrop-blur-sm border-t border-[#b76e66]/20 py-8 text-stone-500 text-xs">
+      {/* Footer */}
+      <footer className="bg-white/70 backdrop-blur-sm border-t border-[#b76e66]/20 py-8 pb-28 text-stone-500 text-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-center md:text-left space-y-1">
             <span className="font-serif font-bold text-stone-800 text-sm">CeramicOn</span>
@@ -193,7 +135,6 @@ export default function App() {
               © 2026 CeramicOn Co. All rights reserved. 중앙도재, 대원도재, 동영세라믹스 및 글로벌 재제조사와 직결된 통합 유통망 연구 프로젝트.
             </p>
           </div>
-
           <div className="flex gap-4 font-medium text-stone-400 text-[11px]">
             <span className="hover:text-[#b76e66] transition-colors cursor-pointer">공정 유통 강령</span>
             <span>•</span>
@@ -203,6 +144,35 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* Bottom Tab Bar */}
+      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-t border-[#b76e66]/20 shadow-[0_-2px_16px_rgba(0,0,0,0.08)]">
+        <div className="max-w-7xl mx-auto flex justify-around items-stretch h-16">
+          {navItems.map(item => {
+            const IconComp = item.icon;
+            const isActive = activeTab === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => setActiveTab(item.id)}
+                className={`flex-1 flex flex-col items-center justify-center gap-1 py-2 transition-all ${
+                  isActive ? 'text-[#b76e66]' : 'text-stone-400 hover:text-stone-600'
+                }`}
+                id={`nav-tab-btn-${item.id}`}
+              >
+                {isActive && (
+                  <span className="absolute top-0 w-8 h-0.5 rounded-full bg-[#b76e66]" style={{ marginTop: '-1px' }} />
+                )}
+                <IconComp className={`w-5 h-5 transition-transform ${isActive ? 'scale-110' : ''}`} />
+                <span className={`text-[10px] font-semibold tracking-wide ${isActive ? 'text-[#b76e66]' : 'text-stone-400'}`}>
+                  {item.label}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </nav>
+
     </div>
   );
 }
