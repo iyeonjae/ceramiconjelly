@@ -19,7 +19,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
       <div className="flex flex-col items-center justify-center gap-6" style={{ minHeight: 'calc(100vh - 8rem)' }}>
 
         <div className="text-center space-y-2">
-          <p className="font-serif text-stone-400 text-sm tracking-wide">
+          <p className="font-serif text-stone-600 text-base md:text-lg tracking-widest font-semibold">
             도예의 변수를 줄이는 가장 쉬운 방법
           </p>
           <h2 className="font-serif font-bold text-stone-800 text-xl md:text-2xl">
