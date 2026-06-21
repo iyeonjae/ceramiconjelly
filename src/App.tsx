@@ -114,7 +114,6 @@ export default function App() {
                   src="/logo.png"
                   alt="CeramicOn"
                   className="h-12 w-auto object-contain object-left"
-                  style={{ mixBlendMode: 'multiply' }}
                 />
                 <span className="text-[10px] text-stone-500 font-medium uppercase tracking-widest mt-0.5">도재상 찾기 · AI 추천 · 재고관리 · 시편 공유</span>
               </div>
