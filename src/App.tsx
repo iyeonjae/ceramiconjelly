@@ -133,8 +133,7 @@ export default function App() {
                     }`}
                     id={`nav-tab-btn-${item.id}`}
                   >
-                    <IconComp className="w-4 h-4 shrink-0" />
-                    <span>{item.label}</span>
+                    {item.label}
                   </button>
                 );
               })}
@@ -167,8 +166,7 @@ export default function App() {
                     isActive ? 'nav-ceramic-active' : 'nav-ceramic-inactive'
                   }`}
                 >
-                  <IconComp className="w-4 h-4" />
-                  <span>{item.label}</span>
+                  {item.label}
                 </button>
               );
             })}
