@@ -92,17 +92,20 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen text-stone-900 font-sans flex flex-col" style={{ background: 'linear-gradient(238deg, #e3a692 0%, #cff9fb 100%)' }}>
+    <div className="min-h-screen text-stone-900 font-sans flex flex-col" style={{ background: 'linear-gradient(145deg, #ffe4de 0%, #fff0fb 40%, #d4faf3 100%)' }}>
 
 
       {/* Slim Header */}
-      <header className="bg-white/80 backdrop-blur-sm border-b border-[#b76e66]/15 sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center">
+      <header className="sticky top-0 z-40" style={{ background: 'linear-gradient(90deg, #b76e66 0%, #c97fa0 50%, #6bbfb0 100%)' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-between">
           <span
             onClick={() => setActiveTab('home')}
-            className="font-serif font-bold text-[#b76e66] text-sm tracking-widest cursor-pointer"
+            className="font-serif font-bold text-white text-sm tracking-widest cursor-pointer drop-shadow-sm"
           >
-            CeramicOn
+            CeramicOn 🫧
+          </span>
+          <span className="text-white/60 text-[10px] font-medium tracking-widest hidden sm:block">
+            ceramiconjelly
           </span>
         </div>
       </header>
@@ -137,8 +140,8 @@ export default function App() {
       </footer>
 
       {/* Bottom Tab Bar */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-t border-[#b76e66]/20 shadow-[0_-2px_16px_rgba(0,0,0,0.08)]">
-        <div className="max-w-7xl mx-auto flex justify-around items-stretch h-16">
+      <nav className="fixed bottom-0 left-0 right-0 z-50 backdrop-blur-md border-t border-white/40 shadow-[0_-4px_24px_rgba(183,110,102,0.12)]" style={{ background: 'rgba(255,248,252,0.92)' }}>
+        <div className="max-w-7xl mx-auto flex justify-around items-stretch h-16 px-2">
           {navItems.map(item => {
             const IconComp = item.icon;
             const isActive = activeTab === item.id;
@@ -146,16 +149,16 @@ export default function App() {
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
-                className={`flex-1 flex flex-col items-center justify-center gap-1 py-2 transition-all ${
-                  isActive ? 'text-[#b76e66]' : 'text-stone-400 hover:text-stone-600'
+                className={`flex-1 flex flex-col items-center justify-center gap-1 py-2 mx-0.5 rounded-2xl transition-all duration-200 ${
+                  isActive
+                    ? 'text-white shadow-[0_2px_12px_rgba(183,110,102,0.35)]'
+                    : 'text-stone-400 hover:text-[#b76e66]'
                 }`}
+                style={isActive ? { background: 'linear-gradient(135deg, #b76e66 0%, #c97fa0 100%)' } : {}}
                 id={`nav-tab-btn-${item.id}`}
               >
-                {isActive && (
-                  <span className="absolute top-0 w-8 h-0.5 rounded-full bg-[#b76e66]" style={{ marginTop: '-1px' }} />
-                )}
                 <IconComp className={`w-5 h-5 transition-transform ${isActive ? 'scale-110' : ''}`} />
-                <span className={`text-[10px] font-semibold tracking-wide ${isActive ? 'text-[#b76e66]' : 'text-stone-400'}`}>
+                <span className={`text-[10px] font-bold tracking-wide`}>
                   {item.label}
                 </span>
               </button>
