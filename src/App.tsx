@@ -100,7 +100,7 @@ export default function App() {
   return (
     <div className="min-h-screen text-stone-900 font-sans flex flex-col justify-between" style={{ background: 'linear-gradient(238deg, #e3a692 0%, #cff9fb 100%)' }}>
       {/* Top Main Navigation Bar */}
-      <header className="bg-[#fae8e5] border-b border-[#b76e66]/20 sticky top-0 z-40 shadow-xs">
+      <header className="bg-white border-b border-[#b76e66]/20 sticky top-0 z-40 shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             {/* Ceramic Logo Branding */}
@@ -157,7 +157,7 @@ export default function App() {
 
         {/* Mobile Navigation Dropdown Area */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-[#fae8e5] border-b border-[#b76e66]/20 px-4 py-3 space-y-1">
+          <div className="md:hidden bg-white border-b border-[#b76e66]/20 px-4 py-3 space-y-1">
             {navItems.map(item => {
               const IconComp = item.icon;
               const isActive = activeTab === item.id;
