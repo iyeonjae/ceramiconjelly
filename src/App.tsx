@@ -6,8 +6,44 @@ import SupplierCatalog from './components/SupplierCatalog';
 import AIRecommender from './components/AIRecommender';
 import InventoryManager from './components/InventoryManager';
 import CommunityForum from './components/CommunityForum';
-import { Compass, Layers, Coffee, Sparkles, Building } from 'lucide-react';
 import { loadGA, trackPageView } from './lib/gtag';
+
+const JellyBear = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <circle cx="8" cy="8" r="3.5"/>
+    <circle cx="16" cy="8" r="3.5"/>
+    <ellipse cx="12" cy="14.5" rx="7" ry="6.5"/>
+    <ellipse cx="9.5" cy="11.5" rx="1.8" ry="1.1" fill="white" opacity="0.35"/>
+  </svg>
+);
+
+const JellyRing = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 2a10 10 0 100 20A10 10 0 0012 2zm0 4a6 6 0 110 12A6 6 0 0112 6z"/>
+    <ellipse cx="9" cy="8" rx="1.5" ry="1" fill="white" opacity="0.35"/>
+  </svg>
+);
+
+const JellyStar = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 2l2.9 8.9H23l-7.4 5.3 2.8 8.8L12 19.5l-6.4 5.5 2.8-8.8L2 10.9h8.1z"/>
+    <ellipse cx="9.5" cy="9.5" rx="1.5" ry="1" fill="white" opacity="0.35"/>
+  </svg>
+);
+
+const JellyDrop = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 3C9 7 4 11.5 4 15.5a8 8 0 0016 0C20 11.5 15 7 12 3z"/>
+    <ellipse cx="9.5" cy="12" rx="1.4" ry="2.4" fill="white" opacity="0.35"/>
+  </svg>
+);
+
+const JellyHeart = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.18z"/>
+    <ellipse cx="8.5" cy="8" rx="1.5" ry="1" fill="white" opacity="0.35"/>
+  </svg>
+);
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('home');
@@ -101,11 +137,11 @@ export default function App() {
   };
 
   const navItems = [
-    { id: 'home',        label: '홈',      icon: Compass  },
-    { id: 'suppliers',   label: '도재상',   icon: Building },
-    { id: 'recommender', label: 'AI 진단',  icon: Sparkles },
-    { id: 'inventory',   label: '재고',     icon: Layers   },
-    { id: 'community',   label: '시편 커뮤니티', icon: Coffee   },
+    { id: 'home',        label: '홈',          icon: JellyBear  },
+    { id: 'suppliers',   label: '도재상',       icon: JellyRing  },
+    { id: 'recommender', label: 'AI 진단',      icon: JellyStar  },
+    { id: 'inventory',   label: '재고',         icon: JellyDrop  },
+    { id: 'community',   label: '시편 커뮤니티', icon: JellyHeart },
   ];
 
   return (
