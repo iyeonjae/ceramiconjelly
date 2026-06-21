@@ -15,23 +15,21 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
   return (
     <div className="space-y-8" id="home-dashboard">
 
-      {/* Hero block: taglines + logo, vertically centered in viewport */}
-      <div className="flex flex-col items-center justify-center gap-6" style={{ minHeight: 'calc(100vh - 8rem)' }}>
+      {/* Pre-hero tagline */}
+      <div className="text-center space-y-2 pt-2">
+        <p className="font-serif text-stone-600 text-base md:text-lg tracking-widest font-semibold">
+          도예의 변수를 줄이는 가장 쉬운 방법
+        </p>
+        <h2 className="font-serif font-bold text-stone-800 text-xl md:text-2xl">
+          도예가를 위한 올인원 재료 플랫폼
+        </h2>
+        <p className="font-serif text-stone-500 text-sm md:text-base">
+          가마 앞 불안감, 조금은 줄여드릴게요
+        </p>
+      </div>
 
-        <div className="text-center space-y-2">
-          <p className="font-serif text-stone-600 text-base md:text-lg tracking-widest font-semibold">
-            도예의 변수를 줄이는 가장 쉬운 방법
-          </p>
-          <h2 className="font-serif font-bold text-stone-800 text-xl md:text-2xl">
-            도예가를 위한 올인원 재료 플랫폼
-          </h2>
-          <p className="font-serif text-stone-500 text-sm md:text-base">
-            가마 앞 불안감, 조금은 줄여드릴게요
-          </p>
-        </div>
-
-        {/* Logo Hero */}
-        <div className="relative flex items-center justify-center w-full overflow-hidden">
+      {/* Logo Hero */}
+      <div className="relative flex items-center justify-center py-4 md:py-6 overflow-hidden">
         {[
           { top: '78%', left: '6%',  s: 10, c: '#d4907c', a: 'particle-a', d: '3.4s', dl: '0.0s' },
           { top: '82%', left: '22%', s: 7,  c: '#cbf7ee', a: 'particle-b', d: '4.2s', dl: '0.7s' },
@@ -69,8 +67,6 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
           onClick={() => setIsWobbling(true)}
           onAnimationEnd={() => setIsWobbling(false)}
         />
-        </div>
-
       </div>
 
       {/* Featured AI Card + 2-column secondary cards */}
