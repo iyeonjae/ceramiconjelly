@@ -4,6 +4,7 @@ import fs from 'fs';
 import { createServer as createViteServer } from 'vite';
 import { GoogleGenAI, Type } from '@google/genai';
 import dotenv from 'dotenv';
+import { pool, testConnection, initSchema, seedInitialData } from './db.js';
 
 dotenv.config();
 
@@ -32,10 +33,129 @@ function getGeminiClient(): GoogleGenAI | null {
   return geminiClient;
 }
 
-// 1. Get Suppliers Directory
-// Included to allow the frontend to load initial suppliers dynamically if preferred
-app.get('/api/suppliers', (req, res) => {
-  res.json({ success: true });
+// 1. 공급사 목록 조회
+app.get('/api/suppliers', async (req, res) => {
+  try {
+    const { rows } = await pool.query('SELECT * FROM suppliers ORDER BY is_international, name');
+    const suppliers = rows.map(r => ({
+      id: r.id,
+      name: r.name,
+      isInternational: r.is_international,
+      specialty: r.specialty,
+      contact: r.contact,
+      address: r.address,
+      website: r.website,
+      description: r.description,
+      featuredProducts: r.featured_products,
+    }));
+    res.json({ success: true, data: suppliers });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// 2. 재고 목록 조회
+app.get('/api/inventory', async (req, res) => {
+  try {
+    const { rows } = await pool.query('SELECT * FROM inventory_items ORDER BY name');
+    const items = rows.map(r => ({
+      id: r.id,
+      name: r.name,
+      category: r.category,
+      supplier: r.supplier,
+      firingTemp: r.firing_temp,
+      stockQuantity: parseFloat(r.stock_quantity),
+      unit: r.unit,
+      stockAlertThreshold: parseFloat(r.stock_alert_threshold),
+      lastUpdated: r.last_updated,
+      notes: r.notes,
+    }));
+    res.json({ success: true, data: items });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// 재고 수량 업데이트
+app.patch('/api/inventory/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { stockQuantity } = req.body;
+    const today = new Date().toISOString().split('T')[0];
+    await pool.query(
+      'UPDATE inventory_items SET stock_quantity = $1, last_updated = $2 WHERE id = $3',
+      [stockQuantity, today, id]
+    );
+    res.json({ success: true });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// 3. 시편 목록 조회 (댓글 포함)
+app.get('/api/specimens', async (req, res) => {
+  try {
+    const tilesRes = await pool.query('SELECT * FROM specimen_test_tiles ORDER BY created_at DESC');
+    const commentsRes = await pool.query('SELECT * FROM comments ORDER BY created_at ASC');
+
+    const commentsByTile: Record<string, any[]> = {};
+    for (const c of commentsRes.rows) {
+      if (!commentsByTile[c.tile_id]) commentsByTile[c.tile_id] = [];
+      commentsByTile[c.tile_id].push({ id: c.id, author: c.author, content: c.content, createdAt: c.created_at });
+    }
+
+    const tiles = tilesRes.rows.map(r => ({
+      id: r.id,
+      title: r.title,
+      author: r.author,
+      authorEmail: r.author_email,
+      clayBody: r.clay_body,
+      glazeName: r.glaze_name,
+      firingType: r.firing_type,
+      firingTemp: r.firing_temp,
+      coneValue: r.cone_value,
+      description: r.description,
+      knowHowTips: r.know_how_tips,
+      imageUrl: r.image_url,
+      likes: r.likes,
+      createdAt: r.created_at,
+      comments: commentsByTile[r.id] || [],
+    }));
+    res.json({ success: true, data: tiles });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// 시편 좋아요
+app.post('/api/specimens/:id/like', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { rows } = await pool.query(
+      'UPDATE specimen_test_tiles SET likes = likes + 1 WHERE id = $1 RETURNING likes',
+      [id]
+    );
+    res.json({ success: true, likes: rows[0].likes });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// 시편 댓글 추가
+app.post('/api/specimens/:id/comments', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { author, content } = req.body;
+    const commentId = `c-${Date.now()}`;
+    const today = new Date().toISOString().split('T')[0];
+    await pool.query(
+      'INSERT INTO comments (id, tile_id, author, content, created_at) VALUES ($1, $2, $3, $4, $5)',
+      [commentId, id, author, content, today]
+    );
+    res.json({ success: true, comment: { id: commentId, author, content, createdAt: today } });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
 // Heuristic Fallback Recommendations for Pottery Materials
@@ -281,6 +401,11 @@ Respond ONLY with this JSON object. No Markdown block formatting, no extra sente
 
 // Setup development or production environment
 async function setupServer() {
+  // DB 연결 테스트 → 스키마 생성 → 초기 데이터 시드
+  await testConnection();
+  await initSchema();
+  await seedInitialData();
+
   if (process.env.NODE_ENV !== 'production') {
     const vite = await createViteServer({
       server: { middlewareMode: true },
