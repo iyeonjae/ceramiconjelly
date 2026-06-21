@@ -1,4 +1,4 @@
-import { app } from '../server.js';
+import { app } from '../express-app.js';
 import { testConnection, initSchema, seedInitialData } from '../db.js';
 
 try {

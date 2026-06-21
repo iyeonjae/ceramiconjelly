@@ -1,0 +1,356 @@
+import express from 'express';
+import { GoogleGenAI, Type } from '@google/genai';
+import dotenv from 'dotenv';
+import { pool } from './db.js';
+
+dotenv.config();
+
+const app = express();
+app.use(express.json());
+
+// Lazy-loaded Gemini Client
+let geminiClient: GoogleGenAI | null = null;
+function getGeminiClient(): GoogleGenAI | null {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey || apiKey === 'MY_GEMINI_API_KEY' || apiKey.trim() === '') {
+    return null;
+  }
+  if (!geminiClient) {
+    geminiClient = new GoogleGenAI({ apiKey });
+  }
+  return geminiClient;
+}
+
+// 1. 공급사 목록 조회
+app.get('/api/suppliers', async (req, res) => {
+  try {
+    const { rows } = await pool.query('SELECT * FROM suppliers ORDER BY is_international, name');
+    const suppliers = rows.map(r => ({
+      id: r.id,
+      name: r.name,
+      isInternational: r.is_international,
+      specialty: r.specialty,
+      contact: r.contact,
+      address: r.address,
+      website: r.website,
+      description: r.description,
+      featuredProducts: r.featured_products,
+    }));
+    res.json({ success: true, data: suppliers });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// 2. 재고 목록 조회
+app.get('/api/inventory', async (req, res) => {
+  try {
+    const { rows } = await pool.query('SELECT * FROM inventory_items ORDER BY name');
+    const items = rows.map(r => ({
+      id: r.id,
+      name: r.name,
+      category: r.category,
+      supplier: r.supplier,
+      firingTemp: r.firing_temp,
+      stockQuantity: parseFloat(r.stock_quantity),
+      unit: r.unit,
+      stockAlertThreshold: parseFloat(r.stock_alert_threshold),
+      lastUpdated: r.last_updated,
+      notes: r.notes,
+    }));
+    res.json({ success: true, data: items });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// 재고 수량 업데이트
+app.patch('/api/inventory/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { stockQuantity } = req.body;
+    const today = new Date().toISOString().split('T')[0];
+    await pool.query(
+      'UPDATE inventory_items SET stock_quantity = $1, last_updated = $2 WHERE id = $3',
+      [stockQuantity, today, id]
+    );
+    res.json({ success: true });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// 3. 시편 목록 조회 (댓글 포함)
+app.get('/api/specimens', async (req, res) => {
+  try {
+    const tilesRes = await pool.query('SELECT * FROM specimen_test_tiles ORDER BY created_at DESC');
+    const commentsRes = await pool.query('SELECT * FROM comments ORDER BY created_at ASC');
+
+    const commentsByTile: Record<string, any[]> = {};
+    for (const c of commentsRes.rows) {
+      if (!commentsByTile[c.tile_id]) commentsByTile[c.tile_id] = [];
+      commentsByTile[c.tile_id].push({ id: c.id, author: c.author, content: c.content, createdAt: c.created_at });
+    }
+
+    const tiles = tilesRes.rows.map(r => ({
+      id: r.id,
+      title: r.title,
+      author: r.author,
+      authorEmail: r.author_email,
+      clayBody: r.clay_body,
+      glazeName: r.glaze_name,
+      firingType: r.firing_type,
+      firingTemp: r.firing_temp,
+      coneValue: r.cone_value,
+      description: r.description,
+      knowHowTips: r.know_how_tips,
+      imageUrl: r.image_url,
+      likes: r.likes,
+      createdAt: r.created_at,
+      comments: commentsByTile[r.id] || [],
+    }));
+    res.json({ success: true, data: tiles });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// 시편 좋아요
+app.post('/api/specimens/:id/like', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { rows } = await pool.query(
+      'UPDATE specimen_test_tiles SET likes = likes + 1 WHERE id = $1 RETURNING likes',
+      [id]
+    );
+    res.json({ success: true, likes: rows[0].likes });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// 시편 댓글 추가
+app.post('/api/specimens/:id/comments', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { author, content } = req.body;
+    const commentId = `c-${Date.now()}`;
+    const today = new Date().toISOString().split('T')[0];
+    await pool.query(
+      'INSERT INTO comments (id, tile_id, author, content, created_at) VALUES ($1, $2, $3, $4, $5)',
+      [commentId, id, author, content, today]
+    );
+    res.json({ success: true, comment: { id: commentId, author, content, createdAt: today } });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Heuristic Fallback
+function getHeuristicRecommendation(input: any) {
+  const { firingTempRange, technique, clayColorPref, glazeFinishPref, specialRequirements } = input;
+
+  let overallAdvice = `현재 서버가 신속 결합 모드(Heuristic Rule Engine)로 동작 중입니다. 선택하신 조건 [소성온도: ${firingTempRange}, 성형기법: ${technique}, 점토색상: ${clayColorPref}, 유약선호: ${glazeFinishPref}]에 부합하는 정밀 추천 데이터입니다.`;
+
+  const materials: any[] = [];
+
+  if (technique === 'wheel') {
+    if (clayColorPref === 'white') {
+      materials.push({
+        name: '백자청토 (Premium Porcelain)',
+        category: 'Clay',
+        brandOrOrigin: '중앙도재 제조',
+        firingRange: '1240°C - 1280°C (Cone 6-10)',
+        suggestedSuppliers: ['중앙도재 (Jungang)'],
+        explanation: '철분이 극히 미량 함유되어 조형작업과 물레 성형에 아주 우수한 부드러움을 제공하는 베스트셀러 백자 점토입니다.',
+        usageTips: '수축률이 약 12~14%로 다소 높은 편이므로 성형 시 굽 두께를 다소 도톰하게 잡아주고 급격한 건조를 피해야 굽 터짐을 방지합니다.'
+      });
+    } else if (clayColorPref === 'dark') {
+      materials.push({
+        name: '분청토 (Buncheong Iron Silt)',
+        category: 'Clay',
+        brandOrOrigin: '대원도재 유통',
+        firingRange: '1200°C - 1250°C (Cone 5-7)',
+        suggestedSuppliers: ['대원도재 (Daewon)'],
+        explanation: '철분 반점이 자연스럽게 올라오는 전통 백토 배합 점토입니다. 빈티지하며 투박한 수공예 도자기 느낌을 낼 때 절대적입니다.',
+        usageTips: '환원 소성 시 멋스러운 검은 반점을 즐길 수 있으며, 귀얄 화장토 장식 작업을 하기에 최적의 건조강도를 가집니다.'
+      });
+    } else {
+      materials.push({
+        name: '산백토 (San-Baek Fine Clay)',
+        category: 'Clay',
+        brandOrOrigin: '동영세라믹스 기획',
+        firingRange: '1200°C - 1260°C (Cone 5-8)',
+        suggestedSuppliers: ['동영세라믹스', '대원도재'],
+        explanation: '운모와 작은 돌 입자가 미량 섞인 매우 대중적인 물레용 태토입니다. 수축 변형이 적어 물레 성형 입문자부터 숙련가까지 폭넓게 선택됩니다.',
+        usageTips: '성형 시 거친 입자가 손을 긁을 수 있으므로 슬립(흙물)을 충분히 사용하며 작업해야 고른 두께를 만들 수 있습니다.'
+      });
+    }
+  } else {
+    materials.push({
+      name: '조형토 (Coarse Sculpting Clay)',
+      category: 'Clay',
+      brandOrOrigin: '대원도재 오리지널',
+      firingRange: '1150°C - 1250°C (Cone 4-6)',
+      suggestedSuppliers: ['대원도재 (Daewon)', '중앙도재'],
+      explanation: '굵은 알갱이(샤모트)가 다량 섞여 있어 넓거나 높이가 있는 자유형 핸드빌딩 코일링, 판성형 시 형태 안정성이 탁월합니다.',
+      usageTips: '기벽의 수분 함량이 일정하지 않으면 소성 과정에서 변형이 생기므로 판 두께를 롤러로 밀 때 수평을 견고히 맞추십시오.'
+    });
+    if (clayColorPref === 'dark' || clayColorPref === 'red') {
+      materials.push({
+        name: '전통 옹기토 (Traditional Ondi Clay)',
+        category: 'Clay',
+        brandOrOrigin: '국산 황토 배합',
+        firingRange: '1100°C - 1200°C (Cone 1-4)',
+        suggestedSuppliers: ['대원도재'],
+        explanation: '높은 함량의 산화철과 미세 다공성 유기물이 포함되어 통기성이 우수한 숨쉬는 옹기 표현 점토입니다.',
+        usageTips: '소성 온도를 너무 높이면(>1230°C) 주저앉을 수 있어 중저화도 전가마 소성을 완벽히 권장합니다.'
+      });
+    }
+  }
+
+  if (glazeFinishPref === 'glossy') {
+    materials.push({
+      name: 'PC-20 Blue Rutile Series',
+      category: 'Glaze',
+      brandOrOrigin: 'Amaco USA',
+      firingRange: '1220°C - 1240°C (Cone 5-6)',
+      suggestedSuppliers: ['중앙도재', '아마코 직구'],
+      explanation: '하니플럭스(Honey Flux)나 라이트세피아 위에 겹쳐 구우면 찬란한 오팔 유광 광채와 유기적인 줄무늬 흐름을 만들어줍니다.',
+      usageTips: '유약이 흘러내리는 점도가 높으므로 바닥에서 약 1.5cm 지점까지는 바르지 않는 기벽 제어가 전가마 보호를 위해 필요합니다.'
+    });
+  } else if (glazeFinishPref === 'matte') {
+    materials.push({
+      name: '독일 스펙트럼 황매트유 (Matte Clay Gold)',
+      category: 'Glaze',
+      brandOrOrigin: 'Spectrum German',
+      firingRange: '1220°C - 1250°C',
+      suggestedSuppliers: ['동영세라믹스 (Dongyeong)'],
+      explanation: '차분하며 은은한 누에고치 빛깔의 계란 껍데기 매트 질감을 내는 유약입니다.',
+      usageTips: '시유 두께가 얇으면 거친 점액 점토 느낌이 도드라지고 너무 두꺼우면 소성 후 갈라짐 현상이 일어날 수 있으니 규격에 맞는 흔들기를 준수하십시오.'
+    });
+  } else if (glazeFinishPref === 'crystalline') {
+    materials.push({
+      name: '고선명 바륨 아연 결정 유약 원료',
+      category: 'Raw Material',
+      brandOrOrigin: '국산 단일 산화원료',
+      firingRange: '1240°C - 1280°C',
+      suggestedSuppliers: ['동영세라믹스'],
+      explanation: '산화아연과 크레졸 바듐을 혼합해 인위적인 하이라이트 눈꽃 결정을 가마 냉각 중 석출해 내는 핵심 화합 화공물입니다.',
+      usageTips: '최고 온도 도달 후 1150°C 지점까지 매우 천천히 냉각(서냉) 시켜 결정 성장의 시간 영역을 충분히 제공해 주어야 시편이 아름답게 자라납니다.'
+    });
+  } else {
+    materials.push({
+      name: '투명 균열유 (Crackle Transparent)',
+      category: 'Glaze',
+      brandOrOrigin: '중앙도재 전용',
+      firingRange: '1220°C - 1250°C',
+      suggestedSuppliers: ['중앙도재'],
+      explanation: '팽창률 차이를 극대화시켜 표면에 실 얼룩 형상의 정교한 균열(빙렬)을 의도적으로 내어 청화 백자 장식감을 연출하는 시유 재료입니다.',
+      usageTips: '소성 후 먹물이나 먹차액을 발라 틈새를 먹여주면 빈티지 청자 빙렬이 도드라집니다.'
+    });
+  }
+
+  if (firingTempRange === 'high') {
+    materials.push({
+      name: 'B-Mix 10 (Cone 10 Clay)',
+      category: 'Clay',
+      brandOrOrigin: 'Laguna Clay USA',
+      firingRange: '1280°C - 1300°C (Cone 10)',
+      suggestedSuppliers: ['라구나 클레이 직판'],
+      explanation: '고온 환원 소성에 견디도록 유기물 함량을 최대로 높인 고가형 백색 소프트 점토입니다.',
+      usageTips: '환원 구이 소성 시 매끄럽고 은은하며 묵직한 고대 사기그릇 질감을 극대화하여 연출해 냅니다.'
+    });
+  }
+
+  return {
+    overallAdvice: `${overallAdvice}\n사용자 요구 사항인 '${specialRequirements || '기본 성형 및 유약 밸런싱'}'을 분석한 맞춤 처방입니다.`,
+    materials,
+    firingGuidelines: `1. 건조 단계: 비닐로 덮어 균일하지 않은 기벽 갈라짐(S-Crack)을 예방하십시오.\n2. 초벌(Bisque): 상온에서 980°C까지 8시간에 걸쳐 서서히 승온하십시오.\n3. 재벌(Glaze Firing): 최고 소성 온도(${firingTempRange === 'low' ? '1100°C' : firingTempRange === 'mid' ? '1240°C' : '1260-1280°C'}) 도달 후 20분 계류(Soaking)가 시유 완성도를 높입니다.`
+  };
+}
+
+// 4. AI Ceramics Recommendation
+app.post('/api/recommend', async (req, res) => {
+  try {
+    const input = req.body;
+    const { firingTempRange, technique, clayColorPref, glazeFinishPref, specialRequirements } = input;
+
+    const client = getGeminiClient();
+    if (!client) {
+      const fallbackResult = getHeuristicRecommendation(input);
+      return res.json({ success: true, isFallback: true, data: fallbackResult });
+    }
+
+    const systemInstruction = `You are a professional Ceramic Architect and Clay Materials Engineer assisting potters.
+Provide highly tailored recommendations for commercial clays, glazes, raw oxides, and tools.
+We are highlighting Korean standard suppliers (such as 중앙도재, 대원도재, 동영세라믹스) and premium international sellers (like Laguna Clay Co., Amaco).
+
+Based on user inputs, you must respond with a JSON object strictly matching this TypeScript interface format:
+{
+  "overallAdvice": "A clear, encouraging 3-4 sentence overview of the ceramic approach (in Korean).",
+  "materials": [
+    {
+      "name": "Exact Commercial Name",
+      "category": "Clay" | "Glaze" | "Raw Material" | "Tool" | "Other",
+      "brandOrOrigin": "Manufacturer/Supplier Brand",
+      "firingRange": "e.g., 1200°C - 1250°C (Cone 5-6)",
+      "suggestedSuppliers": ["Supplier Name 1"],
+      "explanation": "Brief description in Korean.",
+      "usageTips": "Practical tip in Korean."
+    }
+  ],
+  "firingGuidelines": "Specific guidelines in Korean."
+}
+
+Respond ONLY with this JSON object. Always respond in Korean except for brand names.`;
+
+    const userPrompt = `성형 방식: ${technique}, 소성 온도대: ${firingTempRange}, 점토 색감: ${clayColorPref}, 유약 마감: ${glazeFinishPref}, 특수 요건: ${specialRequirements || '없음'}`;
+
+    const response = await client.models.generateContent({
+      model: 'gemini-2.0-flash',
+      contents: userPrompt,
+      config: {
+        systemInstruction,
+        responseMimeType: 'application/json',
+        responseSchema: {
+          type: Type.OBJECT,
+          properties: {
+            overallAdvice: { type: Type.STRING },
+            firingGuidelines: { type: Type.STRING },
+            materials: {
+              type: Type.ARRAY,
+              items: {
+                type: Type.OBJECT,
+                properties: {
+                  name: { type: Type.STRING },
+                  category: { type: Type.STRING },
+                  brandOrOrigin: { type: Type.STRING },
+                  firingRange: { type: Type.STRING },
+                  suggestedSuppliers: { type: Type.ARRAY, items: { type: Type.STRING } },
+                  explanation: { type: Type.STRING },
+                  usageTips: { type: Type.STRING }
+                },
+                required: ['name', 'category', 'brandOrOrigin', 'firingRange', 'suggestedSuppliers', 'explanation', 'usageTips']
+              }
+            }
+          },
+          required: ['overallAdvice', 'materials', 'firingGuidelines']
+        }
+      }
+    });
+
+    const text = response.text;
+    if (!text) throw new Error('Gemini API returned an empty response.');
+
+    const parsedData = JSON.parse(text);
+    return res.json({ success: true, isFallback: false, data: parsedData });
+
+  } catch (error: any) {
+    console.error('Recommendation API Error:', error);
+    const fallbackResult = getHeuristicRecommendation(req.body);
+    return res.json({ success: true, isFallback: true, errorMsg: error.message, data: fallbackResult });
+  }
+});
+
+export { app };
