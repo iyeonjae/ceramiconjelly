@@ -16,7 +16,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
     <div className="space-y-8" id="home-dashboard">
 
       {/* Hero block: taglines + logo, vertically centered in viewport */}
-      <div className="flex flex-col items-center justify-center gap-6" style={{ minHeight: 'calc(100vh - 8rem)' }}>
+      <div className="flex flex-col items-center justify-start gap-6 pt-6">
 
         <div className="text-center space-y-2">
           <p className="font-serif text-stone-600 text-base md:text-lg tracking-widest font-semibold">
