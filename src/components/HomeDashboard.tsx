@@ -26,11 +26,11 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
 
         {/* AI 추천 */}
-        <div className="bg-white rounded-2xl border border-stone-200 p-7 flex flex-col shadow-xs hover:shadow-md transition-shadow">
-          <div className="w-11 h-11 rounded-xl bg-[#fdf0ed] flex items-center justify-center mb-5">
+        <div className="bg-white/50 backdrop-blur-md border border-white/70 rounded-2xl p-7 flex flex-col shadow-sm hover:bg-white/60 hover:shadow-md transition-all">
+          <div className="w-11 h-11 rounded-xl bg-[#b76e66]/12 border border-[#b76e66]/20 flex items-center justify-center mb-5">
             <Sparkles className="w-5 h-5 text-[#b76e66]" />
           </div>
-          <h3 className="font-serif font-bold text-stone-900 text-lg mb-2">AI 맞춤 재료 추천</h3>
+          <h3 className="font-serif font-bold text-stone-800 text-lg mb-2">AI 맞춤 재료 추천</h3>
           <p className="text-stone-500 text-sm leading-relaxed flex-1">
             가마 조건, 성형 방식, 원하는 유약 느낌을 알려주세요. Cone 값과 환원·산화 소성 여부까지 세밀하게 반영해서 딱 맞는 흙과 유약 조합을 즉시 추천해드려요.
           </p>
@@ -43,34 +43,34 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
         </div>
 
         {/* 도재상 찾기 */}
-        <div className="bg-white rounded-2xl border border-stone-200 p-7 flex flex-col shadow-xs hover:shadow-md transition-shadow">
-          <div className="w-11 h-11 rounded-xl bg-stone-100 flex items-center justify-center mb-5">
+        <div className="bg-white/50 backdrop-blur-md border border-white/70 rounded-2xl p-7 flex flex-col shadow-sm hover:bg-white/60 hover:shadow-md transition-all">
+          <div className="w-11 h-11 rounded-xl bg-stone-500/10 border border-stone-400/20 flex items-center justify-center mb-5">
             <MapPin className="w-5 h-5 text-stone-600" />
           </div>
-          <h3 className="font-serif font-bold text-stone-900 text-lg mb-2">도재상 통합 카탈로그</h3>
+          <h3 className="font-serif font-bold text-stone-800 text-lg mb-2">도재상 통합 카탈로그</h3>
           <p className="text-stone-500 text-sm leading-relaxed flex-1">
             중앙도재·대원도재·동영세라믹스부터 Laguna·Amaco 같은 해외 브랜드까지 한 곳에서 비교해보세요. 취급 품목, 연락처, 추천 상품을 상세히 확인할 수 있어요.
           </p>
           <button
             onClick={() => setActiveTab('suppliers')}
-            className="mt-6 w-full py-2.5 bg-stone-800 hover:bg-stone-900 text-white text-sm font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+            className="mt-6 w-full py-2.5 bg-stone-700/80 hover:bg-stone-800 text-white text-sm font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
           >
             카탈로그 보기 <ArrowRight className="w-4 h-4" />
           </button>
         </div>
 
         {/* 시편 커뮤니티 */}
-        <div className="bg-white rounded-2xl border border-stone-200 p-7 flex flex-col shadow-xs hover:shadow-md transition-shadow">
-          <div className="w-11 h-11 rounded-xl bg-[#e6faf8] flex items-center justify-center mb-5">
+        <div className="bg-white/50 backdrop-blur-md border border-white/70 rounded-2xl p-7 flex flex-col shadow-sm hover:bg-white/60 hover:shadow-md transition-all">
+          <div className="w-11 h-11 rounded-xl bg-[#cbf7ee]/40 border border-[#cbf7ee]/60 flex items-center justify-center mb-5">
             <FileText className="w-5 h-5 text-teal-600" />
           </div>
-          <h3 className="font-serif font-bold text-stone-900 text-lg mb-2">시편 공유 커뮤니티</h3>
+          <h3 className="font-serif font-bold text-stone-800 text-lg mb-2">시편 공유 커뮤니티</h3>
           <p className="text-stone-500 text-sm leading-relaxed flex-1">
             소성에 성공한 흙·유약 조합을 사진과 함께 공유하고, 다른 도예가들의 실제 레시피를 참고해보세요. 소성 실패를 줄이는 가장 빠른 지름길이에요.
           </p>
           <button
             onClick={() => setActiveTab('community')}
-            className="mt-6 w-full py-2.5 border border-stone-300 hover:bg-stone-50 text-stone-700 text-sm font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+            className="mt-6 w-full py-2.5 bg-teal-700/80 hover:bg-teal-800 text-white text-sm font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
           >
             커뮤니티 구경하기 <ArrowRight className="w-4 h-4" />
           </button>
