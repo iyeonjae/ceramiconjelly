@@ -100,7 +100,7 @@ export default function App() {
   return (
     <div className="min-h-screen text-stone-900 font-sans flex flex-col justify-between" style={{ background: 'linear-gradient(238deg, #e3a692 0%, #cff9fb 100%)' }}>
       {/* Top Main Navigation Bar */}
-      <header className="bg-white/80 backdrop-blur-sm border-b border-[#b76e66]/20 sticky top-0 z-40 shadow-xs">
+      <header className="bg-[#fae8e5] border-b border-[#b76e66]/20 sticky top-0 z-40 shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             {/* Ceramic Logo Branding */}
@@ -113,8 +113,7 @@ export default function App() {
                 <img
                   src="/logo.png"
                   alt="CeramicOn"
-                  className="h-9 w-auto object-contain object-left"
-                  style={{ mixBlendMode: 'multiply' }}
+                  className="h-12 w-auto object-contain object-left"
                 />
                 <span className="text-[10px] text-stone-500 font-medium uppercase tracking-widest mt-0.5">도재상 찾기 · AI 추천 · 재고관리 · 시편 공유</span>
               </div>
@@ -158,7 +157,7 @@ export default function App() {
 
         {/* Mobile Navigation Dropdown Area */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white/90 border-b border-[#b76e66]/20 px-4 py-3 space-y-1">
+          <div className="md:hidden bg-[#fae8e5] border-b border-[#b76e66]/20 px-4 py-3 space-y-1">
             {navItems.map(item => {
               const IconComp = item.icon;
               const isActive = activeTab === item.id;
