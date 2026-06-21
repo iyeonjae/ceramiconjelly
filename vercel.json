@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
-  "builds": [
-    { "src": "dist/server.cjs", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/dist/server.cjs" }
+  "buildCommand": "vite build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/index" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }

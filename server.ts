@@ -425,4 +425,8 @@ async function setupServer() {
   });
 }
 
-setupServer();
+export { app };
+
+if (!process.env.VERCEL) {
+  setupServer();
+}
