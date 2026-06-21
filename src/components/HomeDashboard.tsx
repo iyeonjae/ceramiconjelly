@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Supplier, InventoryItem } from '../types';
-import { MapPin, ArrowRight, Layers, Flame, FileText, Globe, ChevronLeft, ChevronRight, Instagram, Tag, Sparkles, Zap } from 'lucide-react';
-import { motion } from 'motion/react';
+import { MapPin, ArrowRight, FileText, ChevronLeft, ChevronRight, Instagram, Tag, Sparkles, Zap } from 'lucide-react';
 
 interface HomeDashboardProps {
   suppliers: Supplier[];
@@ -10,12 +9,7 @@ interface HomeDashboardProps {
   setSelectedSupplierId: (id: string | null) => void;
 }
 
-export default function HomeDashboard({ suppliers, inventory, setActiveTab, setSelectedSupplierId }: HomeDashboardProps) {
-  // Compute some stats
-  const domesticCount = suppliers.filter(s => !s.isInternational).length;
-  const intlCount = suppliers.filter(s => s.isInternational).length;
-  const criticalItems = inventory.filter(item => item.stockQuantity <= item.stockAlertThreshold);
-
+export default function HomeDashboard({ setActiveTab, setSelectedSupplierId }: HomeDashboardProps) {
   const promoSlides = [
     {
       id: 'instagram',
@@ -219,211 +213,60 @@ export default function HomeDashboard({ suppliers, inventory, setActiveTab, setS
         </div>
       </div>
 
-      {/* Quick Stats Grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white/80 p-5 rounded-xl border border-stone-200/80 shadow-xs space-y-2">
-          <div className="flex justify-between items-center text-stone-400">
-            <span className="text-sm font-medium">연동 도재상</span>
-            <Globe className="w-5 h-5 text-stone-500" />
+      {/* 3-Column Service CTA Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+        {/* AI 추천 */}
+        <div className="bg-white rounded-2xl border border-stone-200 p-7 flex flex-col shadow-xs hover:shadow-md transition-shadow">
+          <div className="w-11 h-11 rounded-xl bg-[#fdf0ed] flex items-center justify-center mb-5">
+            <Sparkles className="w-5 h-5 text-[#b76e66]" />
           </div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-bold font-mono text-stone-900">{suppliers.length}개</span>
-            <span className="text-xs text-stone-500">(국내 {domesticCount} / 국외 {intlCount})</span>
-          </div>
+          <h3 className="font-serif font-bold text-stone-900 text-lg mb-2">AI 맞춤 재료 추천</h3>
+          <p className="text-stone-500 text-sm leading-relaxed flex-1">
+            가마 조건, 성형 방식, 원하는 유약 느낌을 알려주세요. Cone 값과 환원·산화 소성 여부까지 세밀하게 반영해서 딱 맞는 흙과 유약 조합을 즉시 추천해드려요.
+          </p>
+          <button
+            onClick={() => setActiveTab('recommender')}
+            className="mt-6 w-full py-2.5 bg-[#b76e66] hover:bg-[#a05a53] text-white text-sm font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+          >
+            추천 받기 <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
 
-        <div className="bg-white/80 p-5 rounded-xl border border-stone-200/80 shadow-xs space-y-2">
-          <div className="flex justify-between items-center text-stone-400">
-            <span className="text-sm font-medium">관리 중인 재료</span>
-            <Layers className="w-5 h-5 text-stone-500" />
+        {/* 도재상 찾기 */}
+        <div className="bg-white rounded-2xl border border-stone-200 p-7 flex flex-col shadow-xs hover:shadow-md transition-shadow">
+          <div className="w-11 h-11 rounded-xl bg-stone-100 flex items-center justify-center mb-5">
+            <MapPin className="w-5 h-5 text-stone-600" />
           </div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-bold font-mono text-stone-900">{inventory.length}종</span>
-            <span className="text-xs text-stone-500">(포함 카테고리 4개)</span>
-          </div>
+          <h3 className="font-serif font-bold text-stone-900 text-lg mb-2">도재상 통합 카탈로그</h3>
+          <p className="text-stone-500 text-sm leading-relaxed flex-1">
+            중앙도재·대원도재·동영세라믹스부터 Laguna·Amaco 같은 해외 브랜드까지 한 곳에서 비교해보세요. 취급 품목, 연락처, 추천 상품을 상세히 확인할 수 있어요.
+          </p>
+          <button
+            onClick={() => setActiveTab('suppliers')}
+            className="mt-6 w-full py-2.5 bg-stone-800 hover:bg-stone-900 text-white text-sm font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+          >
+            카탈로그 보기 <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
 
-        <div className="bg-white/80 p-5 rounded-xl border border-stone-200/80 shadow-xs space-y-2">
-          <div className="flex justify-between items-center text-stone-400">
-            <span className="text-sm font-medium">재고 보충 필요</span>
-            <Flame className="w-5 h-5 text-[#b76e66]" />
+        {/* 시편 커뮤니티 */}
+        <div className="bg-white rounded-2xl border border-stone-200 p-7 flex flex-col shadow-xs hover:shadow-md transition-shadow">
+          <div className="w-11 h-11 rounded-xl bg-[#e6faf8] flex items-center justify-center mb-5">
+            <FileText className="w-5 h-5 text-teal-600" />
           </div>
-          <div className="flex items-baseline gap-2">
-            <span className={`text-2xl font-bold font-mono ${criticalItems.length > 0 ? 'text-[#b76e66]' : 'text-emerald-600'}`}>
-              {criticalItems.length}건
-            </span>
-            <span className="text-xs text-stone-500">임계 값 미만 알람</span>
-          </div>
+          <h3 className="font-serif font-bold text-stone-900 text-lg mb-2">시편 공유 커뮤니티</h3>
+          <p className="text-stone-500 text-sm leading-relaxed flex-1">
+            소성에 성공한 흙·유약 조합을 사진과 함께 공유하고, 다른 도예가들의 실제 레시피를 참고해보세요. 소성 실패를 줄이는 가장 빠른 지름길이에요.
+          </p>
+          <button
+            onClick={() => setActiveTab('community')}
+            className="mt-6 w-full py-2.5 border border-stone-300 hover:bg-stone-50 text-stone-700 text-sm font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+          >
+            커뮤니티 구경하기 <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
 
-        <div className="bg-white/80 p-5 rounded-xl border border-stone-200/80 shadow-xs space-y-2">
-          <div className="flex justify-between items-center text-stone-400">
-            <span className="text-sm font-medium">공유된 테스트 시편</span>
-            <FileText className="w-5 h-5 text-stone-500" />
-          </div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-bold font-mono text-stone-900">3개</span>
-            <span className="text-xs text-stone-500">도예가 레시피 활성</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Split Layout: Supplier Interactive Map & Info Guides */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left 2 cols: Interactive Map Locator */}
-        <div className="lg:col-span-2 bg-white rounded-xl border border-stone-200 p-6 space-y-4">
-          <div className="flex justify-between items-center">
-            <div>
-              <h2 className="text-lg font-serif font-semibold text-stone-900">도자기 유통 허브 지리 정보 (Digital Map)</h2>
-              <p className="text-stone-500 text-xs">주요 거점 도재상을 클릭하면 해당 상세 카탈로그 페이지로 즉시 연결됩니다.</p>
-            </div>
-            <span className="px-2.5 py-1 bg-stone-100 text-stone-600 rounded-md text-xs font-medium flex items-center gap-1">
-              <MapPin className="w-3.5 h-3.5 text-[#b76e66]" /> 수도권/이천/해외 거점
-            </span>
-          </div>
-
-          {/* Map Graphic Container */}
-          <div className="relative h-96 w-full bg-stone-50 border border-stone-200 rounded-lg overflow-hidden flex flex-col md:flex-row items-stretch">
-            {/* Minimal Clay-themed Styled Map Overlay */}
-            <div className="relative flex-1 bg-stone-100 p-4 overflow-hidden flex items-center justify-center">
-              {/* Abstract Map Background Lines */}
-              <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#854d0e_1.5px,transparent_1.5px)] [background-size:16px_16px]"></div>
-              
-              {/* Dynamic Korea Map Outline Blueprint */}
-              <div className="relative w-72 h-80 border-2 border-dashed border-stone-300/60 rounded-full flex items-center justify-center">
-                <div className="absolute w-44 h-56 bg-stone-200/80 rounded-2xl flex items-center justify-center shadow-inner">
-                  <span className="font-serif italic text-stone-300 text-6xl tracking-widest font-bold">KOREA</span>
-                </div>
-                
-                {/* Seoul Marker */}
-                <motion.button 
-                  whileHover={{ scale: 1.1 }}
-                  onClick={() => { setSelectedSupplierId('s-jungang'); setActiveTab('suppliers'); }}
-                  className="absolute top-20 left-24 group flex flex-col items-center"
-                  title="서울 종로 중앙도재"
-                >
-                  <span className="absolute -top-7 scale-0 group-hover:scale-100 transition-transform bg-stone-900 text-white text-[10px] px-2 py-0.5 rounded whitespace-nowrap z-50">
-                    중앙도재 (인사동)
-                  </span>
-                  <span className="h-3.5 w-3.5 rounded-full bg-amber-500 ring-4 ring-amber-500/20 animate-bounce"></span>
-                  <span className="text-[10px] font-bold text-stone-700 bg-white/90 px-1 py-0.2 rounded mt-1 border border-stone-200">중앙</span>
-                </motion.button>
-
-                {/* Daewon Seoul marker */}
-                <motion.button 
-                  whileHover={{ scale: 1.1 }}
-                  onClick={() => { setSelectedSupplierId('s-daewon'); setActiveTab('suppliers'); }}
-                  className="absolute top-26 left-20 group flex flex-col items-center"
-                  title="서울 종로 대원도재"
-                >
-                  <span className="absolute -top-7 scale-0 group-hover:scale-100 transition-transform bg-stone-900 text-white text-[10px] px-2 py-0.5 rounded whitespace-nowrap z-50">
-                    대원도재 (종로3가)
-                  </span>
-                  <span className="h-3 w-3 rounded-full bg-amber-600 ring-4 ring-amber-600/20"></span>
-                  <span className="text-[10px] font-bold text-stone-700 bg-white/90 px-1 py-0.2 rounded mt-1 border border-stone-200">대원</span>
-                </motion.button>
-
-                {/* Icheon Marker */}
-                <motion.button 
-                  whileHover={{ scale: 1.1 }}
-                  onClick={() => { setSelectedSupplierId('s-dongyeong'); setActiveTab('suppliers'); }}
-                  className="absolute top-36 left-36 group flex flex-col items-center"
-                  title="이천 동영세라믹스"
-                >
-                  <span className="absolute -top-7 scale-0 group-hover:scale-100 transition-transform bg-stone-900 text-white text-[10px] px-2 py-0.5 rounded whitespace-nowrap z-50">
-                    동영세라믹스 (이천 신둔)
-                  </span>
-                  <span className="h-3.5 w-3.5 rounded-full bg-stone-800 ring-4 ring-stone-900/10 animate-pulse"></span>
-                  <span className="text-[10px] font-bold text-stone-700 bg-white/90 px-1 py-0.2 rounded mt-1 border border-stone-200">동영 (이천)</span>
-                </motion.button>
-              </div>
-
-              {/* International Globe Corner Decor */}
-              <div className="absolute bottom-3 right-3 bg-white/75 p-2 rounded-lg border border-stone-200 flex items-center gap-2">
-                <Globe className="w-4 h-4 text-stone-500 animate-spin-slow" />
-                <div className="text-[10px] text-stone-600 font-semibold">
-                  해외 거점: 미국 CA / IN (라구나, 아마코 연계)
-                </div>
-              </div>
-            </div>
-
-            {/* Quick Directory list beside Map */}
-            <div className="w-full md:w-56 bg-stone-50 border-t md:border-t-0 md:border-l border-stone-200 p-4 space-y-3 flex flex-col justify-between">
-              <span className="text-stone-500 font-bold text-[11px] uppercase tracking-wider block">등재 도재상 단축링크</span>
-              <div className="space-y-2 flex-grow overflow-y-auto">
-                {suppliers.map(sup => (
-                  <button
-                    key={sup.id}
-                    onClick={() => { setSelectedSupplierId(sup.id); setActiveTab('suppliers'); }}
-                    className="w-full text-left p-2 rounded hover:bg-stone-200/50 transition-colors border border-stone-200/50 hover:border-amber-500/20 group flex items-start justify-between"
-                  >
-                    <div className="truncate">
-                      <div className="text-xs font-semibold text-stone-900 truncate group-hover:text-amber-700">{sup.name.split(' (')[0]}</div>
-                      <div className="text-[10px] text-stone-500 truncate">{sup.isInternational ? '해외 수입' : '국내 도재상'}</div>
-                    </div>
-                    <ArrowRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-[#b76e66] shrink-0 self-center" />
-                  </button>
-                ))}
-              </div>
-              <div className="pt-2 border-t border-stone-200/80">
-                <p className="text-[9px] text-stone-400 leading-normal">
-                  상단 맵의 마커 혹은 단축 버튼을 선택하면 대표 판매 품목 및 실제 운영 사이트 조회가 구체적으로 이루어집니다.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Right 1 col: Platform Guides / Quick Access */}
-        <div className="space-y-6">
-          <div className="bg-[#fdf0ed]/80 rounded-xl border border-[#e8b5ad]/60 p-6 space-y-4">
-            <h3 className="font-serif text-lg font-semibold text-[#7a3f39]">도예 맞춤 제안 시스템</h3>
-            <p className="text-stone-700 text-xs leading-relaxed">
-              가마 번호(Cone 값), 환원/산화 분기점, 물레 여부와 같은 공방별 세부 기술 환경을 입력하여 맞춤 재료를 추천받으세요.
-            </p>
-            <div className="bg-white/80 p-3.5 rounded-lg border border-amber-200 space-y-2">
-              <span className="text-[10px] font-bold text-amber-800 uppercase block tracking-wider">추천 범위</span>
-              <ul className="text-stone-600 text-xs space-y-1.5 font-medium list-disc pl-4">
-                <li>물레성형용 최적 백자/옹기/조형 소성토</li>
-                <li>오버레이 기법용 액상 및 가루유약</li>
-                <li>특정 가마 냉각용 금속 연질 안료</li>
-              </ul>
-            </div>
-            <button
-              onClick={() => setActiveTab('recommender')}
-              className="w-full py-2 bg-[#b76e66] hover:bg-[#a05a53] text-white font-medium text-xs rounded-md shadow-xs transition-colors flex items-center justify-center gap-1.5"
-            >
-              사용자 환경 입력하기 <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-
-          <div className="bg-stone-50 rounded-xl border border-stone-200 p-6 space-y-4">
-            <h3 className="font-serif text-lg font-semibold text-stone-900">시편 공유 네트워크</h3>
-            <p className="text-stone-600 text-xs leading-relaxed">
-              소성 실패를 방지하는 최고의 지름길은 다른 제작자의 실제 성공 시편 데이터를 분석하는 것입니다.
-            </p>
-            <div className="border border-stone-200/80 rounded-lg bg-white p-3 space-y-2.5">
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-md bg-stone-200 flex items-center justify-center shrink-0">
-                  <span className="text-[10px] font-mono text-stone-600">t-1</span>
-                </div>
-                <div className="truncate">
-                  <span className="font-bold text-xs text-stone-800 block truncate">Amaco Honey Flux 콤비네이션</span>
-                  <span className="text-[10px] text-stone-400">조회 128회 • 소성 1220°C</span>
-                </div>
-              </div>
-              <div className="text-[10px] text-stone-500 line-clamp-2">
-                "클레이 바디의 기벽 두께에 따라 하니플럭스와 매트의 상호 레이어 효과가..."
-              </div>
-            </div>
-            <button
-              onClick={() => setActiveTab('community')}
-              className="w-full py-2 border border-stone-300 hover:bg-stone-100 text-stone-700 font-semibold text-xs rounded-md transition-colors"
-            >
-              커뮤니티 구경하기
-            </button>
-          </div>
-        </div>
       </div>
 
       {/* Ceramic Distribution flow notice card */}
