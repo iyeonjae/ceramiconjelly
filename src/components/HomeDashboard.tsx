@@ -93,7 +93,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
           <div className="shrink-0 w-full md:w-auto">
             <button
               onClick={() => setActiveTab('recommender')}
-              className="w-full md:w-auto px-8 py-3 bg-[#b76e66] text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-2 transition-all duration-75 shadow-[0_4px_0_0_#7a3f39] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#7a3f39] active:translate-y-[3px] active:shadow-[0_1px_0_0_#7a3f39]"
+              className="w-full md:w-auto px-8 py-3 bg-[#b76e66] text-white text-sm font-semibold rounded-full flex items-center justify-center gap-2 transition-all duration-75 shadow-[0_4px_0_0_#7a3f39] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#7a3f39] active:translate-y-[3px] active:shadow-[0_1px_0_0_#7a3f39]"
             >
               추천 받기 <ArrowRight className="w-4 h-4" />
             </button>
@@ -114,7 +114,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
             </p>
             <button
               onClick={() => setActiveTab('suppliers')}
-              className="mt-6 w-full py-2.5 bg-stone-700 text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-2 transition-all duration-75 shadow-[0_4px_0_0_#1c1917] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#1c1917] active:translate-y-[3px] active:shadow-[0_1px_0_0_#1c1917]"
+              className="mt-6 w-full py-2.5 bg-stone-700 text-white text-sm font-semibold rounded-full flex items-center justify-center gap-2 transition-all duration-75 shadow-[0_4px_0_0_#1c1917] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#1c1917] active:translate-y-[3px] active:shadow-[0_1px_0_0_#1c1917]"
             >
               카탈로그 보기 <ArrowRight className="w-4 h-4" />
             </button>
@@ -131,7 +131,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
             </p>
             <button
               onClick={() => setActiveTab('community')}
-              className="mt-6 w-full py-2.5 bg-teal-700 text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-2 transition-all duration-75 shadow-[0_4px_0_0_#134e4a] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#134e4a] active:translate-y-[3px] active:shadow-[0_1px_0_0_#134e4a]"
+              className="mt-6 w-full py-2.5 bg-teal-700 text-white text-sm font-semibold rounded-full flex items-center justify-center gap-2 transition-all duration-75 shadow-[0_4px_0_0_#134e4a] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#134e4a] active:translate-y-[3px] active:shadow-[0_1px_0_0_#134e4a]"
             >
               커뮤니티 구경하기 <ArrowRight className="w-4 h-4" />
             </button>
@@ -162,7 +162,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
           </div>
           <button
             onClick={() => window.open('https://www.instagram.com/jelly_in_ceramic', '_blank', 'noopener,noreferrer')}
-            className="shrink-0 px-6 py-3 rounded-xl bg-white/18 hover:bg-white/28 border border-white/30 text-white font-semibold text-sm transition-all backdrop-blur-sm flex items-center gap-2 whitespace-nowrap"
+            className="shrink-0 px-6 py-3 rounded-full bg-white/18 hover:bg-white/28 border border-white/30 text-white font-semibold text-sm transition-all backdrop-blur-sm flex items-center gap-2 whitespace-nowrap"
           >
             인스타그램 바로가기 <ArrowRight className="w-4 h-4" />
           </button>
