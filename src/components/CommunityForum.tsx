@@ -259,7 +259,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
               <button
                 type="button"
                 onClick={() => setShowAddForm(false)}
-                className="px-4 py-2 bg-[#e4f6f7] hover:bg-[#c8ecee] text-stone-700 font-semibold text-xs rounded-full transition-colors"
+                className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 font-semibold text-xs rounded-full transition-colors"
               >
                 취소
               </button>
@@ -276,7 +276,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
       ) : (
         /* MAIN LIST DECKS WITH FILTERS */
         <div className="space-y-4">
-          <div className="flex bg-[#e4f6f7] p-1 rounded-lg w-fit">
+          <div className="flex bg-stone-100 p-1 rounded-lg w-fit">
             <button
               onClick={() => setFilterGasElectric('All')}
               className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${filterGasElectric === 'All' ? 'bg-white text-stone-900 shadow-xs' : 'text-stone-500 hover:text-stone-900'}`}
@@ -386,7 +386,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
         <div className="fixed inset-0 bg-stone-900/60 flex items-center justify-center p-4 z-50 overflow-y-auto block" id="specimen-detail-modal">
           <div className="bg-white rounded-xl border border-stone-200 max-w-2xl w-full max-h-[90vh] flex flex-col justify-between overflow-hidden shadow-2xl">
             {/* Modal Head */}
-            <div className="p-5 border-b border-stone-150 flex justify-between items-center bg-[#e4f6f7]">
+            <div className="p-5 border-b border-stone-150 flex justify-between items-center bg-stone-50">
               <div className="space-y-0.5">
                 <span className="text-[10px] font-bold text-[#8a4940] uppercase tracking-widest">{activeTile.firingType} 소성 데이터 로그</span>
                 <h3 className="font-serif text-lg font-bold text-stone-950">{activeTile.title}</h3>
@@ -404,15 +404,15 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
             <div className="p-6 overflow-y-auto space-y-6 text-stone-700 flex-grow max-h-[60vh]">
               {/* Specification Specs */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                <div className="bg-[#e4f6f7] border border-stone-200 rounded p-3 text-center">
+                <div className="bg-stone-50 border border-stone-200 rounded p-3 text-center">
                   <span className="text-[10px] text-stone-400 font-bold block">소성 한계점</span>
                   <span className="text-xs font-bold text-stone-850 font-mono">{activeTile.firingTemp}</span>
                 </div>
-                <div className="bg-[#e4f6f7] border border-stone-200 rounded p-3 text-center">
+                <div className="bg-stone-50 border border-stone-200 rounded p-3 text-center">
                   <span className="text-[10px] text-stone-400 font-bold block">대응 꼬깔 Cone</span>
                   <span className="text-xs font-bold text-stone-850 font-mono">{activeTile.coneValue}</span>
                 </div>
-                <div className="bg-[#e4f6f7] border border-stone-200 rounded p-3 text-center col-span-2">
+                <div className="bg-stone-50 border border-stone-200 rounded p-3 text-center col-span-2">
                   <span className="text-[10px] text-stone-400 font-bold block">작성 도예가</span>
                   <span className="text-xs font-semibold text-stone-850 truncate block">{activeTile.author}</span>
                 </div>
@@ -421,7 +421,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
               {/* Clay & Glaze details */}
               <div className="space-y-2.5">
                 <span className="text-stone-400 font-bold text-[10px] uppercase tracking-wider block">원재료 조합 배합 사서</span>
-                <div className="p-4 rounded-lg bg-[#e4f6f7] border border-stone-225 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-4 rounded-lg bg-stone-50 border border-stone-225 grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <h5 className="text-[11px] font-bold text-stone-400 uppercase">점토 태토 (Clay Body)</h5>
                     <p className="text-xs font-bold text-stone-850 mt-1">{activeTile.clayBody}</p>
@@ -462,7 +462,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
 
                 <div className="space-y-3">
                   {activeTile.comments.map(comm => (
-                    <div key={comm.id} className="bg-[#e4f6f7] p-3 rounded-lg border border-stone-150 space-y-1 text-xs">
+                    <div key={comm.id} className="bg-stone-50 p-3 rounded-lg border border-stone-150 space-y-1 text-xs">
                       <div className="flex justify-between items-center">
                         <span className="font-bold text-stone-800">{comm.author}</span>
                         <span className="text-[10px] text-stone-400 font-mono">{comm.createdAt}</span>
@@ -506,7 +506,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
             </div>
 
             {/* Modal Foot */}
-            <div className="p-4 bg-[#e4f6f7] border-t border-stone-150 flex justify-between items-center text-xs">
+            <div className="p-4 bg-stone-50 border-t border-stone-150 flex justify-between items-center text-xs">
               <button
                 onClick={(e) => handleLike(activeTile.id, e)}
                 className="px-4 py-2 bg-[#fdf0ed] hover:bg-[#f5ddd8] text-[#b76e66] font-semibold rounded-full border border-[#e3a692]/50 transition-colors cursor-pointer flex items-center gap-1.5"
@@ -516,7 +516,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
               </button>
               <button
                 onClick={() => setActiveTile(null)}
-                className="px-4 py-2 bg-[#e4f6f7] hover:bg-[#c8ecee] text-stone-700 font-semibold rounded-full transition-colors cursor-pointer"
+                className="px-4 py-2 bg-stone-200 hover:bg-stone-300 text-stone-700 font-semibold rounded-full transition-colors cursor-pointer"
               >
                 닫기
               </button>
