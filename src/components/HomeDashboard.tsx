@@ -88,7 +88,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
               </span>
             </div>
             <div>
-              <h3 className="font-serif font-bold text-stone-800 text-xl mb-2">AI 맞춤 재료 추천</h3>
+              <h3 className="font-serif font-extrabold text-stone-800 text-xl mb-2">AI 맞춤 재료 추천</h3>
               <p className="text-stone-600 text-sm leading-relaxed">
                 가마 조건, 성형 방식, 원하는 유약 느낌을 알려주세요. Cone 값과 환원·산화 소성 여부까지 세밀하게 반영해서 딱 맞는 흙과 유약 조합을 즉시 추천해드려요.
               </p>
@@ -112,7 +112,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
             <div className="w-11 h-11 rounded-xl bg-stone-500/10 border border-stone-400/20 flex items-center justify-center mb-5">
               <MapPin className="w-5 h-5 text-stone-600" />
             </div>
-            <h3 className="font-serif font-bold text-stone-800 text-lg mb-2">도재상 통합 카탈로그</h3>
+            <h3 className="font-serif font-extrabold text-stone-800 text-lg mb-2">도재상 통합 카탈로그</h3>
             <p className="text-stone-500 text-sm leading-relaxed flex-1">
               중앙도재·대원도재·동영세라믹스부터 Laguna·Amaco 같은 해외 브랜드까지 한 곳에서 비교해보세요. 취급 품목, 연락처, 추천 상품을 상세히 확인할 수 있어요.
             </p>
@@ -129,7 +129,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
             <div className="w-11 h-11 rounded-xl bg-[#cff9fb]/40 border border-[#cff9fb]/60 flex items-center justify-center mb-5">
               <FileText className="w-5 h-5 text-stone-600" />
             </div>
-            <h3 className="font-serif font-bold text-stone-800 text-lg mb-2">시편 공유 커뮤니티</h3>
+            <h3 className="font-serif font-extrabold text-stone-800 text-lg mb-2">시편 공유 커뮤니티</h3>
             <p className="text-stone-500 text-sm leading-relaxed flex-1">
               소성에 성공한 흙·유약 조합을 사진과 함께 공유하고, 다른 도예가들의 실제 레시피를 참고해보세요. 소성 실패를 줄이는 가장 빠른 지름길이에요.
             </p>
