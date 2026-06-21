@@ -63,11 +63,14 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
       </div>
 
       {/* Service Tagline */}
-      <div className="text-center space-y-1.5">
+      <div className="text-center space-y-2">
         <h2 className="font-serif font-bold text-stone-800 text-xl md:text-2xl">
           도예가를 위한 올인원 재료 플랫폼
         </h2>
-        <p className="text-stone-500 text-sm tracking-wide">
+        <p className="font-serif text-stone-500 text-sm md:text-base">
+          가마 앞 불안감, 조금은 줄여드릴게요
+        </p>
+        <p className="text-stone-400 text-xs tracking-wide pt-1">
           AI 재료 추천 · 도재상 통합 카탈로그 · 공방 재고 관리 · 시편 커뮤니티
         </p>
       </div>
