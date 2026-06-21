@@ -95,7 +95,19 @@ export default function App() {
     <div className="min-h-screen text-stone-900 font-sans flex flex-col" style={{ background: 'linear-gradient(238deg, #e3a692 0%, #cff9fb 100%)' }}>
 
 
-      {/* Main Content — pb-24 to clear bottom tab bar */}
+      {/* Slim Header */}
+      <header className="bg-white/80 backdrop-blur-sm border-b border-[#b76e66]/15 sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center">
+          <span
+            onClick={() => setActiveTab('home')}
+            className="font-serif font-bold text-[#b76e66] text-sm tracking-widest cursor-pointer"
+          >
+            CeramicOn
+          </span>
+        </div>
+      </header>
+
+      {/* Main Content */}
       <main className="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-28 min-w-0">
         {renderActiveTab()}
       </main>
