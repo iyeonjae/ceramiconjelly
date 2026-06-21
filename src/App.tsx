@@ -94,30 +94,9 @@ export default function App() {
   return (
     <div className="min-h-screen text-stone-900 font-sans flex flex-col" style={{ background: 'linear-gradient(238deg, #e3a692 0%, #cff9fb 100%)' }}>
 
-      {/* Header — logo only */}
-      <header className="bg-white border-b border-[#b76e66]/20 sticky top-0 z-40 shadow-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center">
-            <div
-              onClick={() => setActiveTab('home')}
-              className="flex flex-col leading-none cursor-pointer"
-              id="platform-logo-btn"
-            >
-              <img
-                src="/logo.png"
-                alt="CeramicOn"
-                className="h-12 w-auto object-contain object-left"
-              />
-              <span className="text-[10px] text-stone-500 font-medium uppercase tracking-widest mt-0.5">
-                도재상 찾기 · AI 추천 · 재고관리 · 시편 공유
-              </span>
-            </div>
-          </div>
-        </div>
-      </header>
 
       {/* Main Content — pb-24 to clear bottom tab bar */}
-      <main className="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-28 min-w-0">
+      <main className="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-28 min-w-0">
         {renderActiveTab()}
       </main>
 
