@@ -189,21 +189,30 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
 
       {/* Promo Banner Carousel */}
       <div className="relative rounded-2xl overflow-hidden shadow-md">
+        {/* 슬라이드 트랙 */}
         <div
-          className="px-6 md:px-10 py-5 flex items-center justify-between gap-4 transition-all duration-500"
-          style={{ background: banners[bannerIdx].bg }}
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${bannerIdx * 100}%)` }}
         >
-          <div className="flex-1 min-w-0 space-y-0.5">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-white/60 block">{banners[bannerIdx].tag}</span>
-            <h3 className="text-sm md:text-base font-serif font-bold text-white leading-snug truncate">{banners[bannerIdx].title}</h3>
-            <p className="text-xs text-white/70 leading-relaxed line-clamp-1">{banners[bannerIdx].desc}</p>
-          </div>
-          <button
-            onClick={banners[bannerIdx].onClick}
-            className="shrink-0 px-4 py-2 rounded-full bg-white/18 hover:bg-white/28 border border-white/30 text-white font-semibold text-xs transition-all flex items-center gap-1.5 whitespace-nowrap"
-          >
-            {banners[bannerIdx].cta} <ArrowRight className="w-3.5 h-3.5" />
-          </button>
+          {banners.map((banner, i) => (
+            <div
+              key={i}
+              className="min-w-full px-6 md:px-10 py-5 flex items-center justify-between gap-4"
+              style={{ background: banner.bg }}
+            >
+              <div className="flex-1 min-w-0 space-y-0.5">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white/60 block">{banner.tag}</span>
+                <h3 className="text-sm md:text-base font-serif font-bold text-white leading-snug truncate">{banner.title}</h3>
+                <p className="text-xs text-white/70 leading-relaxed line-clamp-1">{banner.desc}</p>
+              </div>
+              <button
+                onClick={banner.onClick}
+                className="shrink-0 px-4 py-2 rounded-full bg-white/18 hover:bg-white/28 border border-white/30 text-white font-semibold text-xs transition-all flex items-center gap-1.5 whitespace-nowrap"
+              >
+                {banner.cta} <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          ))}
         </div>
 
         {/* 좌우 화살표 */}
@@ -226,7 +235,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
             <button
               key={i}
               onClick={() => setBannerIdx(i)}
-              className={`rounded-full transition-all ${i === bannerIdx ? 'w-4 h-1.5 bg-white' : 'w-1.5 h-1.5 bg-white/40'}`}
+              className={`rounded-full transition-all duration-300 ${i === bannerIdx ? 'w-4 h-1.5 bg-white' : 'w-1.5 h-1.5 bg-white/40'}`}
             />
           ))}
         </div>
