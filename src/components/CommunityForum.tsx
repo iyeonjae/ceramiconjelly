@@ -130,7 +130,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
 
         <button
           onClick={() => setShowAddForm(!showAddForm)}
-          className="px-4 py-2 bg-stone-900 hover:bg-stone-800 text-white font-medium text-xs rounded-lg transition-colors inline-flex items-center gap-1.5 self-center cursor-pointer"
+          className="px-4 py-2 bg-stone-900 hover:bg-stone-800 text-white font-medium text-xs rounded-full transition-colors inline-flex items-center gap-1.5 self-center cursor-pointer"
           id="post-specimen-btn"
         >
           {showAddForm ? '게시 시편 목록 보기' : '＋ 내 연구 시편 등록'}
@@ -259,13 +259,13 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
               <button
                 type="button"
                 onClick={() => setShowAddForm(false)}
-                className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 font-semibold text-xs rounded-lg transition-colors"
+                className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 font-semibold text-xs rounded-full transition-colors"
               >
                 취소
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 bg-[#b76e66] hover:bg-[#a05a53] text-white font-bold text-xs rounded-lg transition-colors flex items-center gap-1"
+                className="px-5 py-2 bg-[#b76e66] hover:bg-[#a05a53] text-white font-bold text-xs rounded-full transition-colors flex items-center gap-1"
                 id="submit-specimen-btn"
               >
                 <Plus className="w-4 h-4" /> 게시판 공유 완료
@@ -279,19 +279,19 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
           <div className="flex bg-stone-100 p-1 rounded-lg w-fit">
             <button
               onClick={() => setFilterGasElectric('All')}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${filterGasElectric === 'All' ? 'bg-white text-stone-900 shadow-xs' : 'text-stone-500 hover:text-stone-900'}`}
+              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${filterGasElectric === 'All' ? 'bg-white text-stone-900 shadow-xs' : 'text-stone-500 hover:text-stone-900'}`}
             >
               전체 시편 ({specimens.length})
             </button>
             <button
               onClick={() => setFilterGasElectric('Oxidation')}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${filterGasElectric === 'Oxidation' ? 'bg-white text-stone-900 shadow-xs' : 'text-stone-500 hover:text-stone-900'}`}
+              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${filterGasElectric === 'Oxidation' ? 'bg-white text-stone-900 shadow-xs' : 'text-stone-500 hover:text-stone-900'}`}
             >
               전기/산화 가마 ({specimens.filter(s => s.firingType.includes('산화')).length})
             </button>
             <button
               onClick={() => setFilterGasElectric('Reduction')}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${filterGasElectric === 'Reduction' ? 'bg-white text-stone-900 shadow-xs' : 'text-stone-500 hover:text-stone-900'}`}
+              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${filterGasElectric === 'Reduction' ? 'bg-white text-stone-900 shadow-xs' : 'text-stone-500 hover:text-stone-900'}`}
             >
               가스/환원 가마 ({specimens.filter(s => s.firingType.includes('환원')).length})
             </button>
@@ -393,7 +393,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
               </div>
               <button
                 onClick={() => setActiveTile(null)}
-                className="p-1 px-2 rounded-lg text-stone-400 hover:text-stone-900 hover:bg-stone-200/50 transition-colors cursor-pointer"
+                className="p-1 px-2 rounded-full text-stone-400 hover:text-stone-900 hover:bg-stone-200/50 transition-colors cursor-pointer"
                 id="close-modal-btn"
               >
                 닫기 <X className="w-4 h-4 inline" />
@@ -509,14 +509,14 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
             <div className="p-4 bg-stone-50 border-t border-stone-150 flex justify-between items-center text-xs">
               <button
                 onClick={(e) => handleLike(activeTile.id, e)}
-                className="px-4 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 font-semibold rounded-lg border border-rose-200 transition-colors cursor-pointer flex items-center gap-1.5"
+                className="px-4 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 font-semibold rounded-full border border-rose-200 transition-colors cursor-pointer flex items-center gap-1.5"
                 id="modal-like-btn"
               >
                 <Heart className="w-4 h-4 fill-rose-500 text-rose-500" /> 공감하기 ({activeTile.likes})
               </button>
               <button
                 onClick={() => setActiveTile(null)}
-                className="px-4 py-2 bg-stone-200 hover:bg-stone-300 text-stone-700 font-semibold rounded-lg transition-colors cursor-pointer"
+                className="px-4 py-2 bg-stone-200 hover:bg-stone-300 text-stone-700 font-semibold rounded-full transition-colors cursor-pointer"
               >
                 닫기
               </button>

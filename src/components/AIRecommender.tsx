@@ -106,7 +106,7 @@ export default function AIRecommender() {
                       key={opt.value}
                       type="button"
                       onClick={() => setFormData({ ...formData, firingTempRange: opt.value as any })}
-                      className={`p-3 rounded-lg border text-left transition-all ${
+                      className={`p-3 rounded-2xl border text-left transition-all ${
                         formData.firingTempRange === opt.value
                           ? 'border-[#b76e66] bg-[#b76e66]/5 text-stone-900'
                           : 'border-stone-200 hover:border-stone-300 text-stone-600'
@@ -148,7 +148,7 @@ export default function AIRecommender() {
                       key={cOpt.value}
                       type="button"
                       onClick={() => setFormData({ ...formData, clayColorPref: cOpt.value as any })}
-                      className={`px-3 py-1.5 rounded-md border text-xs font-medium transition-all ${
+                      className={`px-3 py-1.5 rounded-full border text-xs font-medium transition-all ${
                         formData.clayColorPref === cOpt.value
                           ? 'border-[#b76e66] bg-[#b76e66]/10 text-[#7a3f39] font-semibold'
                           : 'border-stone-200 bg-white hover:border-stone-300 text-stone-600'
@@ -193,7 +193,7 @@ export default function AIRecommender() {
 
             <button
               onClick={handleRecommend}
-              className="w-full py-3 bg-[#b76e66] hover:bg-[#a05a53] text-white font-bold text-sm rounded-lg shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-3 bg-[#b76e66] hover:bg-[#a05a53] text-white font-bold text-sm rounded-full shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
               id="submit-recommendation-btn"
             >
               <Sparkles className="w-4 h-4 fill-stone-950 text-stone-950" /> 맞춤 재료 및 소성 배합 산출하기
@@ -250,7 +250,7 @@ export default function AIRecommender() {
               <div className="flex gap-2 shrink-0">
                 <button
                   onClick={copyToClipboard}
-                  className="p-2 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-300 transition-colors flex items-center gap-1 text-xs"
+                  className="p-2 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-300 transition-colors flex items-center gap-1 text-xs"
                   title="결과 클립보드에 복사"
                   id="copy-recommendation-btn"
                 >
@@ -259,7 +259,7 @@ export default function AIRecommender() {
                 </button>
                 <button
                   onClick={() => setResult(null)}
-                  className="p-2 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-300 transition-colors flex items-center gap-1 text-xs"
+                  className="p-2 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-300 transition-colors flex items-center gap-1 text-xs"
                   id="reset-recommendation-btn"
                 >
                   <RefreshCw className="w-4 h-4" /> 다시 진단하기

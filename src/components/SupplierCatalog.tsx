@@ -63,19 +63,19 @@ export default function SupplierCatalog({ suppliers, selectedSupplierId, setSele
           <div className="flex gap-1 bg-stone-100 p-1 rounded-lg">
             <button
               onClick={() => setFilterType('all')}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${filterType === 'all' ? 'bg-white text-stone-900 shadow-xs' : 'text-stone-500 hover:text-stone-900'}`}
+              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${filterType === 'all' ? 'bg-white text-stone-900 shadow-xs' : 'text-stone-500 hover:text-stone-900'}`}
             >
               전체 보기
             </button>
             <button
               onClick={() => setFilterType('domestic')}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${filterType === 'domestic' ? 'bg-white text-stone-900 shadow-xs' : 'text-stone-500 hover:text-stone-900'}`}
+              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${filterType === 'domestic' ? 'bg-white text-stone-900 shadow-xs' : 'text-stone-500 hover:text-stone-900'}`}
             >
               국내 도재상
             </button>
             <button
               onClick={() => setFilterType('international')}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${filterType === 'international' ? 'bg-white text-stone-900 shadow-xs' : 'text-stone-500 hover:text-stone-900'}`}
+              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${filterType === 'international' ? 'bg-white text-stone-900 shadow-xs' : 'text-stone-500 hover:text-stone-900'}`}
             >
               해외 브랜드
             </button>

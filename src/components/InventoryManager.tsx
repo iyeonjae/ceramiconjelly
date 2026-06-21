@@ -92,7 +92,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
             </div>
             <button
               onClick={() => setShowAddForm(!showAddForm)}
-              className="px-4 py-2 bg-stone-900 hover:bg-stone-800 text-white font-medium text-xs rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer"
+              className="px-4 py-2 bg-stone-900 hover:bg-stone-800 text-white font-medium text-xs rounded-full transition-colors flex items-center gap-1.5 cursor-pointer"
               id="toggle-add-material-btn"
             >
               {showAddForm ? '재고 목록 보기' : '+ 새 원자재 등록'}
@@ -246,13 +246,13 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
               <button
                 type="button"
                 onClick={() => setShowAddForm(false)}
-                className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 font-semibold text-xs rounded-lg transition-colors"
+                className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 font-semibold text-xs rounded-full transition-colors"
               >
                 취소
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 bg-[#b76e66] hover:bg-amber-600 text-stone-950 font-bold text-xs rounded-lg transition-colors flex items-center gap-1"
+                className="px-5 py-2 bg-[#b76e66] hover:bg-amber-600 text-stone-950 font-bold text-xs rounded-full transition-colors flex items-center gap-1"
                 id="submit-add-material-btn"
               >
                 <Check className="w-3.5 h-3.5" /> 자재 목록에 추가
@@ -284,7 +284,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
                 <button
                   key={f}
                   onClick={() => setCategoryFilter(f)}
-                  className={`px-3 py-1 rounded-md text-xs font-semibold whitespace-nowrap transition-colors ${
+                  className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-colors ${
                     categoryFilter === f
                       ? 'bg-[#b76e66] text-white shadow-xs'
                       : 'bg-stone-50 border border-stone-200/65 text-stone-600 hover:bg-stone-100'
