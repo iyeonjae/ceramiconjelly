@@ -70,9 +70,6 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
         <p className="font-serif text-stone-500 text-sm md:text-base">
           가마 앞 불안감, 조금은 줄여드릴게요
         </p>
-        <p className="text-stone-400 text-xs tracking-wide pt-1">
-          AI 재료 추천 · 도재상 통합 카탈로그 · 공방 재고 관리 · 시편 커뮤니티
-        </p>
       </div>
 
       {/* Featured AI Card + 2-column secondary cards */}
