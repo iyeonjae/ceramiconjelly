@@ -123,8 +123,8 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
 
           {/* 시편 커뮤니티 */}
           <div className="bg-white/55 backdrop-blur-md border border-[#cff9fb]/60 border-t-2 border-t-[#cff9fb] rounded-2xl p-7 flex flex-col shadow-md hover:shadow-lg transition-all">
-            <div className="w-11 h-11 rounded-xl bg-[#cbf7ee]/40 border border-[#cbf7ee]/60 flex items-center justify-center mb-5">
-              <FileText className="w-5 h-5 text-teal-600" />
+            <div className="w-11 h-11 rounded-xl bg-[#cff9fb]/40 border border-[#cff9fb]/60 flex items-center justify-center mb-5">
+              <FileText className="w-5 h-5 text-stone-600" />
             </div>
             <h3 className="font-serif font-bold text-stone-800 text-lg mb-2">시편 공유 커뮤니티</h3>
             <p className="text-stone-500 text-sm leading-relaxed flex-1">
@@ -132,7 +132,7 @@ export default function HomeDashboard({ setActiveTab }: HomeDashboardProps) {
             </p>
             <button
               onClick={() => setActiveTab('community')}
-              className="mt-6 w-full py-2.5 bg-teal-700 text-white text-sm font-semibold rounded-full flex items-center justify-center gap-2 transition-all duration-75 shadow-[0_4px_0_0_#134e4a] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#134e4a] active:translate-y-[3px] active:shadow-[0_1px_0_0_#134e4a]"
+              className="mt-6 w-full py-2.5 bg-[#b76e66] text-white text-sm font-semibold rounded-full flex items-center justify-center gap-2 transition-all duration-75 shadow-[0_4px_0_0_#7a3f39] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#7a3f39] active:translate-y-[3px] active:shadow-[0_1px_0_0_#7a3f39]"
             >
               커뮤니티 구경하기 <ArrowRight className="w-4 h-4" />
             </button>

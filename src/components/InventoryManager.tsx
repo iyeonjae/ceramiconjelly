@@ -118,9 +118,9 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
             {criticalItems.length === 0 ? (
               <p className="text-stone-700 text-xs">보유 원부자재가 모두 안전 임계값 이상을 유지 중입니다.</p>
             ) : (
-              <div className="space-y-1 bg-white/70 p-2 rounded border border-amber-300 max-h-24 overflow-y-auto">
+              <div className="space-y-1 bg-white/70 p-2 rounded border border-[#e3a692] max-h-24 overflow-y-auto">
                 {criticalItems.map(item => (
-                  <div key={item.id} className="flex justify-between items-center text-[10px] text-amber-900">
+                  <div key={item.id} className="flex justify-between items-center text-[10px] text-[#7a3f39]">
                     <span className="font-bold truncate max-w-[120px]">{item.name}</span>
                     <span>남음: {item.stockQuantity}{item.unit} (임계: {item.stockAlertThreshold})</span>
                   </div>
@@ -252,7 +252,7 @@ export default function InventoryManager({ inventory, setInventory }: InventoryM
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 bg-[#b76e66] hover:bg-amber-600 text-stone-950 font-bold text-xs rounded-full transition-colors flex items-center gap-1"
+                className="px-5 py-2 bg-[#b76e66] hover:bg-[#a05a53] text-stone-950 font-bold text-xs rounded-full transition-colors flex items-center gap-1"
                 id="submit-add-material-btn"
               >
                 <Check className="w-3.5 h-3.5" /> 자재 목록에 추가

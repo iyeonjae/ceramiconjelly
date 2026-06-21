@@ -55,7 +55,7 @@ export default function SupplierCatalog({ suppliers, selectedSupplierId, setSele
               placeholder="도재상 이름, 주력 흙(예: 백자토), 유약명 등으로 검색..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-9 pr-4 py-2 w-full bg-stone-50 border border-stone-200 rounded-lg text-sm focus:outline-hidden focus:ring-1 focus:ring-amber-500 bg-white"
+              className="pl-9 pr-4 py-2 w-full bg-stone-50 border border-stone-200 rounded-lg text-sm focus:outline-hidden focus:ring-1 focus:ring-[#b76e66] bg-white"
               id="supplier-search-input"
             />
           </div>
@@ -110,7 +110,7 @@ export default function SupplierCatalog({ suppliers, selectedSupplierId, setSele
                   <div className="space-y-2 w-full">
                     <div className="flex justify-between items-start gap-2">
                       <span className={`text-xs font-medium px-2 py-0.5 rounded-sm shrink-0 uppercase tracking-wide ${
-                        sup.isInternational ? 'bg-indigo-50 text-indigo-700' : 'bg-stone-100 text-stone-700'
+                        sup.isInternational ? 'bg-[#cff9fb]/50 text-stone-700' : 'bg-stone-100 text-stone-700'
                       }`}>
                         {sup.isInternational ? '해외 수입' : '국내 공방'}
                       </span>
@@ -144,7 +144,7 @@ export default function SupplierCatalog({ suppliers, selectedSupplierId, setSele
               <div className="border-b border-stone-100 pb-5 space-y-3">
                 <div className="flex flex-wrap gap-2 items-center justify-between">
                   <span className={`px-2.5 py-1 rounded text-xs font-semibold ${
-                    activeSupplier.isInternational ? 'bg-indigo-100 text-indigo-700' : 'bg-[#f5ddd8] text-[#7a3f39]'
+                    activeSupplier.isInternational ? 'bg-[#cff9fb]/60 text-stone-700' : 'bg-[#f5ddd8] text-[#7a3f39]'
                   }`}>
                     {activeSupplier.isInternational ? 'Global Ceramic Supplier' : '한국 통합 도재상 공식 파트너'}
                   </span>
@@ -187,7 +187,7 @@ export default function SupplierCatalog({ suppliers, selectedSupplierId, setSele
                 <div className="flex flex-wrap gap-1.5">
                   {activeSupplier.specialty.map((spec, i) => (
                     <span key={i} className="text-xs bg-stone-100 text-stone-700 border border-stone-200 px-3 py-1 rounded-md font-medium flex items-center gap-1">
-                      <Sparkles className="w-3 h-3 text-amber-600" /> {spec}
+                      <Sparkles className="w-3 h-3 text-[#b76e66]" /> {spec}
                     </span>
                   ))}
                 </div>
@@ -201,7 +201,7 @@ export default function SupplierCatalog({ suppliers, selectedSupplierId, setSele
                     <div key={i} className="bg-white border border-stone-200 rounded-lg p-3.5 flex flex-col justify-between space-y-2 hover:border-[#b76e66]/30 hover:shadow-xs transition-shadow">
                       <div className="space-y-1">
                         <span className="text-[9px] text-[#8a4940] uppercase font-bold flex items-center gap-0.5">
-                          <Star className="w-2.5 h-2.5 fill-amber-500 text-amber-500" /> BEST 0{i + 1}
+                          <Star className="w-2.5 h-2.5 fill-[#b76e66] text-[#b76e66]" /> BEST 0{i + 1}
                         </span>
                         <h5 className="font-bold text-xs text-stone-800 line-clamp-2">{prod}</h5>
                       </div>
@@ -216,12 +216,12 @@ export default function SupplierCatalog({ suppliers, selectedSupplierId, setSele
 
               {/* Integrated Order Guide block */}
               <div className="bg-[#fdf0ed] rounded-xl border border-[#e8b5ad]/50 p-4 flex items-start gap-3">
-                <div className="p-2 bg-white rounded-lg border border-amber-200 text-amber-600 shrink-0">
-                  <Star className="w-5 h-5 fill-amber-500 text-amber-500" />
+                <div className="p-2 bg-white rounded-lg border border-[#e3a692] text-[#b76e66] shrink-0">
+                  <Star className="w-5 h-5 fill-[#b76e66] text-[#b76e66]" />
                 </div>
                 <div className="space-y-1">
                   <h4 className="text-xs font-bold text-[#7a3f39]">통합 견적 및 직공급 수령 서비스</h4>
-                  <p className="text-[11px] text-amber-800/80 leading-relaxed">
+                  <p className="text-[11px] text-[#7a3f39] leading-relaxed">
                     본 플랫폼에서는 {activeSupplier.name.split(' (')[0].trim()}의 시그니처 점토와 가마 재료들을 위탁 없이 
                     직접 담아 주문서를 산출할 수 있습니다. 각 대리점에 매번 전화를 걸 필요 없이, 공방 수령 톤 단위 공동구매를 통해 
                     최대 15%의 물류 이동 단가를 단순화할 수 있습니다.

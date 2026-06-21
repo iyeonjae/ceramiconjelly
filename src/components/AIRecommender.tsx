@@ -77,7 +77,7 @@ export default function AIRecommender() {
       <div className="bg-white rounded-xl border border-stone-200 p-6 shadow-xs space-y-4">
         <div>
           <h2 className="text-xl font-serif font-bold text-stone-900 flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-[#b76e66] fill-amber-500/20" /> 
+            <Sparkles className="w-5 h-5 text-[#b76e66] fill-[#e3a692]/30" /> 
             AI 기반 도예 재료 맞춤 설계 및 추천
           </h2>
           <p className="text-stone-500 text-xs">
@@ -228,7 +228,7 @@ export default function AIRecommender() {
         <div className="bg-white rounded-xl border border-stone-200 p-12 text-center flex flex-col items-center justify-center space-y-6 shadow-xs">
           <div className="relative">
             <Flame className="w-12 h-12 text-[#b76e66] animate-bounce" />
-            <span className="absolute inset-0 rounded-full border-4 border-amber-500/20 border-t-amber-500 animate-spin"></span>
+            <span className="absolute inset-0 rounded-full border-4 border-[#e3a692]/20 border-t-[#b76e66] animate-spin"></span>
           </div>
           
           <div className="space-y-1.5">
@@ -244,7 +244,7 @@ export default function AIRecommender() {
           <div className="bg-stone-900 text-stone-100 rounded-xl p-6 md:p-8 space-y-4 shadow-md">
             <div className="flex justify-between items-start gap-4">
               <div className="space-y-1">
-                <span className="text-[11px] text-amber-400 font-bold uppercase tracking-widest block">AI Ceramics Diagnosis</span>
+                <span className="text-[11px] text-[#e3a692] font-bold uppercase tracking-widest block">AI Ceramics Diagnosis</span>
                 <h3 className="font-serif text-2xl font-bold">도예 장인 AI 맞춤 처방 결과서</h3>
               </div>
               <div className="flex gap-2 shrink-0">
@@ -254,7 +254,7 @@ export default function AIRecommender() {
                   title="결과 클립보드에 복사"
                   id="copy-recommendation-btn"
                 >
-                  {isCopied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                  {isCopied ? <Check className="w-4 h-4 text-[#cff9fb]" /> : <Copy className="w-4 h-4" />}
                   {isCopied ? '복사 완료' : '결과 복사'}
                 </button>
                 <button
@@ -281,7 +281,7 @@ export default function AIRecommender() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {result.materials.map((m, idx) => (
-                  <div key={idx} className="bg-white border border-stone-200 rounded-xl p-5 hover:shadow-xs hover:border-amber-500/30 transition-all space-y-3 flex flex-col justify-between">
+                  <div key={idx} className="bg-white border border-stone-200 rounded-xl p-5 hover:shadow-xs hover:border-[#b76e66]/30 transition-all space-y-3 flex flex-col justify-between">
                     <div className="space-y-2">
                       <div className="flex justify-between items-start gap-2">
                         <span className="text-[10px] bg-stone-100 text-stone-700 px-2 py-0.5 rounded uppercase font-semibold">
@@ -329,7 +329,7 @@ export default function AIRecommender() {
               </div>
 
               <div className="bg-[#f5ddd8]/40 p-3.5 rounded-lg border border-[#e8b5ad]/50 text-[10px] text-stone-500 space-y-1">
-                <strong className="text-amber-900">⚠️ 공방 가마 유의사항</strong>
+                <strong className="text-[#7a3f39]">⚠️ 공방 가마 유의사항</strong>
                 <p className="leading-snug">
                   제시된 소성 가이드는 전력 용량 및 대기 장치의 성능에 따라 오차가 발생할 수 있습니다. 
                   대량 가마 인장 작업 전 반드시 한 단 깊이 시편 소성 테스트를 선행하시기를 권해드립니다.

@@ -303,18 +303,18 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
               const isDarkBody = tile.clayBody.toLowerCase().includes('분청') || tile.clayBody.toLowerCase().includes('dark') || tile.clayBody.toLowerCase().includes('옹기');
               const isReduction = tile.firingType.includes('환원');
               const containerBg = isDarkBody ? 'bg-stone-800' : 'bg-stone-50';
-              const ringBorderClr = isReduction ? 'border-sky-500/80 shadow-[0_0_10px_rgba(56,189,248,0.3)]' : 'border-[#b76e66]/80';
-              const centerFillBg = tile.glazeName.toLowerCase().includes('blue') 
-                ? 'bg-blue-600/70' 
-                : tile.glazeName.toLowerCase().includes('황') || tile.glazeName.toLowerCase().includes('honey') 
-                ? 'bg-amber-600/70' 
+              const ringBorderClr = isReduction ? 'border-[#cff9fb]/80 shadow-[0_0_10px_rgba(207,249,251,0.3)]' : 'border-[#b76e66]/80';
+              const centerFillBg = tile.glazeName.toLowerCase().includes('blue')
+                ? 'bg-[#cff9fb]/70'
+                : tile.glazeName.toLowerCase().includes('황') || tile.glazeName.toLowerCase().includes('honey')
+                ? 'bg-[#e3a692]/70'
                 : 'bg-stone-300';
 
               return (
                 <div
                   key={tile.id}
                   onClick={() => setActiveTile(tile)}
-                  className="bg-white border border-stone-200 rounded-xl overflow-hidden hover:border-amber-500/40 hover:shadow-sm transition-all duration-200 cursor-pointer flex flex-col justify-between"
+                  className="bg-white border border-stone-200 rounded-xl overflow-hidden hover:border-[#b76e66]/40 hover:shadow-sm transition-all duration-200 cursor-pointer flex flex-col justify-between"
                   id={`specimen-card-${tile.id}`}
                 >
                   {/* Test-Tile Virtual Graphic Header representing the real glaze outcome */}
@@ -323,13 +323,13 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
                       <span className="bg-stone-900/80 text-white text-[9px] px-1.5 py-0.5 rounded-sm font-mono uppercase font-bold tracking-wide">
                         {tile.coneValue}
                       </span>
-                      <span className="bg-amber-500 text-stone-950 text-[9px] px-1.5 py-0.5 rounded-sm font-bold font-mono">
+                      <span className="bg-[#b76e66] text-white text-[9px] px-1.5 py-0.5 rounded-sm font-bold font-mono">
                         {tile.firingTemp}
                       </span>
                     </div>
 
                     <div className="absolute top-2 right-2">
-                      <Bookmark className="w-4 h-4 text-stone-400 hover:text-amber-500 transition-colors" />
+                      <Bookmark className="w-4 h-4 text-stone-400 hover:text-[#b76e66] transition-colors" />
                     </div>
 
                     {/* Fired Ceramic Ring representation */}
@@ -364,7 +364,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
                     <div className="flex gap-2.5">
                       <button
                         onClick={(e) => handleLike(tile.id, e)}
-                        className="flex items-center gap-1 hover:text-rose-500 transition-colors cursor-pointer"
+                        className="flex items-center gap-1 hover:text-[#b76e66] transition-colors cursor-pointer"
                         id={`like-btn-${tile.id}`}
                       >
                         <Heart className="w-3.5 h-3.5" /> <span>{tile.likes}</span>
@@ -437,7 +437,7 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
               <div className="space-y-4">
                 <div className="space-y-1">
                   <h4 className="text-xs font-bold text-stone-900 flex items-center gap-1.5">
-                    <FileText className="w-4 h-4 text-amber-500" /> 실험 가마 설명 & 발색 상태
+                    <FileText className="w-4 h-4 text-[#b76e66]" /> 실험 가마 설명 & 발색 상태
                   </h4>
                   <p className="text-xs text-stone-600 leading-relaxed bg-stone-50/50 p-3 rounded-lg border border-stone-150">
                     {activeTile.description}
@@ -445,10 +445,10 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
                 </div>
 
                 <div className="space-y-1">
-                  <h4 className="text-xs font-bold text-amber-900 flex items-center gap-1.5">
-                    <Flame className="w-4 h-4 text-amber-500" /> 가마 공학 비법 및 소성 노하우 (Key Tips)
+                  <h4 className="text-xs font-bold text-[#7a3f39] flex items-center gap-1.5">
+                    <Flame className="w-4 h-4 text-[#b76e66]" /> 가마 공학 비법 및 소성 노하우 (Key Tips)
                   </h4>
-                  <div className="text-xs text-amber-900 leading-relaxed bg-amber-50 p-4 rounded-lg border border-amber-200">
+                  <div className="text-xs text-[#7a3f39] leading-relaxed bg-[#fdf0ed] p-4 rounded-lg border border-[#e3a692]/50">
                     {activeTile.knowHowTips}
                   </div>
                 </div>
@@ -509,10 +509,10 @@ export default function CommunityForum({ specimens, setSpecimens }: CommunityFor
             <div className="p-4 bg-stone-50 border-t border-stone-150 flex justify-between items-center text-xs">
               <button
                 onClick={(e) => handleLike(activeTile.id, e)}
-                className="px-4 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 font-semibold rounded-full border border-rose-200 transition-colors cursor-pointer flex items-center gap-1.5"
+                className="px-4 py-2 bg-[#fdf0ed] hover:bg-[#f5ddd8] text-[#b76e66] font-semibold rounded-full border border-[#e3a692]/50 transition-colors cursor-pointer flex items-center gap-1.5"
                 id="modal-like-btn"
               >
-                <Heart className="w-4 h-4 fill-rose-500 text-rose-500" /> 공감하기 ({activeTile.likes})
+                <Heart className="w-4 h-4 fill-[#b76e66] text-[#b76e66]" /> 공감하기 ({activeTile.likes})
               </button>
               <button
                 onClick={() => setActiveTile(null)}
